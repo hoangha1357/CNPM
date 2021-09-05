@@ -25,10 +25,6 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
-app.get('/69', (req, res) => {
-    res.render('yaesama')
-})
-
 app.get('/search', (req, res) => {
   res.render('search')
 })
