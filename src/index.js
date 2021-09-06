@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname,'public'))) // set static public
 app.engine('hbs',handlebars({
       extname: '.hbs' // change file types name
 }))
+
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname,'resources/views')) // set views
 
