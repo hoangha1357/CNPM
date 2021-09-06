@@ -5,6 +5,8 @@ const handlebars  = require('express-handlebars');
 const app = express()
 const port = 3000
 
+const route = require('./routes/index')
+
 //app.use(morgan("combined")) // track HTTP call
 
 app.use(express.urlencoded({
@@ -21,31 +23,7 @@ app.engine('hbs',handlebars({
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname,'resources/views')) // set views
 
-app.get('/', (req, res) => {
-  res.render('home')
-})
-
-app.get('/bookdesk', (req, res) => {
-  res.render('deskbook')
-})
-
-app.get('/menu', (req, res) => {
-  res.render('menu')
-})
-
-app.get('/search', (req, res) => {
-  res.render('search')
-})
-
-app.get('/register',(req,res) => {
-  res.render('register')
-})
-
-app.post('/register',(req,res) => {
-  console.log(req.body)
-  if(req.body.password != req.body.cfpassword){ //document.write("not match password")
-   res.send('registered')}
-})
+route(app)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
