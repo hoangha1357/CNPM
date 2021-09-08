@@ -12,8 +12,8 @@
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
-  "husky":{
-    "hook":{
+  "husky": {
+    "hook": {
       "pre-commit": "lint-staged"
     }
   },
@@ -34,7 +34,8 @@
   "homepage": "https://github.com/hoangha1357/CNPM#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.3"
+    "express-handlebars": "^5.3.3",
+    "mongoose": "^6.0.5"
   },
   "devDependencies": {
     "husky": "^7.0.2",

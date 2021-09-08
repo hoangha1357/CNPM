@@ -4,8 +4,10 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
-
+const db = require('./config/db');
 const route = require('./routes/index');
+
+db.connect();
 
 //app.use(morgan("combined")) // track HTTP call
 
@@ -27,7 +29,7 @@ app.engine(
 );
 
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views')); // set views
+app.set('views', path.join(__dirname, 'resources', 'views')); // set views
 
 route(app);
 
