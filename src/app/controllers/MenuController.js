@@ -1,18 +1,29 @@
 const Dish = require('../models/Dish');
+const { mutiMongoosetoObject } = require('../../util/mongoose');
 
 class MenuController {
     //get menu
-    index(req, res) {
-
-        Dish.find({}, function (err, dishes,next) {
-            if (!err) res.json(dishes);
-            else next(err);
-        });
-        //res.render('menu');
+    index(req, res, next) {
+        Dish.find({})
+            .then((dishes) => {
+                res.render('menu', { dishes: mutiMongoosetoObject(dishes) });
+            })
+            .catch(next);
     }
 
-    show(req, res) {
-        res.send('món ăn');
+    create(req, res, next) {
+        res.render('Menusub/create');
+    }
+
+    store(req, res, next) {
+        const formdata = req.body;
+        
+        const dish = new Dish(formdata);
+        dish.save()
+            .then(() => res.redirect('/menu'))
+            .catch(error =>{
+                //them sau
+            });
     }
 }
 
