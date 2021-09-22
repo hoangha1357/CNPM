@@ -1,6 +1,13 @@
+const Dish = require('../models/Dish');
+const { mutiMongoosetoObject } = require('../../util/mongoose');
+
 class SiteController {
-    home(req, res) {
-        res.render('home');
+    home(req, res, next) {
+        Dish.find({ recommend: true })
+            .then((dishes) => {
+                res.render('home', { dishes: mutiMongoosetoObject(dishes) });
+            })
+            .catch(next);
     }
 
     search(req, res) {

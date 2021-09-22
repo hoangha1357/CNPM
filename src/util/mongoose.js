@@ -4,7 +4,7 @@ module.exports = {
     mutiMongoosetoObject: function (mgarray) {
         return mgarray.map((mgarray) => mgarray.toObject());
     },
-    MongoosetoObject: function (mg) {
-        return mg ? mg.toObject() : mg;
+    MongoosetoObject: function (mongoose) {
+        return mongoose ? mongoose.toObject() : mongoose;
     },
 };

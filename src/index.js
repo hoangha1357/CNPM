@@ -6,8 +6,11 @@ const app = express();
 const port = 3000;
 const db = require('./config/db');
 const route = require('./routes/index');
+const methodOverride = require('method-override');
 
 db.connect();
+
+app.use(methodOverride('_method')); //override using a query value
 
 //app.use(morgan("combined")) // track HTTP call
 
@@ -25,6 +28,11 @@ app.engine(
     'hbs',
     handlebars({
         extname: '.hbs', // change file types name
+        helpers: {
+            //create suport funtion
+            sum: (a, b) => a + b,
+            mul: (a, b) => a * b,
+        },
     }),
 );
 
@@ -34,5 +42,5 @@ app.set('views', path.join(__dirname, 'resources', 'views')); // set views
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Restaurant app listening at http://localhost:${port}`);
 });
