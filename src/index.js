@@ -1,16 +1,34 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
-const handlebars = require('express-handlebars');
-const app = express();
-const port = 3000;
-const db = require('./config/db');
-const route = require('./routes/index');
-const methodOverride = require('method-override');
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+const path              = require('path');
+const express           = require('express');
+const flash             = require('express-flash');
+const session           = require('express-session');
+const handlebars        = require('express-handlebars');
+const SortMiddleware    = require('./app/middlewares/SortMiddleware');
+const app               = express();
+const port              = 3000;
+const db                = require('./config/db');
+const route             = require('./routes/index');
+const methodOverride    = require('method-override');
+const bcrypt            = require('bcrypt');
+
+// const morgan            = require('morgan');
 
 db.connect();
 
+// const Userid = require('./app/models/Userid');
+
+app.use(session({
+    secret: process.env.SECERT_SESSION_KEY,
+    resave: true,
+    saveUninitialized: false
+}));
+
 app.use(methodOverride('_method')); //override using a query value
+
+app.use('/user',SortMiddleware);
 
 //app.use(morgan("combined")) // track HTTP call
 
@@ -21,6 +39,7 @@ app.use(
 );
 app.use(express.json());
 
+
 app.use(express.static(path.join(__dirname, 'public'))); // set static public
 
 //templet engine
@@ -28,11 +47,7 @@ app.engine(
     'hbs',
     handlebars({
         extname: '.hbs', // change file types name
-        helpers: {
-            //create suport funtion
-            sum: (a, b) => a + b,
-            mul: (a, b) => a * b,
-        },
+        helpers: require('./app/helpers/handlebars'),
     }),
 );
 

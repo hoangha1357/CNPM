@@ -33,21 +33,15 @@
                 <th scope="col">#</th>
                 <th scope="col">
                   Tên món ăn
-                  <a href="?_sort&column=name&type=assc">
-                    <span class="oi oi-elevator"></span>
-                  </a>
+                {{{sortable 'name' _sort}}}
                 </th>
                 <th scope="col">
                   Số lượng đã bán
-                  <a href="?_sort&column=sale&type=assc">
-                    <span class="oi oi-elevator"></span>
-                  </a>
+                  {{{sortable 'sale' _sort}}}
                 </th>
                 <th scope="col" >
                   Giá Tiền(VNĐ)
-                  <a href="?_sort&column=price&type=assc">
-                    <span class="oi oi-elevator"></span>
-                  </a>
+                  {{{sortable 'price' _sort}}}
                 </th>
                 <th scope="col">Được gợi ý</th>
                 <th scope="col" >

@@ -14,13 +14,20 @@ class SiteController {
         res.render('search');
     }
 
+    loginpage(req, res, next) {
+        res.render('loginpage');
+    }
+
     register(req, res) {
         res.render('register');
     }
+
+
 
     booktable(req, res) {
         res.render('book_table');
     }
 }
+
 
 module.exports = new SiteController();

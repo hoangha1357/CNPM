@@ -1,10 +1,15 @@
 const express = require('express');
 const route = express.Router();
 
-const User_Controller = require('../app/controllers/UserController');
+const UserController = require('../app/controllers/UserController');
+// const authenticateUser = require('../app/middlewares/Authenticate');
+const requireLogin = require('../app/middlewares/LoginRequires');
 
-// route.get('/stored/ordered', User_Controller.ordered);
-route.get('/viewrevenue', User_Controller.viewrevenue);
-route.get('/trash', User_Controller.trash);
+// route.get('/stored/ordered', UserController.ordered);
+route.get('/viewrevenue' ,requireLogin,UserController.viewrevenue);
+route.get('/trash', UserController.trash);
+route.post('/register', UserController.register);
+route.post('/login', UserController.login);
+route.get('/logout', UserController.logout);
 
 module.exports = route;

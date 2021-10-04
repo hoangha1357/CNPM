@@ -1,6 +1,7 @@
 const Dish = require('../models/Dish');
 const { mutiMongoosetoObject } = require('../../util/mongoose');
 const { MongoosetoObject } = require('../../util/mongoose');
+const imageMimeTypes = ['image/jpg', 'image/png','image/gif'];
 
 class MenuController {
     //get menu
@@ -15,16 +16,16 @@ class MenuController {
     create(req, res, next) {
         res.render('Menusub/create');
     }
-
+    
     // [POST] /menu/store
     store(req, res, next) {
-        const formdata = req.body;
+        modifyRequestImage(req);
+        const dish = new Dish(req.body);
 
-        const dish = new Dish(formdata);
         dish.save()
             .then(() => res.redirect('/user/viewrevenue'))
             .catch((error) => {
-                //them sau
+                res.json(error);
             });
     }
 
@@ -41,9 +42,18 @@ class MenuController {
 
     // [PUT] /menu/:id
     update(req, res, next) {
-        Dish.updateOne({ _id: req.params.id }, req.body)
-            .then(() => res.redirect('/User/viewrevenue'))
-            .catch(next);
+        
+        if(req.body.image){
+            modifyRequestImage(req);
+            Dish.updateOne({ _id: req.params.id }, req.body)
+                .then(() => res.redirect('/User/viewrevenue'))
+                .catch(next);
+        }
+        else{
+            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, price: req.body.price, dish_type: req.body.dish_type}})
+                .then(() => res.redirect('/User/viewrevenue'))
+                .catch(next);
+        }
     }
 
     // [DELETE] /menu/:id
@@ -87,6 +97,16 @@ class MenuController {
                 break;
             default:
                 res.send('Invalid Action');
+        }
+    }
+}
+
+function modifyRequestImage(req){
+    if(req.body.image) {
+        const image = JSON.parse(req.body.image);
+        if(image && imageMimeTypes.includes(image.type)){
+            req.body.image = new Buffer.from(image.data,'base64');
+            req.body.imageType = image.type;
         }
     }
 }

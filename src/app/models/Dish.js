@@ -1,7 +1,6 @@
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const mongoosedelete = require('mongoose-delete');
-const { all } = require('../../routes/menu');
 const Schema = mongoose.Schema;
 
 const Dish = new Schema(
@@ -10,11 +9,22 @@ const Dish = new Schema(
         price: { type: Number, required: true },
         type_dish: { type: String, required: true },
         recommend: { type: Boolean, default: false },
-        image: { type: String, required: true },
+        image: { type: Buffer, required: true },
+        imageType: { type: String, required: true},
         sale: { type: Number, min: 0, default: 0 },
     },
     { timestamps: true },
 );
+
+//custom query helpers
+Dish.query.sortable = function(req){
+    if(req.query.hasOwnProperty('_sort')){
+        return this.sort({
+            [req.query.column]: req.query.type,
+        });
+    }
+    return this;
+};
 
 //add plug in
 // mongoose.plugin(slug);
