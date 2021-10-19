@@ -40,13 +40,18 @@ class UserController {
     register(req, res, next) {
         bcryt.hash(req.body.password,10,function(err,hashedPass) {
             if(err) return res.json(err);
-            req.body.password = hashedPass;
-            const user = new Userid(req.body);  
+            let user = new Userid({
+                email: req.body.email,
+                password: hashedPass,
+                name: req.body.name,
+                gender: req.body.gender,
+                address: req.body.address,
+            });
             user.save()
                 .then(() => res.redirect('/loginpage'))
                 .catch((error) => {
-                    res.json(error);
-                });
+                    res.json({message: error})
+                })
         })
     }
 
@@ -54,15 +59,14 @@ class UserController {
     login(req, res, next) {
         Userid.findOne({email: req.body.email})
             .then((userid)=>{
-                if(!userid) return res.json({massage: "no user found"});
+                if(!userid) return res.render('loginpage',{massage: "User not found"});
                 const email = userid.name;
                 bcryt.compare(req.body.password,userid.password)
                     .then((result) => {
-                        if(!result) return res.json({massage: "wrong pass word"});
-                        const token = jwt.sign({name: email},"asdasd" ,{expiresIn:'2h'});
-                        // res.json({token: token});
-                        req.session.userId = userid._id;
-                        res.redirect('/user/viewrevenue');
+                        if(!result) return res.render('loginpage',{massage: "Wrong password",name: req.body.email});
+                        const token = jwt.sign({username: email},process.env.ACCESS_TOKEN_SECRET );
+                        req.headers.authorization = 'Bearer '+ token;
+                        next();
                     })
                     .catch((error) =>{
                         res.send({massage: error});

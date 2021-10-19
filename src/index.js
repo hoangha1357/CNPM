@@ -13,18 +13,19 @@ const db                = require('./config/db');
 const route             = require('./routes/index');
 const methodOverride    = require('method-override');
 const bcrypt            = require('bcrypt');
-
+const passport          = require('passport');
 // const morgan            = require('morgan');
-
 db.connect();
 
-// const Userid = require('./app/models/Userid');
 
+app.use(flash());
 app.use(session({
     secret: process.env.SECERT_SESSION_KEY,
     resave: true,
     saveUninitialized: false
 }));
+
+
 
 app.use(methodOverride('_method')); //override using a query value
 
@@ -37,6 +38,8 @@ app.use(
         extended: true,
     }),
 );
+
+
 app.use(express.json());
 
 

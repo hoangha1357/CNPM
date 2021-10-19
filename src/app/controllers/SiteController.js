@@ -5,7 +5,9 @@ class SiteController {
     home(req, res, next) {
         Dish.find({ recommend: true })
             .then((dishes) => {
-                res.render('home', { dishes: mutiMongoosetoObject(dishes) });
+                res.render('home', {
+                    dishes: mutiMongoosetoObject(dishes) 
+                });
             })
             .catch(next);
     }
