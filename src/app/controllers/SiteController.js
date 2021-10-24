@@ -6,7 +6,8 @@ class SiteController {
         Dish.find({ recommend: true })
             .then((dishes) => {
                 res.render('home', {
-                    dishes: mutiMongoosetoObject(dishes) 
+                    dishes: mutiMongoosetoObject(dishes),
+                    email: req.session.email, 
                 });
             })
             .catch(next);
@@ -24,10 +25,8 @@ class SiteController {
         res.render('register');
     }
 
-
-
     booktable(req, res) {
-        res.render('book_table');
+        res.render('book_table',{email: req.session.email});
     }
 }
 

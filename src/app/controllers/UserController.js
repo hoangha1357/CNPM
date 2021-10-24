@@ -1,5 +1,5 @@
 const Dish      = require('../models/Dish');
-const Userid    = require('../models/Userid');
+const User    = require('../models/Userid');
 const bcryt     = require('bcrypt');
 const jwt       = require('jsonwebtoken');
 const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/mongoose');
@@ -13,13 +13,12 @@ class UserController {
 
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
-        // res.json(res.locals._sort)
-
         Promise.all([Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
-            .then(([dishes, deletedCount]) => {
+            .then(([dishes, deletedCount, user]) => {
                 res.render('user/viewrevenue', {
                     deletedCount,
                     dishes: mutiMongoosetoObject(dishes),
+                    email: req.session.email,
                 });
             })
             .catch(next);
@@ -40,7 +39,7 @@ class UserController {
     register(req, res, next) {
         bcryt.hash(req.body.password,10,function(err,hashedPass) {
             if(err) return res.json(err);
-            let user = new Userid({
+            let user = new User({
                 email: req.body.email,
                 password: hashedPass,
                 name: req.body.name,
@@ -57,11 +56,11 @@ class UserController {
 
     // [POST] /user/login
     login(req, res, next) {
-        Userid.findOne({email: req.body.email})
-            .then((userid)=>{
-                if(!userid) return res.render('loginpage',{massage: "User not found"});
-                const email = userid.name;
-                bcryt.compare(req.body.password,userid.password)
+        User.findOne({email: req.body.email})
+            .then((user)=>{
+                if(!user) return res.render('loginpage',{massage: "User not found"});
+                const email = user.name;
+                bcryt.compare(req.body.password,user.password)
                     .then((result) => {
                         if(!result) return res.render('loginpage',{massage: "Wrong password",name: req.body.email});
                         const token = jwt.sign({username: email},process.env.ACCESS_TOKEN_SECRET );

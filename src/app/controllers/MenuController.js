@@ -1,20 +1,29 @@
-const Dish = require('../models/Dish');
-const { mutiMongoosetoObject } = require('../../util/mongoose');
-const { MongoosetoObject } = require('../../util/mongoose');
-const imageMimeTypes = ['image/jpg', 'image/png','image/gif'];
+const Dish                      = require('../models/Dish');
+const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/mongoose');
+const imageMimeTypes            = ['image/jpg', 'image/png','image/gif'];
 
 class MenuController {
     //get menu
     index(req, res, next) {
-        Dish.find({})
-            .then((dishes) => {
-                res.render('menu', { dishes: mutiMongoosetoObject(dishes) });
+        var email;
+        if(!req.query.page) req.query.page = 1;
+        if(req.session.email) email = req.session.email;
+        // const dishes = Dish.find({}).limit(6).skip((req.query.page - 1) * 5).exec();
+        // const count  = Dish.countDocuments();
+        Promise.all([Dish.find({}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments()])
+            .then(([dishes, count]) => {
+                res.render('menu', { 
+                    dishes: mutiMongoosetoObject(dishes),
+                    count,
+                    page: req.query.page,
+                    email: email,
+                });
             })
             .catch(next);
     }
     // [Get] /menu/create
     create(req, res, next) {
-        res.render('Menusub/create');
+        res.render('Menusub/create',{email: req.session.email});
     }
     
     // [POST] /menu/store
@@ -92,6 +101,16 @@ class MenuController {
                 break;
             case 'remove-recommed':
                 Dish.updateMany({ _id: { $in : req.body.dishIds} }, {recommend: false})
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'permanent-delete':
+                Dish.deleteMany({ _id: { $in : req.body.dishIds} })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'restore':
+                Dish.restore({ _id: { $in : req.body.dishIds} })
                     .then(() => res.redirect('back'))
                     .catch(next);
                 break;

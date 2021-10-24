@@ -12,8 +12,7 @@ const port              = 3000;
 const db                = require('./config/db');
 const route             = require('./routes/index');
 const methodOverride    = require('method-override');
-const bcrypt            = require('bcrypt');
-const passport          = require('passport');
+
 // const morgan            = require('morgan');
 db.connect();
 

@@ -26,65 +26,65 @@
 
         <button class="btn btn-primary btn-sm btn-check-submit" disabled>Thực hiện</button>
     </div>
-        <table class="table mt-4">
-        <thead>
-            <tr>
-                <th scope="col">Chọn</th>
-                <th scope="col">#</th>
-                <th scope="col">
-                  Tên món ăn
-                {{{sortable 'name' _sort}}}
-                </th>
-                <th scope="col">
-                  Số lượng đã bán
-                  {{{sortable 'sale' _sort}}}
-                </th>
-                <th scope="col" >
-                  Giá Tiền(VNĐ)
-                  {{{sortable 'price' _sort}}}
-                </th>
-                <th scope="col">Được gợi ý</th>
-                <th scope="col" >
-                  Doanh thu
-                </th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each dishes}}
-            <tr>
-                <td>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="dishIds[]" value="{{this._id}}">
-                  </div>
-                </td>
-                <th scope="row">{{sum @index 1}}</th>
-                <td>{{this.name}}</td>
-                <td>{{this.sale}}</td>
-                <td>{{this.price}}</td>
-                <td>
-                    {{#if this.recommend}}
-                    <input type="checkbox" checked disabled>
-                    {{else}}
-                    <input type="checkbox" disabled>
-                    {{/if}}
-                </td>
-                <td>{{mul this.sale this.price}} VNĐ</td>
-                <td>
-                    <a href="/menu/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
-                </td>
-            </tr>
-            {{else}}
-            <tr>
-                <td colspan="5" class="text-center">
-                  Bạn chưa thêm món ăn nào.
-                  <a href="/menu/create">Thêm món ăn</a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-        </table>
+    <table class="table mt-4">
+      <thead>
+          <tr>
+              <th scope="col">Chọn</th>
+              <th scope="col">ID</th>
+              <th scope="col">
+                Tên món ăn
+              {{{sortable 'name' _sort}}}
+              </th>
+              <th scope="col">
+                Số lượng đã bán
+                {{{sortable 'sale' _sort}}}
+              </th>
+              <th scope="col" >
+                Giá Tiền(VNĐ)
+                {{{sortable 'price' _sort}}}
+              </th>
+              <th scope="col">Được gợi ý</th>
+              <th scope="col" >
+                Doanh thu
+              </th>
+              <th scope="col"></th>
+          </tr>
+      </thead>
+      <tbody>
+          {{#each dishes}}
+          <tr>
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="dishIds[]" value="{{this._id}}">
+                </div>
+              </td>
+              <th scope="row">{{sum @index 1}}</th>
+              <td>{{this.name}}</td>
+              <td>{{this.sale}}</td>
+              <td>{{this.price}}</td>
+              <td>
+                  {{#if this.recommend}}
+                  <input type="checkbox" checked disabled>
+                  {{else}}
+                  <input type="checkbox" disabled>
+                  {{/if}}
+              </td>
+              <td>{{mul this.sale this.price}} VNĐ</td>
+              <td>
+                  <a href="/menu/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
+                  <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
+              </td>
+          </tr>
+          {{else}}
+          <tr>
+              <td colspan="5" class="text-center">
+                Bạn chưa thêm món ăn nào.
+                <a href="/menu/create">Thêm món ăn</a>
+              </td>
+          </tr>
+          {{/each}}
+      </tbody>
+    </table>
 </form>
 
 <!--confirm delete-->
