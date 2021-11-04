@@ -1,0 +1,231 @@
+<div class="shop grid ">
+    <span class="content__header-decs">FEATURE PRODUCTS</span>
+    {{!-- COMBO --}}
+    <div class="content__header">
+        <h3 class="content__header-heading">
+            <span class="under-line-effect under-line-effect--red">COMBO</span>
+        </h3>
+    </div>
+    <div class="shop__wrap row feature-home">
+        <div class="feature-item col l-4 m-12">
+            <img src="./img/fried_chicken.jpg" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">$5.00</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <spa class="product__item-btn js-details-btn"><i class="far fa-search"></i></spa>
+            </div>
+        </div>
+        <div class="feature-item col l-4 m-12">
+            <img src="./img/fried_chicken.jpg" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">$5.00</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        <div class="feature-item col l-4 m-12">
+            <img src="./img/fried_chicken.jpg" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">$5.00</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+    {{!-- FOOD --}}
+    <div class="content__header">
+        <h3 class="content__header-heading">
+            <span class="under-line-effect under-line-effect--red">FOOD</span>
+        </h3>
+    </div>
+    <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        <div class="feature-item col l-4 m-12">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">{{this.name}}</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">${{this.price}}</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        {{else}}
+            Chưa có món ăn được thêm.
+        {{/each}}
+        </div>
+    </div>
+    {{!-- DRINK --}}
+    <div class="content__header">
+        <h3 class="content__header-heading">
+            <span class="under-line-effect under-line-effect--red">DRINK</span>
+        </h3>
+    </div>
+    <div class="shop__wrap row feature-home">
+        <div class="feature-item col l-4 m-12">
+            <img src="./img/fried_chicken.jpg" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">$5.00</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        <div class="feature-item col l-4 m-12">
+            <img src="./img/fried_chicken.jpg" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">$5.00</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        <div class="feature-item col l-4 m-12">
+            <img src="./img/fried_chicken.jpg" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">$5.00</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{!-- MODAL/ITEM FEATURES --}}
+<div class="modal">
+    <div class="modal-container js-modal-container">
+        <div class="modal-close js-modal-close">
+            <i class="ti-close"></i>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-product">
+                <!-- Start product images -->
+                <div class="product-images">
+                    <div class="main-image images">
+                        <img alt="" src="./img/fried_chicken.jpg" class="img-responsive">
+                    </div>
+                </div>
+                <!-- end product images -->
+                <div class="product-info">
+                    <h1>Fried Chicken</h1>
+                    <div class="price-box">
+                        <h1>Unit price</h1>
+                        <span class="new-price">$5.00</span>
+                    </div>
+                    <div class="quantity-box">
+                        <h1>Quantity</h1>
+                        <div class="quantity-box__wrap">
+                            <button class="btn-minus">-</button>
+                            <span class="slidebar__wrap-info-quantity">1</span>
+                            <button class="btn-plus">+</button>
+                        </div>
+                    </div>
+                    <div class="quick-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+                        deleniti praesentium tenetur placeat laudantium, expedita velit iste reprehenderit ipsa
+                        quisquam, nisi quasi omnis consequuntur at cumque porro maxime eum perspiciatis!
+                    </div>
+                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" href="">ADD TO CART</button>
+                </div>
+                <!-- .product-info -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const buyBtns = document.querySelectorAll('.js-details-btn')
+    const modal = document.querySelector('.modal')
+    const modalContainer = document.querySelector('.js-modal-container')
+    const modalClose = document.querySelector('.js-modal-close')
+
+
+    //Hàm hiển thị  modal (thêm class open vào modal)
+    function showBuyTickets() {
+        modal.classList.add('open')
+    }
+    //lặp qua từng thẻ button và nghe hành vi click
+    for (const buyBtn of buyBtns) {
+        buyBtn.addEventListener('click', showBuyTickets)
+    }
+    //Hàm ẩn modal (bỏ class open trong thẻ modal đi)
+    function hideBuyTickets() {
+        modal.classList.remove('open')
+    }
+    //nghe hành vi click vào button close
+    modalClose.addEventListener('click', hideBuyTickets)
+
+    //Ẩn modal khi click bên ngoài
+    modal.addEventListener('click', hideBuyTickets)
+
+    modalContainer.addEventListener('click', function (event) {
+        event.stopPropagation();
+    })
+
+</script>

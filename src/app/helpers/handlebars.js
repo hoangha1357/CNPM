@@ -39,5 +39,8 @@ module.exports = {
         result + '</ul></nav></div>'
         
         return result;
+    },
+    isMatch: (object,value) =>{
+        return object === value;
     }
 };

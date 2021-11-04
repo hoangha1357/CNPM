@@ -1,8 +1,8 @@
 <div class="mt-4">
     <h2>Món ăn</h2>
-    <div class="row" >
-
-        {{#each dishes}}
+    <div class="row" >   
+        {{#each dishes }}
+        {{!-- {{#if (isMatch this.type_dish 'main_dish')}} --}}
         <div class="col-sm-6 col-lg-4">
             <div class="card">
                 <img class="card-img-top" src="{{imageload this.image this this.imageType}}" alt="Card image cap">
@@ -15,10 +15,11 @@
                 </div>
             </div>
         </div>
+        {{!-- {{/if}} --}}
         {{else}}
             Chưa có món ăn được thêm.
         {{/each}}
     </div>
-    {{!-- <h1>{{page}}</h1> --}}
+    
     {{{paging count page}}}
 </div>

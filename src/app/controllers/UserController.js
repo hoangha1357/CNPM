@@ -13,11 +13,13 @@ class UserController {
 
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
-        Promise.all([Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
-            .then(([dishes, deletedCount, user]) => {
+        // res.json(req.session.email);
+        Promise.all([User.findOne({email: req.session.email.username}),Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
+            .then(([user, dishes, deletedCount]) => {
                 res.render('user/viewrevenue', {
                     deletedCount,
                     dishes: mutiMongoosetoObject(dishes),
+                    user: MongoosetoObject(user),
                     email: req.session.email,
                 });
             })
@@ -59,7 +61,7 @@ class UserController {
         User.findOne({email: req.body.email})
             .then((user)=>{
                 if(!user) return res.render('loginpage',{massage: "User not found"});
-                const email = user.name;
+                const email = user.email;
                 bcryt.compare(req.body.password,user.password)
                     .then((result) => {
                         if(!result) return res.render('loginpage',{massage: "Wrong password",name: req.body.email});

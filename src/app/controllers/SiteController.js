@@ -5,7 +5,7 @@ class SiteController {
     home(req, res, next) {
         Dish.find({ recommend: true })
             .then((dishes) => {
-                res.render('home', {
+                res.render('home1', {
                     dishes: mutiMongoosetoObject(dishes),
                     email: req.session.email, 
                 });
@@ -14,7 +14,7 @@ class SiteController {
     }
 
     search(req, res) {
-        res.render('search');
+        res.render('home1');
     }
 
     loginpage(req, res, next) {
