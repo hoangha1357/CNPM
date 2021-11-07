@@ -243,7 +243,7 @@ a:hover{
 /* Header CSS */
 .header__index{
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)), 
-                    url(../img/background-home.jpg);
+                    url(../image/background-home.jpg);
   width: 100%;
   background-position:center;
   background-repeat: no-repeat;
