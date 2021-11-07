@@ -99,11 +99,11 @@
             <div class="slidebar__wrap-info">
               <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
 
-              <a href="" class="slidebar__wrap-info-food">
-                <button class="btn-minus">-</button>
-                <span class="slidebar__wrap-info-quantity">1</span>
-                <button class="btn-plus">+</button>
-              </a>
+              <span class="slidebar__wrap-info-food">
+                <button class="btn-minus" onclick="decrease()">-</button>
+                <input class="slidebar__wrap-info-quantity" id="test" type="text" value="1"></input>
+                <button class="btn-plus" onclick="increase()">+</button>
+              </span>
             </div>
             <div class="slidebar__wrap-price">$5.00</div>
           </li>
