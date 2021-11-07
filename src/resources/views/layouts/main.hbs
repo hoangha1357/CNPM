@@ -1,80 +1,154 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Restaurant POS</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/app.css">
-        <link rel="stylesheet" href="/vendor/open-iconic-master/font/css/open-iconic-bootstrap.css">
-        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
-        {{!-- image preview --}}
-        <link
-            href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-            rel="stylesheet"
-        />
-        <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-        <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-        <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-        <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-        <script defer src="/javascripts/fileUpload.js"></script>
-        <!--Reset css-->
-        {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-            integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/css/base.css">
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/grid.css">
-        <link rel="stylesheet" href="/fonts/themify-icons/themify-icons.css">
-        <!--Icon-->
-        <link rel="stylesheet" href="/fonts/font-awesome-pro-master/css/all.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <!--font chữ-->
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
-    <body>
-        <div class="container-fluid">
-            {{> header1}}
-        </div>
-        <div class="container">
-            {{{body}}}
-        </div>
+<html lang="en">
 
-        <div class="container-fluid">
-            {{> footer}}
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant POS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/vendor/open-iconic-master/font/css/open-iconic-bootstrap.css">
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    {{!-- image preview --}}
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet" />
+    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script defer src="/javascripts/fileUpload.js"></script>
+    <!--Reset css-->
+    {{!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/fonts/themify-icons/themify-icons.css">
+    <!--Icon-->
+    <link rel="stylesheet" href="/fonts/font-awesome-pro-master/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!--font chữ-->
+    <link rel="stylesheet" href="/css/app.css">
+</head>
 
-        <script>
-            function increase(e) {          
-                var a = 1;
-                var textBox = document.getElementById("productQuantity");
-                textBox.value++;
-            }    
+<body>
+    <div class="container-fluid">
+        {{> header1}}
+    </div>
+    <div class="container">
+        {{{body}}}
+    </div>
 
-            function decrease(e) {
-                var textBox = document.getElementById("productQuantity");
-                textBox.value--;
-            }
+    <div class="container-fluid">
+        {{> footer}}
+    </div>
 
-            function remove {
-                
-            }    
-        </script
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+    <script>
+       
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
+        $(document).ready(function () {
+            var plus = $('.btn-plus')
+            var minus = $('.btn-minus')
+            {{!-- PLUS --}}
+            plus.each(function(index, plusBtn) {
+                var jplus = $(plusBtn)
+                jplus.click(function() {
+                    var quantity = parseInt(jplus.prev().val())+1
+                    jplus.prev().val(quantity)
+
+                    var test = (jplus.parent()).parent().next()
+                    var priceProduct = test.find('.slidebar__wrap-price').text()
+                    {{!-- var total = parseInt(priceProduct)*quantity --}}
+                    var total = 5*quantity
+                    console.log(priceProduct)
+                    test.find('.slidebar__wrap-price').text(total)
+                })
+            })
+            {{!-- minus --}}
+            minus.each(function(index, minusBtn) {
+                var jminus = $(minusBtn)
+                jminus.click(function() {
+                    if (parseInt(jminus.prev().val()) == 0) 
+                    var quantity = parseInt(jminus.prev().val())-1
+                    jminus.prev().val(quantity)
+
+                    var test = (jminus.parent()).parent().next()
+                    var priceProduct = test.find('.slidebar__wrap-price').text()
+                    {{!-- var total = parseInt(priceProduct)*quantity --}}
+                    var total = 5*quantity
+                    console.log(priceProduct)
+                    test.find('.slidebar__wrap-price').text(total)
+                })
+            })
+            {{!-- ADD ITEM TO CART --}}
+            var addBtn = $('.js-add-btn')
+            var cart1 = document.querySelector('.slidebar__wrap-list')
+            var cart = $('.slidebar__wrap-list')
+            addBtn.click(function () {
+                var parentProduct = addBtn.parentsUntil('.feature-item')[0]
+                var productPictureSrc = parentProduct.querySelector('.product__item-img').getAttribute('src')
+                var price = parentProduct.querySelector('.product__item-price .product__item-price-sale').innerHTML
+                console.log(price)
+                var productInfo = `<li class="slidebar__wrap-item">
+            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <div class="slidebar__wrap-info">
+              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+              <span class="slidebar__wrap-info-food">
+                <button class="btn-minus" onclick="decrease()">-</button>
+                <input class="slidebar__wrap-info-quantity" id="productQuantity" type="text" value="1"></input>
+                <button class="btn-plus" onclick="increase()">+</button>
+              </span>
+            </div>
+            <div class="slidebar__wrap-trash-and-price">
+              <i class="fal fa-trash-alt trash-btn"></i>
+              <div class="slidebar__wrap-price">${price}</div>
+            </div>
+          </li>`
+                cart.append(productInfo)
+
+            })
+
+           
+                var trashBtnes = $('.trash-btn')
+                trashBtnes.each(function(index, trash) {
+                    var jtrash = $(trash)
+                    jtrash.click(function () {
+                        var htmltrash = jtrash[0];
+                        var trashBtnParent = (htmltrash.parentElement).parentElement
+                      
+                        trashBtnParent.remove()
+                    })
+
+                })
+            
+
+
+        })
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
