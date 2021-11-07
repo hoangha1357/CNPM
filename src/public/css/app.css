@@ -188,20 +188,32 @@ a:hover{
 }
 
 .slidebar__wrap-info-food{
+  height: 40px;
+  display: flex;
   font-size: 1.5rem;
   margin: 15px 0;
   line-height: 1.4rem;
   color: #9a9a9a;
   letter-spacing: 2px;
+  align-items: center;
 }
 
 .slidebar__wrap-info-quantity{
+  height: 30px;
+  width: 20px;
   font-size: 1.6rem;
   margin: 15px 12px;
-  line-height: 1.4rem;
   color: #555;
   letter-spacing: 2px;
   font-weight: 700;
+  border: none;
+}
+
+.trash-btn {
+  font-size: 1.6rem;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .slidebar__wrap-price {
@@ -278,8 +290,7 @@ a:hover{
 }
 
 
-.header__navbar{
-}
+
 
 .header__navbar-list{
   display: flex;
