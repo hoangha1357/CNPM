@@ -245,7 +245,8 @@ a:hover{
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)), 
                     url(../image/background-home.jpg);
   width: 100%;
-  background-position:center;
+  height: 30vh;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
