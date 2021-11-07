@@ -50,18 +50,20 @@
         </div>
 
         <script>
-            function increase(e) {
-                
-                    var a = 1;
-                    var textBox = document.getElementById("test");
-                    textBox.value++;
-                }    
+            function increase(e) {          
+                var a = 1;
+                var textBox = document.getElementById("productQuantity");
+                textBox.value++;
+            }    
 
-                function decrease(e) {
+            function decrease(e) {
+                var textBox = document.getElementById("productQuantity");
+                textBox.value--;
+            }
+
+            function remove {
                 
-                    var textBox = document.getElementById("test");
-                    textBox.value--;
-                }    
+            }    
         </script
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
