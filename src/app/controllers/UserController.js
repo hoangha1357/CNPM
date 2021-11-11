@@ -2,7 +2,7 @@ const Dish      = require('../models/Dish');
 const User    = require('../models/Userid');
 const bcryt     = require('bcrypt');
 const jwt       = require('jsonwebtoken');
-const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/mongoose');
+const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/subfuntion');
 
 class UserController {
     index(req, res) {
@@ -14,13 +14,12 @@ class UserController {
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
         // res.json(req.session.email);
-        Promise.all([User.findOne({email: req.session.email.username}),Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
-            .then(([user, dishes, deletedCount]) => {
+        Promise.all([Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
+            .then(([dishes, deletedCount]) => {
                 res.render('user/viewrevenue', {
                     deletedCount,
                     dishes: mutiMongoosetoObject(dishes),
-                    user: MongoosetoObject(user),
-                    email: req.session.email,
+                    user: req.user,
                 });
             })
             .catch(next);
@@ -36,7 +35,10 @@ class UserController {
             })
             .catch(next);
     }
+    // [POST] /user/register
+    updateImage(req, res, next){
 
+    }
     // [POST] /user/register
     register(req, res, next) {
         bcryt.hash(req.body.password,10,function(err,hashedPass) {

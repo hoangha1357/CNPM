@@ -1,48 +1,172 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  
-  <div class="container">
-    <a class="navbar-brand" href="/">FastFood</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="header__index">
+  <section class="header">
+    <div class="header__logo">
+      <a href="" class="header__logo-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Kentucky_Fried_Chicken_201x_logo.svg"
+          alt="" class="header__logo-img">
+      </a>
+    </div>
+    <div class="header__navbar hide-on-tablet-mobile">
+      <ul class="header__navbar-list">
+        <li class="header__navbar-item">
+          <a href="/" class="header__navbar-item-link">HOME</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/booktable">Đặt bàn</a> <!--them link vao-->
+        <li class="header__navbar-item">
+          <a href="/menu" class="header__navbar-item-link">MENU</a>
+
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/menu">Món ăn</a>
+
+        <li class="header__navbar-item">
+          <a href="/booktable" class="header__navbar-item-link">TABLE RESERVATION</a>
         </li>
+        {{#if user}}
+        <li class="header__navbar-item">
+          <a href="" class="header__navbar-item-link">
+                <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                {{user.name}}
+          </a>
+          <ul class="header__subnav-list">
+            <li class="header__subnav-item">
+              <a href="/user/viewrevenue" class="header__subnav-link">Thông tin doanh thu</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/menu/create" class="header__subnav-link">Thêm món ăn</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/user/logout" class="header__subnav-link">Đăng xuất</a>
+            </li>
+          </ul>
+        </li>
+        {{else}}
+        <li class="header__navbar-item">
+            <a href="" class="header__navbar-item-link">ACCOUNT</a>
+            <ul class="header__subnav-list">
+              <li class="header__subnav-item">
+                <a href="/loginpage" class="header__subnav-link">Sign in</a>
+              </li>
+              <li class="header__subnav-item header__subnav-item">
+                <a href="/register" class="header__subnav-link">Register</a>
+              </li>
+              <li class="header__subnav-item header__subnav-item">
+                <a href="" class="header__subnav-link">Checkout</a>
+              </li>
+            </ul>
+          </li>
+        {{/if}}
+
       </ul>
-      {{#if email}}
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-              {{user.name}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/user/viewrevenue">Thông tin doanh thu</a>
-            <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/menu/create">Thêm món ăn</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/user/logout">Đăng xuất</a>
-          </div>
-        </li>
-      </ul>
-      {{else}}
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/loginpage">Đăng nhập</a> <!--them link vao-->
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Đăng ký</a> <!--them link vao-->
-        </li>
-      </ul>
-      {{/if}}
     </div>
 
-  </div>
+    <div class="header-content__search">
+      <div class="header-content__search-input">
+        <input type="text" class="header-content__search-input-wrap" placeholder="Search products...">
+        <div class="header-content__search-history">
 
-</nav>
+        </div>
+        <div class="header-content__search-btn">
+          <i class="header-content__search-icon fal fa-search"></i>
+        </div>
+      </div>
+    </div>
+
+    <input type="checkbox" hidden id="header-nav" class="header-input">
+
+    <label for="header-nav" class="header-slide__menu ">
+      <i class="far fa-shopping-cart header-slide__menu-img"></i>
+      <span class="header-slide__notice">3</span>
+
+    </label>
+
+    <!-- Begin slidebar -->
+
+
+    <!-- slidebar on pc -->
+    <div class="slidebar__container hide-on-tablet-mobile">
+      <label for="header-nav" class="slidebar__close ">
+        <i class="slidebar__close-icon far fa-times-circle"></i>
+      </label>
+      <div class="slidebar__wrap">
+        <div class="slidebar__wrap-header">
+          <span class="slidebar__wrap-header-quantity"></span>
+          <h3 class="slidebar__wrap-header-heading">
+              YOUR CART
+            </span>
+          </h3>
+        </div>
+        <ul class="slidebar__wrap-list">
+          <li class="slidebar__wrap-item">
+            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <div class="slidebar__wrap-info">
+              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+              <span class="slidebar__wrap-info-food">
+                <button class="btn-minus">-</button>
+                <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
+                <button class="btn-plus">+</button>
+              </span>
+            </div>
+            <div class="slidebar__wrap-trash-and-price">
+              <i class="fal fa-trash-alt trash-btn"></i>
+              <div class="slidebar__wrap-price">5</div>
+            </div>
+          </li>
+          <li class="slidebar__wrap-item">
+            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <div class="slidebar__wrap-info">
+              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+              <a href="" class="slidebar__wrap-info-food">
+                <button class="btn-minus">-</button>
+                <span class="slidebar__wrap-info-quantity">1</span>
+                <button class="btn-plus">+</button>
+              </a>
+            </div>
+            <div class="slidebar__wrap-trash-and-price">
+              <i class="fal fa-trash-alt trash-btn"></i>
+              <div class="slidebar__wrap-price">5</div>
+            </div>
+          </li>
+          <li class="slidebar__wrap-item">
+            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <div class="slidebar__wrap-info">
+              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+              <a href="" class="slidebar__wrap-info-food">
+                <button class="btn-minus">-</button>
+                <span class="slidebar__wrap-info-quantity">1</span>
+                <button class="btn-plus">+</button>
+              </a>
+            </div>
+            <div class="slidebar__wrap-trash-and-price">
+              <i class="fal fa-trash-alt trash-btn"></i>
+              <div class="slidebar__wrap-price">5</div>
+            </div>
+          </li>
+        </ul>
+        <div class="slidebar__wrap-total">
+          <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
+          <span class="slidebar__wrap-sub-total">20</span>
+        </div>
+        <button class="btn-large featured-product__btn checkout-btn" type="submit"
+          href="">CHECKOUT</button>
+      </div>
+
+    </div>
+    <!-- end silebar -->
+  </section>
+
+  <!-- header content -->
+  <div class="header-content">
+    <div class="header-content__wrap">
+      <div class="header-content__heading">
+        {{!-- <span class="header-content__heading-title">
+          THE FIRST WEALTH IS HEALTH
+        </span> --}}
+      </div>
+      <div class="header-content__desc">
+
+      </div>
+
+    </div>
+  </div>
+</div>
