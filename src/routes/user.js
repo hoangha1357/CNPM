@@ -10,7 +10,7 @@ const requireLogin = require('../app/middlewares/LoginRequires');
 route.get('/viewrevenue',requireLogin ,UserController.viewrevenue);
 route.get('/trash', requireLogin ,UserController.trash);
 route.post('/register' , UserController.register);
-route.post('/updateImage' , UserController.register);
+route.post('/updateImage' , UserController.updateImage);
 route.post('/login', UserController.login,authenticateUser);
 route.get('/logout', UserController.logout);
 

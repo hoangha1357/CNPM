@@ -13,6 +13,7 @@ const db                = require('./config/db');
 const route             = require('./routes/index');
 const methodOverride    = require('method-override');
 const getUser           = require('./app/middlewares/SetUser');
+const bodyParser        = require('body-parser');
 // const morgan            = require('morgan');
 db.connect();
 
@@ -24,7 +25,8 @@ app.use(session({
     saveUninitialized: false
 }));
 
-
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(methodOverride('_method')); //override using a query value
 
