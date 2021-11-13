@@ -35,6 +35,10 @@
               {{{sortable 'name' _sort}}}
               </th>
               <th scope="col">
+                Loại món ăn
+              {{{sortable 'type_dish' _sort}}}
+              </th>
+              <th scope="col">
                 Số lượng đã bán
                 {{{sortable 'sale' _sort}}}
               </th>
@@ -59,6 +63,7 @@
               </td>
               <th scope="row">{{sum @index 1}}</th>
               <td>{{this.name}}</td>
+              <td>{{this.type_dish}}</td>
               <td>{{this.sale}}</td>
               <td>{{this.price}}</td>
               <td>
@@ -84,6 +89,7 @@
           {{/each}}
       </tbody>
     </table>
+    {{{paging count page}}}
 </form>
 
 <!--confirm delete-->

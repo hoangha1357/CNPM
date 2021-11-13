@@ -6,7 +6,7 @@ class MenuController {
     //get menu
     index(req, res, next) {
         // var email;
-        // if(!req.query.page) req.query.page = 1;
+        if(!req.query.page) req.query.page = 1;
         // if(req.session.email) email = req.session.email;
         // const dishes = Dish.find({}).limit(6).skip((req.query.page - 1) * 5).exec();
         // const count  = Dish.countDocuments();

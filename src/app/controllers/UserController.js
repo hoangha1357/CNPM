@@ -15,13 +15,16 @@ class UserController {
 
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
+        if(!req.query.page) req.query.page = 1;
         // res.json(req.session.email);
-        Promise.all([Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
-            .then(([dishes, deletedCount]) => {
+        Promise.all([Dish.find({}).limit(6).skip((req.query.page - 1) * 6).sortable(req), Dish.countDocumentsDeleted(),Dish.countDocuments()])
+            .then(([dishes, deletedCount, count]) => {
                 res.render('user/viewrevenue', {
-                    deletedCount,
                     dishes: mutiMongoosetoObject(dishes),
+                    page: req.query.page,
                     user: req.user,
+                    count,
+                    deletedCount,
                 });
             })
             .catch(next);
