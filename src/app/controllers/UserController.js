@@ -9,7 +9,9 @@ class UserController {
         res.send('asd');
     }
     // [GET] /user/ordered
-    // orderd(req, res) {}
+    orderd(req, res,next) {
+        
+    }
 
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
@@ -35,9 +37,12 @@ class UserController {
             })
             .catch(next);
     }
-    // [POST] /user/register
+    // [POST] /user/updateImage
     updateImage(req, res, next){
-
+        modifyRequestImage(req);
+        User.updateOne({ _id: req.params.id },  {$set: {image: req.body.image, imageType: req.body.imageType}})
+            .then(() => res.redirect('/'))
+            .catch(next);
     }
     // [POST] /user/register
     register(req, res, next) {
@@ -46,13 +51,13 @@ class UserController {
                 if(user){
                     res.render('register', {
                         resinfo: req.body,
-                        massage: 'User đã được sử dụng',
+                        massage: 'User existed',
                     })
                 }
                 else if(req.body.password != req.body.cfpassword) {
                     res.render('register', {
                         resinfo: req.body,
-                        massage: 'mật khẩu không khớp',
+                        massage: 'Password not match',
                     })
                 }
                 else {

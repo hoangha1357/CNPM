@@ -59,7 +59,7 @@ class MenuController {
                 .catch(next);
         }
         else{
-            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, price: req.body.price, dish_type: req.body.dish_type}})
+            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, type_dish: req.body.type_dish ,price: req.body.price }})
                 .then(() => res.redirect('/User/viewrevenue'))
                 .catch(next);
         }
