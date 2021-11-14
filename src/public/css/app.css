@@ -37,7 +37,7 @@ a:hover{
   position: fixed;
   margin-left: auto;
   width: 260px;
-  height: 100vh;
+  
   overflow-y: scroll;
   top: 0;
   right: 0;
@@ -90,7 +90,6 @@ a:hover{
   position: fixed;
   margin-left: auto;
   width: 400px;
-  height: 100vh;
   overflow-y: scroll;
   top: 0;
   right: 0;
@@ -163,6 +162,7 @@ a:hover{
   width: 100%;
   margin: 30px 0;
   align-items: center;
+
 }
 
 .slidebar__wrap-item a{
@@ -188,32 +188,46 @@ a:hover{
 }
 
 .slidebar__wrap-info-food{
+  height: 40px;
+  display: flex;
   font-size: 1.5rem;
   margin: 15px 0;
   line-height: 1.4rem;
   color: #9a9a9a;
   letter-spacing: 2px;
+  align-items: center;
 }
 
 .slidebar__wrap-info-quantity{
+  height: 30px;
+  width: 20px;
   font-size: 1.6rem;
   margin: 15px 12px;
-  line-height: 1.4rem;
   color: #555;
   letter-spacing: 2px;
   font-weight: 700;
+  border: none;
 }
 
-.slidebar__wrap-price {
-  font-size: 1.5rem;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 20px;
-  line-height: 1.4rem;
-  color: #555;
-  letter-spacing: 2px;
-  font-weight: 700;
+.trash-btn {
+  font-size: 1.6rem;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
+
+
+.slidebar__wrap-price {
+    font-size: 1.6rem;
+    margin-top: -2px;
+    margin-bottom: 11px;
+    margin-left: 32px;
+    line-height: 1.4rem;
+    color: #555;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
 
 .slidebar__wrap-info-price{
   margin-top: 20px;
@@ -278,8 +292,7 @@ a:hover{
 }
 
 
-.header__navbar{
-}
+
 
 .header__navbar-list{
   display: flex;
@@ -1284,7 +1297,7 @@ label.modal-label {
 }
 
 .footer__copyright{
-  background-color: #e4002b;
+  background-color: var(--red-color);
   text-align: center;
   padding: 15px 0;
   font-size: 1.4rem;
@@ -1325,3 +1338,49 @@ label.modal-label {
 
 .select-all-option {
   width: 140px; }
+
+/* TABLE RESERVATION */
+.table-reservation {
+  margin-top: 40px;
+}
+
+
+.table-wrapper {
+  text-align: center;
+}
+
+.table-img {
+  max-width: 30%;
+}
+
+.table-date-time {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-location {
+  background-color: #f0f0f0;
+}
+
+.table__header-heading {
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+  color: #555;
+  margin: 20px 0 0; 
+}
+
+.table__input {
+  width: 60%;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-family: 'Asap', sans-serif;
+}

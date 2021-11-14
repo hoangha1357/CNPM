@@ -7,69 +7,8 @@
         </h3>
     </div>
     <div class="shop__wrap row feature-home">
-        <div class="feature-item col l-4 m-12">
-            <img src="/image/fried_chicken.jpg" alt="" class="product__item-img">
-            <div class="product-body">
-                <div class="product__item-heading">Fried Chicken</div>
-                <div class="product__item-quanlity">
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                </div>
-                <div class="product__item-price">
-                    <span class="product__item-price-sale">$5.00</span>
-                </div>
-                <a href="" class="product__item-btn">ADD TO CART</a>
-                <spa class="product__item-btn js-details-btn"><i class="far fa-search"></i></spa>
-            </div>
-        </div>
-        <div class="feature-item col l-4 m-12">
-            <img src="/image/fried_chicken.jpg" alt="" class="product__item-img">
-            <div class="product-body">
-                <div class="product__item-heading">Fried Chicken</div>
-                <div class="product__item-quanlity">
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                </div>
-                <div class="product__item-price">
-                    <span class="product__item-price-sale">$5.00</span>
-                </div>
-                <a href="" class="product__item-btn">ADD TO CART</a>
-                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-            </div>
-        </div>
-        <div class="feature-item col l-4 m-12">
-            <img src="/image/fried_chicken.jpg" alt="" class="product__item-img">
-            <div class="product-body">
-                <div class="product__item-heading">Fried Chicken</div>
-                <div class="product__item-quanlity">
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                </div>
-                <div class="product__item-price">
-                    <span class="product__item-price-sale">$5.00</span>
-                </div>
-                <a href="" class="product__item-btn">ADD TO CART</a>
-                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-            </div>
-        </div>
-    </div>
-    {{!-- FOOD --}}
-    <div class="content__header">
-        <h3 class="content__header-heading">
-            <span class="under-line-effect under-line-effect--red">FOOD</span>
-        </h3>
-    </div>
-    <div class="shop__wrap row feature-home">
         {{#each dishes }}
+        {{#if (isMatch this.type_dish "Combo")}}
         <div class="feature-item col l-4 m-12">
             <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
             <div class="product-body">
@@ -88,8 +27,41 @@
                 <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
             </div>
         </div>
+        {{/if}}
         {{else}}
-        Chưa có món ăn được thêm.
+            Không có Combo được gợi ý.
+        {{/each}}
+    </div>
+    {{!-- FOOD --}}
+    <div class="content__header">
+        <h3 class="content__header-heading">
+            <span class="under-line-effect under-line-effect--red">FOOD</span>
+        </h3>
+    </div>
+    <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        {{#if (isMatch this.type_dish "Food")}}
+        <div class="feature-item col l-4 m-12">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">{{this.name}}</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">${{this.price}}</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        {{/if}}
+        {{else}}
+            Không có món ăn được gợi ý.
         {{/each}}
     </div>
 {{!-- DRINK --}}
@@ -99,10 +71,12 @@
         </h3>
     </div>
     <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        {{#if (isMatch this.type_dish "Drink")}}
         <div class="feature-item col l-4 m-12">
-            <img src="/image/fried_chicken.jpg" alt="" class="product__item-img">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
             <div class="product-body">
-                <div class="product__item-heading">Fried Chicken</div>
+                <div class="product__item-heading">{{this.name}}</div>
                 <div class="product__item-quanlity">
                     <i class="product__item-icon fas fa-star"></i>
                     <i class="product__item-icon fas fa-star"></i>
@@ -111,48 +85,16 @@
                     <i class="product__item-icon fas fa-star"></i>
                 </div>
                 <div class="product__item-price">
-                    <span class="product__item-price-sale">$5.00</span>
+                    <span class="product__item-price-sale">${{this.price}}</span>
                 </div>
                 <a href="" class="product__item-btn">ADD TO CART</a>
                 <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
             </div>
         </div>
-        <div class="feature-item col l-4 m-12">
-            <img src="/image/fried_chicken.jpg" alt="" class="product__item-img">
-            <div class="product-body">
-                <div class="product__item-heading">Fried Chicken</div>
-                <div class="product__item-quanlity">
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                </div>
-                <div class="product__item-price">
-                    <span class="product__item-price-sale">$5.00</span>
-                </div>
-                <a href="" class="product__item-btn">ADD TO CART</a>
-                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-            </div>
-        </div>
-        <div class="feature-item col l-4 m-12">
-            <img src="/image/fried_chicken.jpg" alt="" class="product__item-img">
-            <div class="product-body">
-                <div class="product__item-heading">Fried Chicken</div>
-                <div class="product__item-quanlity">
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                    <i class="product__item-icon fas fa-star"></i>
-                </div>
-                <div class="product__item-price">
-                    <span class="product__item-price-sale">$5.00</span>
-                </div>
-                <a href="" class="product__item-btn">ADD TO CART</a>
-                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-            </div>
-        </div>
+        {{/if}}
+        {{else}}
+            Không có đồ uống được gợi ý.
+        {{/each}}
     </div>
 
 </div>

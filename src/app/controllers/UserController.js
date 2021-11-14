@@ -2,25 +2,29 @@ const Dish      = require('../models/Dish');
 const User    = require('../models/Userid');
 const bcryt     = require('bcrypt');
 const jwt       = require('jsonwebtoken');
-const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/mongoose');
+const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/subfuntion');
 
 class UserController {
     index(req, res) {
         res.send('asd');
     }
     // [GET] /user/ordered
-    // orderd(req, res) {}
+    ordered(req, res,next) {
+        
+    }
 
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
+        if(!req.query.page) req.query.page = 1;
         // res.json(req.session.email);
-        Promise.all([User.findOne({email: req.session.email.username}),Dish.find({}).sortable(req), Dish.countDocumentsDeleted()])
-            .then(([user, dishes, deletedCount]) => {
+        Promise.all([Dish.find({}).limit(6).skip((req.query.page - 1) * 6).sortable(req), Dish.countDocumentsDeleted(),Dish.countDocuments()])
+            .then(([dishes, deletedCount, count]) => {
                 res.render('user/viewrevenue', {
-                    deletedCount,
                     dishes: mutiMongoosetoObject(dishes),
-                    user: MongoosetoObject(user),
-                    email: req.session.email,
+                    page: req.query.page,
+                    user: req.user,
+                    count,
+                    deletedCount,
                 });
             })
             .catch(next);
@@ -36,31 +40,56 @@ class UserController {
             })
             .catch(next);
     }
-
+    // [POST] /user/updateImage
+    updateImage(req, res, next){
+        modifyRequestImage(req);
+        User.updateOne({ _id: req.params.id },  {$set: {image: req.body.image, imageType: req.body.imageType}})
+            .then(() => res.redirect('/'))
+            .catch(next);
+    }
+    
     // [POST] /user/register
     register(req, res, next) {
-        bcryt.hash(req.body.password,10,function(err,hashedPass) {
-            if(err) return res.json(err);
-            let user = new User({
-                email: req.body.email,
-                password: hashedPass,
-                name: req.body.name,
-                gender: req.body.gender,
-                address: req.body.address,
-            });
-            user.save()
-                .then(() => res.redirect('/loginpage'))
-                .catch((error) => {
-                    res.json({message: error})
-                })
-        })
+        User.findOne({email: req.body.email})
+            .then((user) => {
+                if(user){
+                    res.render('register', {
+                        resinfo: req.body,
+                        massage: 'User existed',
+                    })
+                }
+                else if(req.body.password != req.body.cfpassword) {
+                    res.render('register', {
+                        resinfo: req.body,
+                        massage: 'Password not match',
+                    })
+                }
+                else {
+                    bcryt.hash(req.body.password,10,function(err,hashedPass) {
+                        if(err) return res.json(err);
+                        let newuser = new User({
+                            email: req.body.email,
+                            password: hashedPass,
+                            name: req.body.name,
+                            gender: req.body.gender,
+                            address: req.body.address,
+                        });
+                        newuser.save()
+                            .then(() => res.redirect('/loginpage'))
+                            .catch((error) => {
+                                res.json({message: error})
+                            })
+                    })
+                }
+            })
+            .catch((error) => res.json({message: error.message}));
     }
 
     // [POST] /user/login
     login(req, res, next) {
         User.findOne({email: req.body.email})
             .then((user)=>{
-                if(!user) return res.render('loginpage',{massage: "User not found"});
+                if(!user) return res.render('loginpage',{massage: "Wrong user or password"});
                 const email = user.email;
                 bcryt.compare(req.body.password,user.password)
                     .then((result) => {
