@@ -27,7 +27,7 @@ Dish.query.sortable = function(req){
 };
 
 //add plug in
-// mongoose.plugin(slug);
+
 Dish.plugin(mongoosedelete, {
     overrideMethods: 'all',
     deletedAt: true,

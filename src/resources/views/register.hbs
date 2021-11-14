@@ -1,5 +1,8 @@
 <div class="mt-4">
     <form method="POST" action="/user/register">
+        {{#if massage}}
+        <div class="alert alert-danger" role="alert">{{massage}}</div>
+        {{/if}}
         <div class="form-group">
             <label for="Email1">Email address</label>
             <input type="email" name="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter email">

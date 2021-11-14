@@ -1,5 +1,5 @@
 const Dish = require('../models/Dish');
-const { mutiMongoosetoObject } = require('../../util/mongoose');
+const { mutiMongoosetoObject } = require('../../util/subfuntion');
 
 class SiteController {
     home(req, res, next) {
@@ -7,7 +7,7 @@ class SiteController {
             .then((dishes) => {
                 res.render('home1', {
                     dishes: mutiMongoosetoObject(dishes),
-                    email: req.session.email, 
+                    user: req.user, 
                 });
             })
             .catch(next);
@@ -26,7 +26,7 @@ class SiteController {
     }
 
     booktable(req, res) {
-        res.render('book_table',{email: req.session.email});
+        res.render('book_table',{user: req.user});
     }
 }
 

@@ -1,22 +1,18 @@
 const Dish                      = require('../models/Dish');
-const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/mongoose');
-const imageMimeTypes            = ['image/jpg', 'image/png','image/gif'];
+const { mutiMongoosetoObject,MongoosetoObject,modifyRequestImage }  = require('../../util/subfuntion');
+
 
 class MenuController {
     //get menu
     index(req, res, next) {
-        var email;
         if(!req.query.page) req.query.page = 1;
-        if(req.session.email) email = req.session.email;
-        // const dishes = Dish.find({}).limit(6).skip((req.query.page - 1) * 5).exec();
-        // const count  = Dish.countDocuments();
         Promise.all([Dish.find({}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments()])
             .then(([dishes, count]) => {
-                res.render('menu', { 
+                res.render('menu1', { 
                     dishes: mutiMongoosetoObject(dishes),
                     count,
                     page: req.query.page,
-                    email: email,
+                    user: req.user,
                 });
             })
             .catch(next);
@@ -59,7 +55,7 @@ class MenuController {
                 .catch(next);
         }
         else{
-            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, price: req.body.price, dish_type: req.body.dish_type}})
+            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, type_dish: req.body.type_dish ,price: req.body.price }})
                 .then(() => res.redirect('/User/viewrevenue'))
                 .catch(next);
         }
@@ -120,15 +116,7 @@ class MenuController {
     }
 }
 
-function modifyRequestImage(req){
-    if(req.body.image) {
-        const image = JSON.parse(req.body.image);
-        if(image && imageMimeTypes.includes(image.type)){
-            req.body.image = new Buffer.from(image.data,'base64');
-            req.body.imageType = image.type;
-        }
-    }
-}
+
 
 module.exports = new MenuController();
 
