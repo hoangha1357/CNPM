@@ -2,7 +2,7 @@
     <h2>
       Doanh thu các món ăn
       {{#if deletedCount }}
-      <a href="/user/trash">
+      <a href="/manager/trash">
         <img src="/image/trash.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
         ({{deletedCount}})
       </a>
@@ -32,19 +32,19 @@
               <th scope="col">ID</th>
               <th scope="col">
                 Tên món ăn
-              {{{sortable 'name' _sort}}}
+              {{{sortable 'name' _sort page}}}
               </th>
               <th scope="col">
                 Loại món ăn
-              {{{sortable 'type_dish' _sort}}}
+              {{{sortable 'type_dish' _sort page}}}
               </th>
               <th scope="col">
                 Số lượng đã bán
-                {{{sortable 'sale' _sort}}}
+                {{{sortable 'sale' _sort page}}}
               </th>
               <th scope="col" >
                 Giá Tiền(VNĐ)
-                {{{sortable 'price' _sort}}}
+                {{{sortable 'price' _sort page}}}
               </th>
               <th scope="col">Được gợi ý</th>
               <th scope="col" >

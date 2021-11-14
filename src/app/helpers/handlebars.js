@@ -4,7 +4,7 @@ module.exports = {
     //create suport funtion
     sum: (a, b) => a + b,
     mul: (a, b) => a * b,
-    sortable: (field,sort) => {
+    sortable: (field,sort,page) => {
         const sortType = field === sort.column ? sort.type : 'default';
         const icons = {
             default: 'oi oi-elevator',
@@ -16,8 +16,9 @@ module.exports = {
             asc: 'desc',
             desc: 'asc',
         };
-        const href = Handlebars.escapeExpression('?_sort&column='+field+'&type='+types[sortType]+'');
-
+        var href;
+        if(page) href = Handlebars.escapeExpression('?_sort&column='+field+'&type='+types[sortType]+'&page='+page+'');
+        else href = Handlebars.escapeExpression('?_sort&column='+field+'&type='+types[sortType]+'');
         const result = '<a href="'+ href +'"><span class="'+icons[sortType]+'"></span></a>';
         return result;
     },

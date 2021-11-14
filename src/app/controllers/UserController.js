@@ -9,7 +9,7 @@ class UserController {
         res.send('asd');
     }
     // [GET] /user/ordered
-    orderd(req, res,next) {
+    ordered(req, res,next) {
         
     }
 
@@ -47,6 +47,7 @@ class UserController {
             .then(() => res.redirect('/'))
             .catch(next);
     }
+    
     // [POST] /user/register
     register(req, res, next) {
         User.findOne({email: req.body.email})

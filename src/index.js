@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(methodOverride('_method')); //override using a query value
 
-app.use('/user',SortMiddleware);
+app.use(SortMiddleware);
 app.use(getUser);
 //app.use(morgan("combined")) // track HTTP call
 

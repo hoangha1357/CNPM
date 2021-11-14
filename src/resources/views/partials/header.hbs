@@ -19,7 +19,7 @@
         <li class="header__navbar-item">
           <a href="/booktable" class="header__navbar-item-link">TABLE RESERVATION</a>
         </li>
-        {{#if user}}
+        {{#if (isMatch user.permission "Manager")}}
         <li class="header__navbar-item">
           <a href="" class="header__navbar-item-link">
                 <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -27,7 +27,10 @@
           </a>
           <ul class="header__subnav-list">
             <li class="header__subnav-item">
-              <a href="/user/viewrevenue" class="header__subnav-link">Thông tin doanh thu</a>
+              <a href="/manager/viewrevenue" class="header__subnav-link">Thông tin doanh thu</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/" class="header__subnav-link">Quản lý đặt bàn</a>
             </li>
             <li class="header__subnav-item header__subnav-item">
               <a href="/menu/create" class="header__subnav-link">Thêm món ăn</a>
@@ -37,9 +40,32 @@
             </li>
           </ul>
         </li>
-        {{else}}
+        {{/if}}
+        {{#if (isMatch user.permission "Customer")}}
         <li class="header__navbar-item">
-            <a href="" class="header__navbar-item-link">ACCOUNT</a>
+          <a href="/user" class="header__navbar-item-link">
+                <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                {{user.name}}
+          </a>
+          <ul class="header__subnav-list">
+            <li class="header__subnav-item">
+              <a href="/user" class="header__subnav-link">Thông tin người dùng</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/" class="header__subnav-link">Giỏ Hàng</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/" class="header__subnav-link">Bàn đã đặt</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/user/logout" class="header__subnav-link">Đăng xuất</a>
+            </li>
+          </ul>
+        </li>
+        {{/if}}
+        {{#unless user}}
+        <li class="header__navbar-item">
+            <a href="/loginpage" class="header__navbar-item-link">ACCOUNT</a>
             <ul class="header__subnav-list">
               <li class="header__subnav-item">
                 <a href="/loginpage" class="header__subnav-link">Sign in</a>
@@ -52,7 +78,7 @@
               </li>
             </ul>
           </li>
-        {{/if}}
+        {{/unless}}
 
       </ul>
     </div>
@@ -68,7 +94,7 @@
         </div>
       </div>
     </div>
-
+    {{#if (isMatch user.permission "Customer")}}
     <input type="checkbox" hidden id="header-nav" class="header-input">
 
     <label for="header-nav" class="header-slide__menu ">
@@ -81,6 +107,7 @@
 
 
     <!-- slidebar on pc -->
+    
     <div class="slidebar__container hide-on-tablet-mobile">
       <label for="header-nav" class="slidebar__close ">
         <i class="slidebar__close-icon far fa-times-circle"></i>
@@ -152,6 +179,7 @@
       </div>
 
     </div>
+    {{/if}}
     <!-- end silebar -->
   </section>
 
