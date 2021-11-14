@@ -1297,7 +1297,7 @@ label.modal-label {
 }
 
 .footer__copyright{
-  background-color: #e4002b;
+  background-color: var(--red-color);
   text-align: center;
   padding: 15px 0;
   font-size: 1.4rem;
@@ -1338,3 +1338,49 @@ label.modal-label {
 
 .select-all-option {
   width: 140px; }
+
+/* TABLE RESERVATION */
+.table-reservation {
+  margin-top: 40px;
+}
+
+
+.table-wrapper {
+  text-align: center;
+}
+
+.table-img {
+  max-width: 30%;
+}
+
+.table-date-time {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-location {
+  background-color: #f0f0f0;
+}
+
+.table__header-heading {
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+  color: #555;
+  margin: 20px 0 0; 
+}
+
+.table__input {
+  width: 60%;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-family: 'Asap', sans-serif;
+}
