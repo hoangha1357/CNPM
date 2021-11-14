@@ -75,7 +75,7 @@
               </td>
               <td>{{mul this.sale this.price}} VNĐ</td>
               <td>
-                  <a href="/menu/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
+                  <a href="/manager/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
                   <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
               </td>
           </tr>
@@ -83,7 +83,7 @@
           <tr>
               <td colspan="5" class="text-center">
                 Bạn chưa thêm món ăn nào.
-                <a href="/menu/create">Thêm món ăn</a>
+                <a href="/manager/create">Thêm món ăn</a>
               </td>
           </tr>
           {{/each}}
