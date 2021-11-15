@@ -1,0 +1,36 @@
+<div class="content__header mb-40">
+    <h3 class="content__header-heading">
+        <span class="under-line-effect under-line-effect--red">YOUR PROFILE</span>
+    </h3>
+</div>
+
+<div class="grid">
+    <div class="row">
+        <div class="col l-6">
+            <div class="user__info pl-40">
+                <form>
+                    <label class="info__label" for="Name">Name</label><input class="info__value" type="text" name="Name"
+                        readonly value={{user.name}}></input>
+
+                    <label class="info__label" for="Address">Address</label><input class="info__value" type="text"
+                        name="Address" readonly value={{user.address}}></input>
+
+                    <label class="info__label" for="Email">Email</label><input class="info__value" type="email"
+                        name="Email" readonly value={{user.email}}></input>
+
+                    <input type="button" value="Edit profile"
+                        class="btn-large featured-product__btn mb-40 btn-red" style="cursor: pointer; width: 150px"></input>
+                </form>
+            </div>
+
+        </div>
+        <div class="col l-6">
+            <div class="pl-40">
+            <input type="image"
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" width="300"
+                height="300">
+
+            </div>
+        </div>
+    </div>
+</div>
