@@ -25,7 +25,7 @@
     
     <form method="post" class="form" id="form-2" action="/user/login">
         <h3 class="heading">Sign In</h3>
-        <p class="desc">To connect to our restaurant</p>
+        <p class="desc">Connect to our restaurant</p>
         {{#if massage}}
             <div class="alert alert-danger" role="alert">{{massage}}</div>
         {{/if}}
@@ -58,7 +58,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         Validator({
-            mainform: '.form'
+            mainform: '.form',
             form: '#form-2',
             formGroupSelector: '.form-group',
             errorSelector: '.form-message',
