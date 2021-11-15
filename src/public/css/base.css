@@ -284,6 +284,10 @@ html {
   margin-bottom: 40px;
 }
 
+.pl-40 {
+  padding-left: 40px;
+}
+
 /*  */
 
 .main {
@@ -381,4 +385,8 @@ html {
 
 .spacer {
   margin-top: 36px;
+}
+
+input[readonly] {
+  border: 2px solid rgba(0,0,0,0);
 }

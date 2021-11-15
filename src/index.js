@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
 }
 const path              = require('path');
 const express           = require('express');
@@ -17,16 +17,17 @@ const bodyParser        = require('body-parser');
 // const morgan            = require('morgan');
 db.connect();
 
-
 app.use(flash());
-app.use(session({
-    secret: process.env.SECERT_SESSION_KEY,
-    resave: true,
-    saveUninitialized: false
-}));
+app.use(
+    session({
+        secret: process.env.SECERT_SESSION_KEY,
+        resave: true,
+        saveUninitialized: false,
+    }),
+);
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(methodOverride('_method')); //override using a query value
 
@@ -40,9 +41,7 @@ app.use(
     }),
 );
 
-
 app.use(express.json());
-
 
 app.use(express.static(path.join(__dirname, 'public'))); // set static public
 
