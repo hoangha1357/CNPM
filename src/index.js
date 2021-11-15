@@ -1,19 +1,19 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-const path = require('path');
-const express = require('express');
-const flash = require('express-flash');
-const session = require('express-session');
-const handlebars = require('express-handlebars');
-const SortMiddleware = require('./app/middlewares/SortMiddleware');
-const app = express();
-const port = 3000;
-const db = require('./config/db');
-const route = require('./routes/index');
-const methodOverride = require('method-override');
-const getUser = require('./app/middlewares/SetUser');
-const bodyParser = require('body-parser');
+const path              = require('path');
+const express           = require('express');
+const flash             = require('express-flash');
+const session           = require('express-session');
+const handlebars        = require('express-handlebars');
+const SortMiddleware    = require('./app/middlewares/SortMiddleware');
+const app               = express();
+const port              = 3000;
+const db                = require('./config/db');
+const route             = require('./routes/index');
+const methodOverride    = require('method-override');
+const getUser           = require('./app/middlewares/SetUser');
+const bodyParser        = require('body-parser');
 // const morgan            = require('morgan');
 db.connect();
 

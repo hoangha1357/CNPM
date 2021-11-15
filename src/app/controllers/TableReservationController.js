@@ -1,5 +1,5 @@
 const Table = require('../models/Table');
-const { mutiMongoosetoObject } = require('../../util/mongoose');
+const { mutiMongoosetoObject } = require('../../util/subfuntion');
 
 class TableReservationController {
     search(req, res, next) {
