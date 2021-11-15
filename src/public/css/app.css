@@ -1431,7 +1431,7 @@ label.modal-label {
 .table-img-background {
   height:80px;
   width:80px;
-  background-color: #9ACD32;
+  /* background-color: #9ACD32; */
   display: flex;
   align-items: center;
   justify-content: center;
