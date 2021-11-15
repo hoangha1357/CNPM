@@ -1339,7 +1339,6 @@ label.modal-label {
 .select-all-option {
   width: 140px; }
 
-<<<<<<< Updated upstream
 /* TABLE RESERVATION */
 .table-reservation {
   margin-top: 40px;
@@ -1347,11 +1346,14 @@ label.modal-label {
 
 
 .table-wrapper {
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-img {
-  max-width: 30%;
+  max-width: 70%;
 }
 
 .table-date-time {
@@ -1363,6 +1365,9 @@ label.modal-label {
 
 .table-location {
   background-color: #f0f0f0;
+  border: 2px dashed red;
+  padding-bottom: 16px;
+  border-radius: 10px;
 }
 
 .table__header-heading {
@@ -1385,7 +1390,7 @@ label.modal-label {
   font-size: 1.8rem;
   font-family: 'Asap', sans-serif;
 }
-=======
+
 .table-reservation-body {
   height:800px;
 }
@@ -1402,4 +1407,19 @@ label.modal-label {
   margin-right: 20px;
   margin-top: 16px;
 }
->>>>>>> Stashed changes
+
+.table-img-background {
+  height:80px;
+  width:80px;
+  background-color: #9ACD32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border: 2px solid #B22222;
+  border-radius: 3px;
+}
+
+.table-img-background:hover {
+  background-color: #FF6347;
+}

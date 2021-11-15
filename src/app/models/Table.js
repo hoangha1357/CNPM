@@ -9,7 +9,7 @@ const Table = new Schema(
         address: { type: String },
     },
     { 
-        timestamps: true 
+        timestamps: true,
     },
 );
 
