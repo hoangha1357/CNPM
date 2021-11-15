@@ -15,12 +15,12 @@ class UserController {
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
-        res.render('user/cart')
+        res.render('user/cart',{user: req.user})
     }
 
     // [GET] /user/ordered
     payment(req, res, next) {
-        res.render('user/onlPayment')
+        res.render('user/onlPayment',{user: req.user})
     }
 
     // [GET] /user/viewrevenue
