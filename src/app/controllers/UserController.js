@@ -18,6 +18,11 @@ class UserController {
         res.render('user/cart')
     }
 
+    // [GET] /user/ordered
+    payment(req, res, next) {
+        res.render('user/onlPayment')
+    }
+
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
         if (!req.query.page) req.query.page = 1;

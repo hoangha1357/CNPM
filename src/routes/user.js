@@ -11,6 +11,7 @@ route.post('/register', UserController.register);
 route.put('/:id', UserController.updateImage);
 route.post('/login', UserController.login, authenticateUser);
 route.get('/logout', UserController.logout);
+route.get('/payment', UserController.payment);
 route.get('/', UserController.index);
 
 module.exports = route;
