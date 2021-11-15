@@ -1423,3 +1423,25 @@ label.modal-label {
 .table-img-background:hover {
   background-color: #FF6347;
 }
+/* ****USER INFO************** */
+
+.info__label {
+  display: block;
+  font-weight: 700;
+  padding-bottom: 6px;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
+}
+
+.info__value {
+  display: block;
+  width: 60%;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  font-size: 1.8rem;
+  font-family: 'Asap', sans-serif;
+}

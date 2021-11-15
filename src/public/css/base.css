@@ -276,13 +276,16 @@ html {
 .plus.plus-green::after {
   background-color: var(--green-color); }
 
-<<<<<<< Updated upstream
 .mb-20 {
   margin-bottom: 20px;
 }
 
 .mb-40 {
   margin-bottom: 40px;
+}
+
+.pl-40 {
+  padding-left: 40px;
 }
 
 /*  */
@@ -383,11 +386,7 @@ html {
 .spacer {
   margin-top: 36px;
 }
-=======
-.btn-info{
-  background-color: red;
+
+input[readonly] {
+  border: 2px solid rgba(0,0,0,0);
 }
-.btn-info:hover {
-  background-color: rgb(230, 0, 0);
-}
->>>>>>> Stashed changes

@@ -59,43 +59,43 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-       
+
 
         $(document).ready(function () {
             var plus = $('.btn-plus')
             var minus = $('.btn-minus')
-            {{!-- PLUS --}}
-            plus.each(function(index, plusBtn) {
+            { { !--PLUS --} }
+            plus.each(function (index, plusBtn) {
                 var jplus = $(plusBtn)
-                jplus.click(function() {
-                    var quantity = parseInt(jplus.prev().val())+1
+                jplus.click(function () {
+                    var quantity = parseInt(jplus.prev().val()) + 1
                     jplus.prev().val(quantity)
 
                     var test = (jplus.parent()).parent().next()
                     var priceProduct = test.find('.slidebar__wrap-price').text()
-                    {{!-- var total = parseInt(priceProduct)*quantity --}}
-                    var total = 5*quantity
+                    { { !-- var total = parseInt(priceProduct) * quantity-- } }
+                    var total = 5 * quantity
                     console.log(priceProduct)
                     test.find('.slidebar__wrap-price').text(total)
                 })
             })
-            {{!-- minus --}}
-            minus.each(function(index, minusBtn) {
+            { { !--minus --} }
+            minus.each(function (index, minusBtn) {
                 var jminus = $(minusBtn)
-                jminus.click(function() {
-                    if (parseInt(jminus.prev().val()) == 0) 
-                    var quantity = parseInt(jminus.prev().val())-1
+                jminus.click(function () {
+                    if (parseInt(jminus.prev().val()) == 0)
+                        var quantity = parseInt(jminus.prev().val()) - 1
                     jminus.prev().val(quantity)
 
                     var test = (jminus.parent()).parent().next()
                     var priceProduct = test.find('.slidebar__wrap-price').text()
-                    {{!-- var total = parseInt(priceProduct)*quantity --}}
-                    var total = 5*quantity
+                    { { !-- var total = parseInt(priceProduct) * quantity-- } }
+                    var total = 5 * quantity
                     console.log(priceProduct)
                     test.find('.slidebar__wrap-price').text(total)
                 })
             })
-            {{!-- ADD ITEM TO CART --}}
+            { { !--ADD ITEM TO CART-- } }
             var addBtn = $('.js-add-btn')
             var cart1 = document.querySelector('.slidebar__wrap-list')
             var cart = $('.slidebar__wrap-list')
@@ -124,29 +124,38 @@
 
             })
 
-           
-                var trashBtnes = $('.trash-btn')
-                trashBtnes.each(function(index, trash) {
-                    var jtrash = $(trash)
-                    jtrash.click(function () {
-                        var htmltrash = jtrash[0];
-                        var trashBtnParent = (htmltrash.parentElement).parentElement
-                      
-                        trashBtnParent.remove()
-                    })
 
+            var trashBtnes = $('.trash-btn')
+            trashBtnes.each(function (index, trash) {
+                var jtrash = $(trash)
+                jtrash.click(function () {
+                    var htmltrash = jtrash[0];
+                    var trashBtnParent = (htmltrash.parentElement).parentElement
+
+                    trashBtnParent.remove()
                 })
-            
+
+            })
+
 
 
         })
     </script>
-
+    <script>
+        var readonly = true;
+        $('.user__info input[type="button"]').on('click', function () {
+            $('.user__info input[type="text"]').attr('readonly', !readonly);
+            $('.user__info input[type="email"]').attr('readonly', !readonly);
+            readonly = !readonly;
+            $('.user__info input[type="button"]').val(readonly ? 'Edit profile' : 'Save profile');
+            return false;
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
