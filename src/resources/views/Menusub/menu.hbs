@@ -3,9 +3,9 @@
         <div class="category col l-3">
             <div class="category-wrap">
                 <h1 class="category-title">CATEGORY</h1>
-                <a href="" class="category-item">COMBO</a>
-                <a href="" class="category-item">FOOD</a>
-                <a href="" class="category-item">DRINK</a>
+                <a href="?category=Combo" class="category-item">COMBO</a>
+                <a href="?category=Food" class="category-item">FOOD</a>
+                <a href="?category=Drink" class="category-item">DRINK</a>
             </div>
         </div>
         <div class="col l-9">
@@ -13,7 +13,7 @@
                 {{!-- COMBO --}}
                 <div class="content__header">
                     <h3 class="content__header-heading">
-                        <span class="under-line-effect under-line-effect--red">COMBO</span>
+                        <span class="under-line-effect under-line-effect--red">{{category}}</span>
                     </h3>
                 </div>
                    <div class="shop__wrap row feature-home">
@@ -41,6 +41,7 @@
                         {{/each}}
                 </div>
             </div>
+            {{{paging count page}}}
         </div>
     </div>
 </div>

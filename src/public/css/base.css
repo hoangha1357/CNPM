@@ -276,6 +276,7 @@ html {
 .plus.plus-green::after {
   background-color: var(--green-color); }
 
+<<<<<<< Updated upstream
 .mb-20 {
   margin-bottom: 20px;
 }
@@ -382,3 +383,11 @@ html {
 .spacer {
   margin-top: 36px;
 }
+=======
+.btn-info{
+  background-color: red;
+}
+.btn-info:hover {
+  background-color: rgb(230, 0, 0);
+}
+>>>>>>> Stashed changes

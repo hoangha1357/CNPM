@@ -2,7 +2,7 @@
   <section class="header">
     <div class="header__logo">
       <a href="" class="header__logo-link">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Kentucky_Fried_Chicken_201x_logo.svg"
+        <img src="https://i.pinimg.com/736x/19/a9/65/19a9657e4490b4c75ea5065f78e97cbe.jpg"
           alt="" class="header__logo-img">
       </a>
     </div>
@@ -17,9 +17,9 @@
         </li>
 
         <li class="header__navbar-item">
-          <a href="/booktable" class="header__navbar-item-link">TABLE RESERVATION</a>
+          <a href="/tableReservation" class="header__navbar-item-link">TABLE RESERVATION</a>
         </li>
-        {{#if (isMatch user.permission "Manager")}}
+        {{#if email}}
         <li class="header__navbar-item">
           <a href="" class="header__navbar-item-link">
                 <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -27,45 +27,19 @@
           </a>
           <ul class="header__subnav-list">
             <li class="header__subnav-item">
-              <a href="/manager/viewrevenue" class="header__subnav-link">Thông tin doanh thu</a>
+              <a href="/user/viewrevenue" class="header__subnav-link">Thông tin doanh thu</a>
             </li>
             <li class="header__subnav-item header__subnav-item">
-              <a href="/" class="header__subnav-link">Quản lý đặt bàn</a>
-            </li>
-            <li class="header__subnav-item header__subnav-item">
-              <a href="/manager/create" class="header__subnav-link">Thêm món ăn</a>
+              <a href="/menu/create" class="header__subnav-link">Thêm món ăn</a>
             </li>
             <li class="header__subnav-item header__subnav-item">
               <a href="/user/logout" class="header__subnav-link">Đăng xuất</a>
             </li>
           </ul>
         </li>
-        {{/if}}
-        {{#if (isMatch user.permission "Customer")}}
+        {{else}}
         <li class="header__navbar-item">
-          <a href="/user" class="header__navbar-item-link">
-                <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                {{user.name}}
-          </a>
-          <ul class="header__subnav-list">
-            <li class="header__subnav-item">
-              <a href="/user" class="header__subnav-link">Thông tin người dùng</a>
-            </li>
-            <li class="header__subnav-item header__subnav-item">
-              <a href="/" class="header__subnav-link">Giỏ Hàng</a>
-            </li>
-            <li class="header__subnav-item header__subnav-item">
-              <a href="/" class="header__subnav-link">Bàn đã đặt</a>
-            </li>
-            <li class="header__subnav-item header__subnav-item">
-              <a href="/user/logout" class="header__subnav-link">Đăng xuất</a>
-            </li>
-          </ul>
-        </li>
-        {{/if}}
-        {{#unless user}}
-        <li class="header__navbar-item">
-            <a href="/loginpage" class="header__navbar-item-link">ACCOUNT</a>
+            <a href="" class="header__navbar-item-link">ACCOUNT</a>
             <ul class="header__subnav-list">
               <li class="header__subnav-item">
                 <a href="/loginpage" class="header__subnav-link">Sign in</a>
@@ -78,7 +52,7 @@
               </li>
             </ul>
           </li>
-        {{/unless}}
+        {{/if}}
 
       </ul>
     </div>
@@ -94,7 +68,7 @@
         </div>
       </div>
     </div>
-    {{#if (isMatch user.permission "Customer")}}
+
     <input type="checkbox" hidden id="header-nav" class="header-input">
 
     <label for="header-nav" class="header-slide__menu ">
@@ -107,7 +81,6 @@
 
 
     <!-- slidebar on pc -->
-    
     <div class="slidebar__container hide-on-tablet-mobile">
       <label for="header-nav" class="slidebar__close ">
         <i class="slidebar__close-icon far fa-times-circle"></i>
@@ -127,14 +100,14 @@
               <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
 
               <span class="slidebar__wrap-info-food">
-                <button class="btn-minus">-</button>
-                <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
-                <button class="btn-plus">+</button>
+                <button class="btn-minus" onclick="decrease()">-</button>
+                <input class="slidebar__wrap-info-quantity" id="productQuantity" type="text" value="1"></input>
+                <button class="btn-plus" onclick="increase()">+</button>
               </span>
             </div>
             <div class="slidebar__wrap-trash-and-price">
               <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
+              <div class="slidebar__wrap-price">$5.00</div>
             </div>
           </li>
           <li class="slidebar__wrap-item">
@@ -148,10 +121,7 @@
                 <button class="btn-plus">+</button>
               </a>
             </div>
-            <div class="slidebar__wrap-trash-and-price">
-              <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
-            </div>
+            <div class="slidebar__wrap-price">$5.00</div>
           </li>
           <li class="slidebar__wrap-item">
             <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
@@ -164,22 +134,18 @@
                 <button class="btn-plus">+</button>
               </a>
             </div>
-            <div class="slidebar__wrap-trash-and-price">
-              <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
-            </div>
+            <div class="slidebar__wrap-price">$5.00</div>
           </li>
         </ul>
         <div class="slidebar__wrap-total">
           <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
-          <span class="slidebar__wrap-sub-total">20</span>
+          <span class="slidebar__wrap-sub-total">$15.00</span>
         </div>
         <button class="btn-large featured-product__btn checkout-btn" type="submit"
           href="">CHECKOUT</button>
       </div>
 
     </div>
-    {{/if}}
     <!-- end silebar -->
   </section>
 

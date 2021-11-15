@@ -30,8 +30,24 @@ class ManagerController {
             .then((dishes) => {
                 res.render('user/trash', {
                     dishes: mutiMongoosetoObject(dishes),
+                    user: req.user,
                 });
             })
+            .catch(next);
+    }
+    
+    create(req, res, next) {
+        res.render('Menusub/create',{user: req.user,});
+    }
+
+    edit(req, res, next) {
+        Dish.findById(req.params.id)
+            .then((dish) =>
+                res.render('Menusub/edit', {
+                    dish: MongoosetoObject(dish),
+                    user: req.user,
+                }),
+            )
             .catch(next);
     }
 }

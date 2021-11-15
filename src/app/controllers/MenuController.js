@@ -5,21 +5,20 @@ const { mutiMongoosetoObject,MongoosetoObject,modifyRequestImage }  = require('.
 class MenuController {
     //get menu
     index(req, res, next) {
+        var category = 'Combo';
+        if(req.query.category) category = req.query.category;
         if(!req.query.page) req.query.page = 1;
-        Promise.all([Dish.find({}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments()])
+        Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
-                res.render('menu1', { 
+                res.render('Menusub/menu', { 
                     dishes: mutiMongoosetoObject(dishes),
-                    count,
                     page: req.query.page,
                     user: req.user,
+                    count,
+                    category,
                 });
             })
             .catch(next);
-    }
-    // [Get] /menu/create
-    create(req, res, next) {
-        res.render('Menusub/create',{email: req.session.email});
     }
     
     // [POST] /menu/store
@@ -32,17 +31,6 @@ class MenuController {
             .catch((error) => {
                 res.json(error);
             });
-    }
-
-    // [Get] /menu/:id/edit
-    edit(req, res, next) {
-        Dish.findById(req.params.id)
-            .then((dish) =>
-                res.render('Menusub/edit', {
-                    dish: MongoosetoObject(dish),
-                }),
-            )
-            .catch(next);
     }
 
     // [PUT] /menu/:id

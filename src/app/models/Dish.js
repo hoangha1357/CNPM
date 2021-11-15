@@ -10,15 +10,15 @@ const Dish = new Schema(
         type_dish: { type: String, required: true },
         recommend: { type: Boolean, default: false },
         image: { type: Buffer, required: true },
-        imageType: { type: String, required: true},
+        imageType: { type: String, required: true },
         sale: { type: Number, min: 0, default: 0 },
     },
     { timestamps: true },
 );
 
 //custom query helpers
-Dish.query.sortable = function(req){
-    if(req.query.hasOwnProperty('_sort')){
+Dish.query.sortable = function (req) {
+    if (req.query.hasOwnProperty('_sort')) {
         return this.sort({
             [req.query.column]: req.query.type,
         });
