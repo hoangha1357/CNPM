@@ -1,4 +1,5 @@
 const Dish = require('../models/Dish');
+const Table = require('../models/Table');
 const { mutiMongoosetoObject } = require('../../util/subfuntion');
 
 class SiteController {
@@ -25,8 +26,16 @@ class SiteController {
         res.render('Site/register');
     }
 
-    booktable(req, res) {
-        res.render('Site/book_table', { user: req.user });
+    booktable(req, res, next) {
+        res.render('Site/book_table');
+    }
+    // [POST]    /booktable/thankyou
+    booktable_thankyou(req,res,next) {
+        const formData = req.body;
+        const table = new Table(formData);
+        table.save()
+            .then(() => res.redirect('/booktable/thankyou'))
+            .catch(error => {})
     }
 }
 
