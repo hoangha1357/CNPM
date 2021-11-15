@@ -1390,10 +1390,7 @@ label.modal-label {
   font-size: 1.8rem;
   font-family: 'Asap', sans-serif;
 }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 .table-reservation-body {
   height:800px;
 }
@@ -1411,7 +1408,6 @@ label.modal-label {
   margin-top: 16px;
 }
 
-<<<<<<< Updated upstream
 .table-img-background {
   height:80px;
   width:80px;
@@ -1426,7 +1422,7 @@ label.modal-label {
 
 .table-img-background:hover {
   background-color: #FF6347;
-=======
+}
 /* ****USER INFO************** */
 
 .info__label {
@@ -1448,5 +1444,4 @@ label.modal-label {
   border-radius: 3px;
   font-size: 1.8rem;
   font-family: 'Asap', sans-serif;
->>>>>>> Stashed changes
 }
