@@ -73,7 +73,7 @@
           <span class="form-message"></span>
         </div>
 
-        <button class="form-submit" class="btn btn-primary ">Submit</button>
+        <button class="form-submit" type="submit" class="btn btn-primary ">Submit</button>
       </form>
 
     </div>
@@ -83,6 +83,7 @@
       document.addEventListener('DOMContentLoaded', function () {
         // Mong muốn của chúng ta
         Validator({
+          mainform: '.form',
           form: '#form-1',
           formGroupSelector: '.form-group',
           errorSelector: '.form-message',
@@ -97,7 +98,8 @@
           ],
           onSubmit: function (data) {
             // Call API
-            console.log(data);
+            //console.log(data);
+            mainform.submit();
           }
         });
 
