@@ -14,7 +14,9 @@ class UserController {
         });
     }
     // [GET] /user/ordered
-    ordered(req, res, next) {}
+    ordered(req, res, next) {
+        res.render('user/cart')
+    }
 
     // [GET] /user/viewrevenue
     viewrevenue(req, res, next) {
@@ -106,16 +108,15 @@ class UserController {
         User.findOne({ email: req.body.email })
             .then((user) => {
                 if (!user)
-                    return res.render('loginpage', {
+                    return res.render('site/loginpage', {
                         massage: 'Wrong user or password',
                     });
                 const email = user.email;
-                bcryt
-                    .compare(req.body.password, user.password)
+                bcryt.compare(req.body.password, user.password)
                     .then((result) => {
                         if (!result)
-                            return res.render('loginpage', {
-                                massage: 'Wrong password',
+                            return res.render('site/loginpage', {
+                                massage: 'Wrong user or password',
                                 name: req.body.email,
                             });
                         const token = jwt.sign(

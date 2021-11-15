@@ -22,13 +22,13 @@
 </div> --}}
 {{!-- --}}
 <div class="main">
-    {{#if massage}}
-    <div class="alert alert-danger" role="alert">{{massage}}</div>
-    {{/if}}
+    
     <form method="post" class="form" id="form-2" action="/user/login">
         <h3 class="heading">Sign In</h3>
         <p class="desc">To connect to our restaurant</p>
-
+        {{#if massage}}
+            <div class="alert alert-danger" role="alert">{{massage}}</div>
+        {{/if}}
         <div class="spacer"></div>
 
         <div class="form-group">
