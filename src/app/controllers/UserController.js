@@ -9,7 +9,9 @@ const {
 
 class UserController {
     index(req, res) {
-        res.send('asd');
+        res.render('user/userinfo',{
+            user: req.user,
+        });
     }
     // [GET] /user/ordered
     ordered(req, res, next) {}
