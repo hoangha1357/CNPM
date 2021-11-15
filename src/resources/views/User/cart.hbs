@@ -1,0 +1,121 @@
+<div id="content" class="col-sm-12">
+      <h1>Shopping Cart</h1>
+      
+      <form method="post">
+        <div class="table-responsive table-checkout-cart">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-center">Remove</th>
+                <th class="text-center">Image</th>
+                <th class="text-center">Product Name</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-right">Unit Price</th>
+                <th class="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr data-line="1">
+                <td class="text-center btn-remove-product">
+                  <a type="button" title="" class="btn-remove" href="" data-line="1"><i class="fal fa-trash-alt"></i></a>
+                </td>
+                <td class="text-center">
+                  <a href="">
+                    <img src="/image/fried_chicken.jpg" alt="" title="" class="img-thumbnail">
+                  </a>
+                </td>
+                <td class="text-center">
+                  <h5><a href="">Fried Chicken</a></h5>
+                 
+                </td>
+                <td class="text-center">
+                  <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
+                    <div class="form-quantity">
+                      <div class="btn-minus"><input type="button" value="-" class="qty minus"></div>
+                      <input type="text" name="updates[]" value="1" min="0" class="form-control cart-qty" data-line="1">
+                      <div class="btn-plus"><input type="button" value="+" class="qty plus"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-right"><span class="price-product"><span class="money">5</span></span></td>
+                <td class="text-right"><span class="total-price"><span class="money">5</span></span></td>
+              </tr>
+              
+              <tr data-line="2">
+                <td class="text-center btn-remove-product">
+                  <a type="button" title="" class="btn-remove" href="" data-line="2"><i class="fal fa-trash-alt"></i></a>
+                </td>
+                <td class="text-center">
+                  <a href="">
+                    <img src="/image/fried_chicken.jpg" alt="" title="" class="img-thumbnail">
+                  </a>
+                </td>
+                <td class="text-center">
+                  <h5><a href="">Fried Chicken</a></h5>
+                </td>
+                <td class="text-center">
+                  <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
+                    <div class="form-quantity">
+                      <div class="btn-minus"><input type="button" value="-"class="qty minus"></div>
+                      <input type="text" name="updates[]" value="2" min="0" class="form-control cart-qty" data-line="2">
+                      <div class="btn-plus"><input type="button" value="+" class="qty plus"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-right"><span class="price-product"><span class="money" >$100.00</span></span></td>
+                <td class="text-right"><span class="total-price"><span class="money" >$200.00</span></span></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <div class="checkout-cart-buttons group-btn-1">
+            <div class="button-shopping">
+              <a href="/" class="btn btn-default">Continue Shopping</a>
+            </div>
+            
+            <div class="button-update-cart">
+              <button type="submit" title="Update" class="btn btn-primary">Update cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-xs-12">
+            <div class="panel-group" id="accordion">
+              
+              <div class="panel panel-default">
+                
+                <div id="collapse-coupon" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div class="col-sm-12">
+                      <textarea class="form-control" rows="6" name="note" id="cartSpecialInstructions"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="box-show-price">
+              <table class="table table-bordered">
+                <tbody><tr>
+                  <td colspan="2" class="text-center"><strong>Shipping, taxes, and discounts will be calculated at checkout.</strong></td>
+                </tr>
+                
+                <tr>
+                  <td class="text-right"><strong>Subtotal:</strong></td>
+                  <td class="text-right"><span class="total-price"><span class="money" data-currency-usd="$250.00">$250.00</span></span></td>
+                </tr>
+              </tbody></table>
+              <div class="checkout-cart-buttons group-btn-2">
+                <div class="button-checkout-cart">
+                  <a href="/user/payment" class="btn btn-primary">PROCEED TO CHECK OUT</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+    </div>

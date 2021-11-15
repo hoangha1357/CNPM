@@ -7,6 +7,10 @@ const Table = new Schema(
         permission: { type: String, default: 'Customer' },
         name: { type: String, maxlength: 100 ,required: true},
         address: { type: String },
+        tableID: {type:Number},
+        numofguests: { type: Number},
+        time: { type: String},
+        bookAt: {type: Date}
     },
     { 
         timestamps: true,

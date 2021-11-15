@@ -25,9 +25,6 @@ class SiteController {
         res.render('Site/register');
     }
 
-    booktable(req, res) {
-        res.render('Site/book_table', { user: req.user });
-    }
 }
 
 module.exports = new SiteController();

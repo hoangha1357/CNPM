@@ -48,23 +48,21 @@
     <div class="container-fluid">
         {{> header}}
     </div>
-    <div class="container">
+    <div class="wrapper">
         {{{body}}}
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid footer_container">
         {{> footer}}
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-
-
         $(document).ready(function () {
             var plus = $('.btn-plus')
             var minus = $('.btn-minus')
-            { { !--PLUS --} }
+           
             plus.each(function (index, plusBtn) {
                 var jplus = $(plusBtn)
                 jplus.click(function () {
@@ -73,13 +71,13 @@
 
                     var test = (jplus.parent()).parent().next()
                     var priceProduct = test.find('.slidebar__wrap-price').text()
-                    { { !-- var total = parseInt(priceProduct) * quantity-- } }
+                
                     var total = 5 * quantity
                     console.log(priceProduct)
                     test.find('.slidebar__wrap-price').text(total)
                 })
             })
-            { { !--minus --} }
+         
             minus.each(function (index, minusBtn) {
                 var jminus = $(minusBtn)
                 jminus.click(function () {
@@ -89,13 +87,13 @@
 
                     var test = (jminus.parent()).parent().next()
                     var priceProduct = test.find('.slidebar__wrap-price').text()
-                    { { !-- var total = parseInt(priceProduct) * quantity-- } }
+                 
                     var total = 5 * quantity
                     console.log(priceProduct)
                     test.find('.slidebar__wrap-price').text(total)
                 })
             })
-            { { !--ADD ITEM TO CART-- } }
+         
             var addBtn = $('.js-add-btn')
             var cart1 = document.querySelector('.slidebar__wrap-list')
             var cart = $('.slidebar__wrap-list')
@@ -136,9 +134,6 @@
                 })
 
             })
-
-
-
         })
     </script>
     <script>
@@ -149,6 +144,21 @@
             readonly = !readonly;
             $('.user__info input[type="button"]').val(readonly ? 'Edit profile' : 'Save profile');
             return false;
+        });
+
+        $("#profileImage").click(function (e) {
+            $("#imageUpload").click();
+        });
+
+        function fasterPreview(uploader) {
+            if (uploader.files && uploader.files[0]) {
+                $('#profileImage').attr('src',
+                    window.URL.createObjectURL(uploader.files[0]));
+            }
+        }
+
+        $("#imageUpload").change(function () {
+            fasterPreview(this);
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
