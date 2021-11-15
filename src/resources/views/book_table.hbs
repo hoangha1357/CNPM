@@ -13,6 +13,8 @@
                 <option value="8:00PM" />
                 <option value="9:00PM" />
                 <option value="10:00PM" />
+                <option value="11:00PM" />
+                <option value="12:00PM" />
             </datalist>
             <span class="table__header-heading under-line-effect under-line-effect--red">NUMBER OF GUESTS</span>
             <input class="table__input" type="number">
@@ -27,14 +29,32 @@
             <div class="grid">
                 <div class="row">
                     <div class="col l-4 table-wrapper">
+                        <img onclick="console.log(this)" id='table1' class="table-img" src="./image/dinner_disable.png" alt="">
+                        <img id = "table1" style="display: none" class="table-img" src="./image/dinner_select.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
+                </div>
+                <div class="row">
+                    <div class="col 1-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
                         <img class="table-img" src="./image/dinner_disable.png" alt="">
                     </div>
                     <div class="col l-4 table-wrapper">
-                        <img class="table-img" src="./image/dinner_select.png" alt="">
-                    </div>
-                    <div class="col l-4 table-wrapper">
                         <img class="table-img" src="./image/dinner.png" alt="">
                     </div>
+                    {{!-- <div class="col l-3 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col l-4 table-wrapper">
@@ -46,6 +66,23 @@
                     <div class="col l-4 table-wrapper">
                         <img class="table-img" src="./image/dinner.png" alt="">
                     </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
+                </div>
+                <div class="row">
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col l-4 table-wrapper">
@@ -57,6 +94,9 @@
                     <div class="col l-4 table-wrapper">
                         <img class="table-img" src="./image/dinner.png" alt="">
                     </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col l-4 table-wrapper">
@@ -66,10 +106,103 @@
                         <img class="table-img" src="./image/dinner.png" alt="">
                     </div>
                     <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
+                </div>
+                <div class="row">
+                    <div class="col l-4 table-wrapper">
                         <img class="table-img" src="./image/dinner.png" alt="">
                     </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
+                </div>
+                <div class="row">
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
+                </div>
+                <div class="row">
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+    //document.addEventListener('changeTable', function () {
+    //    var table = document.getElementById('table1');
+    //    console.log(table);
+    //});
+
+    //var table1 = document.getElementById('table1');
+    //table1.onclick = function(){
+    //    table1.style.display = 'none';
+    //    table1.removeAttribute('id');
+    //    console.log(table1);
+    //    document.getElementById('table1').style.display = 'block';
+    //}
+
+    var table =document.querySelectorAll('img');
+    //console.log(table);
+    var table_temporary = [];
+    for (var i = 0; i < table.length; i++) {
+            table[i].onclick = function (e){
+                //console.log(e.target.src);
+                if(e.target.src === "http://localhost:3000/image/dinner_disable.png"){
+                    alert('The table is already booked!')
+                }
+                else if(e.target.src === "http://localhost:3000/image/dinner_select.png"){
+                    e.target.src = "./image/dinner.png";
+                }
+                else{
+                    //console.log(e.target);
+                    e.target.src = "./image/dinner_select.png";
+                    alert('Please choose date, time and number of guests!');
+                    table_temporary.push(e.target);
+                }
+            }
+    }
+    //console.log(table_temporary);
+    var book_btn = document.querySelectorAll('button');
+    //console.log(book_btn[0]);
+    book_btn[0].onclick = function() {
+        //console.log(e.target);
+        for(var i = 0; i < table_temporary.length; i++) {
+            table_temporary[i].src = "./image/dinner_disable.png";
+        }
+        alert('You have successfully booked your table!');
+    }
+
+</script>
