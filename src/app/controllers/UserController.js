@@ -73,20 +73,18 @@ class UserController {
         User.findOne({ email: req.body.email })
             .then((user) => {
                 if (user) {
-                    res.render('register', {
+                    res.render('Site/register', {
                         resinfo: req.body,
                         massage: 'User existed',
                     });
-                } else if (req.body.password != req.body.cfpassword) {
-                    res.render('register', {
+                } 
+                else if (req.body.password != req.body.cfpassword) {
+                    res.render('Site/register', {
                         resinfo: req.body,
                         massage: 'Password not match',
                     });
                 } else {
-                    bcryt.hash(
-                        req.body.password,
-                        10,
-                        function (err, hashedPass) {
+                    bcryt.hash(req.body.password,10,function (err, hashedPass) {
                             if (err) return res.json(err);
                             let newuser = new User({
                                 email: req.body.email,
