@@ -213,7 +213,9 @@ html {
 .under-line-effect {
   position: relative;
   display: inline-block;
-  z-index: 0 !important; }
+  z-index: 0 !important; 
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .under-line-effect::after {
   content: "";

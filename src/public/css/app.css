@@ -1359,6 +1359,7 @@ label.modal-label {
 /* TABLE RESERVATION */
 .table-reservation {
   margin-top: 80px;
+  padding-top: 50px;
   padding-left: 20px;
   padding-right: 100px;
   margin-bottom: 30px;
