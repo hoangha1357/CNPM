@@ -8,22 +8,19 @@
     <div class="row">
         <div class="col l-6">
             <div class="contact__info">
-                <div class="contact__row">
+                <div class="contact__row" style="padding-bottom: 10px;">
                     <span class="contact__label">Contact</span>
                     <span class="contact__desc">{{user.email}}</span>
                     <span class="contact__change">Change</span>
                 </div>
-                <div class="contact__row">
-                    <span class="contact__label">Contact</span>
+                <div class="contact__row bd-t" style="padding-top: 10px;">
+                    <span class="contact__label">Ship to</span>
                     <span class="contact__desc">{{user.address}}</span>
                     <span class="contact__change">Change</span>
                 </div>
-                <div class="contact__method">
-                    <span class="contact__label">Shipping method</span>
-                </div>
             </div>
 
-            <h3 class="">Payment</h3>
+            <h3 class="payment__title">Payment</h3>
             <div class="payment__info">
                 <ul class="payment__list">
                     <li class="payment__method">
@@ -143,46 +140,37 @@
                 </ul>
             </div>
 
-            <button class="product__item-btn">Complete Order</button>
+            <button class="product__item-btn btn-red" style="color: white;">Complete Order</button>
             <button class="product__item-btn">Return to shop</button>
         </div>
         <div class="col l-6">
-            <div class="slidebar__wrap">
+            <div class="payment-product__wrap">
                 <ul class="slidebar__wrap-list">
                     <li class="slidebar__wrap-item">
                         <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
                         <span class="payment-product__quantity">1</span>
-                        <div class="slidebar__wrap-info">
+                        <div class="slidebar__wrap-info" style="flex: 1;">
                             <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
 
                         </div>
-                        <div class="slidebar__wrap-trash-and-price">
-                            <div class="slidebar__wrap-price">5</div>
-                        </div>
+                        <div class="slidebar__wrap-price">5</div>       
                     </li>
                     <li class="slidebar__wrap-item">
                         <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
                         <span class="payment-product__quantity">1</span>
-                        <div class="slidebar__wrap-info">
+                        <div class="slidebar__wrap-info" style="flex: 1;">
                             <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
-
-                            
                         </div>
-                        <div class="slidebar__wrap-trash-and-price">
-                            <div class="slidebar__wrap-price">5</div>
-                        </div>
+                        <div class="slidebar__wrap-price">5</div>
                     </li>
                     <li class="slidebar__wrap-item">
                         <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
                         <span class="payment-product__quantity">1</span>
-                        <div class="slidebar__wrap-info">
+                        <div class="slidebar__wrap-info" style="flex: 1;">
                             <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+                        </div>
+                        <div class="slidebar__wrap-price">5</div>
 
-                           
-                        </div>
-                        <div class="slidebar__wrap-trash-and-price">
-                            <div class="slidebar__wrap-price">5</div>
-                        </div>
                     </li>
                 </ul>
                 <div class="slidebar__wrap-total">

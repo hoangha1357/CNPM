@@ -1298,6 +1298,7 @@ label.modal-label {
     padding: 10px;
     border-radius: 3px;
     border: 1px solid #f1f1f1;
+    cursor: pointer;
 }
 
 .product__item-btn:hover {
@@ -1550,15 +1551,90 @@ label.modal-label {
 /* PAYMENT */
 
 .payment-product__quantity {
-  position: absolute;
-  padding: 1px 6px;
-  background-color: #555;
-  color: white;
-  font-size: 1.4rem;
-  border-radius: 10px;
-  line-height: 1.4rem;
-  top: -6px;
-  right: 450px;
+    position: absolute;
+    padding: 1px 6px;
+    background-color: #555;
+    color: white;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    line-height: 1.4rem;
+    top: -86px;
+    right: 283px;
     margin-top: 80px;
     margin-bottom: 80px;
+}
+
+.contact__info {
+    margin-right: 200px;
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+}
+
+.contact__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+}
+
+.contact__label {
+    flex: 0.3;
+    color: #909295;
+}
+
+.contact__desc {
+    flex: 1;
+}
+
+.contact__change {
+    color: rgb(0, 0, 226);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.payment__title {
+    margin-bottom: 20px;
+}
+
+.payment__list {
+    padding-left: 10px;
+}
+
+.payment__info {
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    padding: 10px 5px;
+    margin-right: 60px;
+}
+
+
+.payment__method {
+    list-style: none;
+    
+}
+
+.payment__method-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.payment__label {
+    margin-left: 20px;
+    
+}
+
+.payment__method-desc {
+    display: flex;
+    align-items: center;
+}
+
+.method-content {
+    margin-left: 20px;
+    font-size: 1.4rem;
+}
+
+.payment-product__wrap {
+    margin: 30px 0;
+    width: 70%;
 }

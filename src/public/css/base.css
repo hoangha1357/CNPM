@@ -390,3 +390,7 @@ html {
 input[readonly] {
   border: 2px solid rgba(0,0,0,0);
 }
+
+.bd-t {
+  border-top: 1px solid #d8d8d8;
+}
