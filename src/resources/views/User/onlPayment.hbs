@@ -4,7 +4,7 @@
     </h3>
 </div>
 
-<div class="grid" style="padding-left: 120px;"> 
+<div class="grid" style="padding-left: 120px; margin-bottom: 100px">
     <div class="row">
         <div class="col l-6">
             <div class="contact__info">
@@ -22,10 +22,181 @@
                     <span class="contact__label">Shipping method</span>
                 </div>
             </div>
+
+            <h3 class="">Payment</h3>
+            <div class="payment__info">
+                <ul class="payment__list">
+                    <li class="payment__method">
+                        <label class="payment__method-wrapper">
+                            <input type="radio" readonly="" name="payment-methods" value="cod" /><span
+                                class="radio-fake"></span>
+                            <span class="payment__label">
+                                <div class="payment__method-desc">
+                                    <img class="method-icon" width="32"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-cod.svg"
+                                        alt="cod" />
+                                    <div class="method-content">
+                                        <div class="method-content__name"><span>Cash payment on delivery</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </li>
+                    <li class="payment__method">
+                        <label class="payment__method-wrapper">
+                            <input type="radio" readonly="" name="payment-methods" value="viettelpay" /><span
+                                class="radio-fake"></span>
+                            <span class="payment__label">
+                                <div class="payment__method-desc">
+                                    <img class="method-icon" width="32"
+                                        src="https://salt.tikicdn.com/ts/upload/76/80/08/62e0faf2af2869ba93da5f79a9dc4c4b.png"
+                                        alt="viettelpay" />
+                                    <div class="method-content">
+                                        <div class="method-content__name"><span>Thanh toán bằng ViettelPay</span></div>
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </li>
+                    <li class="payment__method">
+                        <label class="payment__method-wrapper">
+                            <input type="radio" readonly="" name="payment-methods" value="momo" checked="" /><span
+                                class="radio-fake"></span>
+                            <span class="payment__label">
+                                <div class="payment__method-desc">
+                                    <img class="method-icon" width="32"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-mo-mo.svg"
+                                        alt="momo" />
+                                    <div class="method-content">
+                                        <div class="method-content__name"><span>Thanh toán bằng ví MoMo •• 2443</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </li>
+                    <li class="payment__method">
+                        <label class="payment__method-wrapper">
+                            <input type="radio" readonly="" name="payment-methods" value="zalopay" /><span
+                                class="radio-fake"></span>
+                            <span class="payment__label">
+                                <div class="payment__method-desc">
+                                    <img class="method-icon" width="32"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-zalo-pay.svg"
+                                        alt="zalopay" />
+                                    <div class="method-content">
+                                        <div class="method-content__name"><span>Thanh toán bằng ví ZaloPay</span></div>
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </li>
+                    <li class="payment__method">
+                        <label class="payment__method-wrapper">
+                            <input type="radio" readonly="" name="payment-methods" value="pay123" /><span
+                                class="radio-fake"></span>
+                            <span class="payment__label">
+                                <div class="payment__method-desc">
+                                    <img class="method-icon" width="32"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-atm.svg"
+                                        alt="pay123" />
+                                    <div class="method-content">
+                                        <div class="method-content__name"><span>Thẻ ATM nội địa/Internet Banking (Hỗ trợ
+                                                Internet Banking)</span></div>
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </li>
+                    <li class="payment__method">
+                        <label class="payment__method-wrapper">
+                            <input type="radio" readonly="" name="payment-methods" value="cybersource" /><span
+                                class="radio-fake"></span>
+                            <span class="payment__label">
+                                <div class="payment__method-desc">
+                                    <img class="method-icon" width="32"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-credit.svg"
+                                        alt="cybersource" />
+                                    <div class="method-content">
+                                        <div class="method-content__name"><span>Thanh toán bằng thẻ quốc tế Visa,
+                                                Master, JCB</span></div>
+                                        <div class="method-content__card-list">
+                                            <img width="24"
+                                                src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-credit-type-tiki-card.svg"
+                                                alt="tikicard" />
+                                            <img width="24"
+                                                src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-credit-type-visa.svg"
+                                                alt="visa" />
+                                            <img width="24"
+                                                src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-credit-type-mastercard.svg"
+                                                alt="mastercard" />
+                                            <img width="24"
+                                                src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-credit-type-jcb.svg"
+                                                alt="jcb" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="product__item-btn">Complete Order</button>
+            <button class="product__item-btn">Return to shop</button>
         </div>
         <div class="col l-6">
-            
+            <div class="slidebar__wrap">
+                <ul class="slidebar__wrap-list">
+                    <li class="slidebar__wrap-item">
+                        <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+                        <span class="payment-product__quantity">1</span>
+                        <div class="slidebar__wrap-info">
+                            <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
 
+                        </div>
+                        <div class="slidebar__wrap-trash-and-price">
+                            <div class="slidebar__wrap-price">5</div>
+                        </div>
+                    </li>
+                    <li class="slidebar__wrap-item">
+                        <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+                        <span class="payment-product__quantity">1</span>
+                        <div class="slidebar__wrap-info">
+                            <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+                            
+                        </div>
+                        <div class="slidebar__wrap-trash-and-price">
+                            <div class="slidebar__wrap-price">5</div>
+                        </div>
+                    </li>
+                    <li class="slidebar__wrap-item">
+                        <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+                        <span class="payment-product__quantity">1</span>
+                        <div class="slidebar__wrap-info">
+                            <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+                           
+                        </div>
+                        <div class="slidebar__wrap-trash-and-price">
+                            <div class="slidebar__wrap-price">5</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="slidebar__wrap-total">
+                    <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
+                    <span class="slidebar__wrap-sub-total">15</span>
+                </div>
+                <div class="slidebar__wrap-total">
+                    <span class="slidebar__wrap-sub-total">SHIPPING</span>
+                    <span class="slidebar__wrap-sub-total">5</span>
+                </div>
+                <div class="slidebar__wrap-total">
+                    <span class="slidebar__wrap-sub-total">TOTAL</span>
+                    <span class="slidebar__wrap-sub-total">20</span>
+                </div>
+            </div>
         </div>
     </div>
-</div>
