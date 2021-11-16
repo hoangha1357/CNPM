@@ -2,8 +2,8 @@
     <form method="post" class="form" id="form-2" action="/user/login">
         <h3 class="heading">Sign In</h3>
         <p class="desc">To connect to our restaurant</p>
-        {{#if massage}}
-            <div class="alert alert-danger" role="alert">{{massage}}</div>
+        {{#if message}}
+            <div class="alert alert-danger" role="alert">{{message}}</div>
         {{/if}}
         <div class="spacer"></div>
 
@@ -24,6 +24,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div> --}}
+        <a href="/forgotpassword" class='desc'>Forgot Password?</a>
         <button class="form-submit" type="submit">Sign In</button>
     </form>
 
