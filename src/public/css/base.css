@@ -207,10 +207,7 @@ html {
   line-height: 3.6rem;
   font-weight: 800;
   color: #555;
-  margin: 20px 0 0; 
-  display: flex;
-    justify-content: center;
-}
+  margin: 20px 0 0; }
 
 /* under-line boder */
 .under-line-effect {

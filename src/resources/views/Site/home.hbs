@@ -3,133 +3,105 @@
 </div>
 
 <div class="shop grid ">
-    <span class="content__header-decs" style="color: grey; font-size: 30px">FEATURE PRODUCTS</span>
+    <span class="content__header-decs">FEATURE PRODUCTS</span>
     {{!-- COMBO --}}
     <div class="content__header">
-        <h2 class="content__header-heading">
-            {{!-- <span class="under-line-effect under-line-effect--red">COMBO</span> --}}
-            <div class="tabs">
-                <div class="tab-item active">
-                    <i class="tab-icon"></i> COMBO
-                </div>
-                <div class="tab-item">
-                    <i class="tab-icon"></i> FOOD
-                </div>
-                <div class="tab-item">
-                    <i class="tab-icon"></i> DRINK
-                </div>
-                <div class="line"></div>
-            </div>
-        </h2>
+        <h3 class="content__header-heading">
+            <span class="under-line-effect under-line-effect--red">COMBO</span>
+        </h3>
     </div>
-    <div class="tab-content">
-        <div class="tab-pane active">
-            <h2>COMBO</h2>
-            <div class="shop__wrap row feature-home">
-                {{#each dishes }}
-                {{#if (isMatch this.type_dish "Combo")}}
-                <div class="feature-item col l-4 m-12">
-                    <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
-                    <div class="product-body">
-                        <div class="product__item-heading">{{this.name}}</div>
-                        <div class="product__item-quanlity">
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                        </div>
-                        <div class="product__item-price">
-                            <span class="product__item-price-sale">${{this.price}}</span>
-                        </div>
-                        <a href="" class="product__item-btn">ADD TO CART</a>
-                        <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-                    </div>
+    <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        {{#if (isMatch this.type_dish "Combo")}}
+        <div class="feature-item col l-4 m-12">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">{{this.name}}</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
                 </div>
-                {{/if}}
-                {{else}}
-                    Không có Combo được gợi ý.
-                {{/each}}
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">${{this.price}}</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
             </div>
         </div>
-        <div class="tab-pane">
-            <h2>FOOD</h2>
-            <div class="shop__wrap row feature-home">
-                {{#each dishes }}
-                {{#if (isMatch this.type_dish "Food")}}
-                <div class="feature-item col l-4 m-12">
-                    <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
-                    <div class="product-body">
-                        <div class="product__item-heading">{{this.name}}</div>
-                        <div class="product__item-quanlity">
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                        </div>
-                        <div class="product__item-price">
-                            <span class="product__item-price-sale">${{this.price}}</span>
-                        </div>
-                        <a href="" class="product__item-btn">ADD TO CART</a>
-                        <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-                    </div>
-                </div>
-                {{/if}}
-                {{else}}
-                    Không có món ăn được gợi ý.
-                {{/each}}
-            </div>
-        </div>
-        <div class="tab-pane">
-            <h2>DRINK</h2>
-            <div class="shop__wrap row feature-home">
-                {{#each dishes }}
-                {{#if (isMatch this.type_dish "Drink")}}
-                <div class="feature-item col l-4 m-12">
-                    <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
-                    <div class="product-body">
-                        <div class="product__item-heading">{{this.name}}</div>
-                        <div class="product__item-quanlity">
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                            <i class="product__item-icon fas fa-star"></i>
-                        </div>
-                        <div class="product__item-price">
-                            <span class="product__item-price-sale">${{this.price}}</span>
-                        </div>
-                        <a href="" class="product__item-btn">ADD TO CART</a>
-                        <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-                    </div>
-                </div>
-                {{/if}}
-                {{else}}
-                    Không có đồ uống được gợi ý.
-                {{/each}}
-            </div>
-        </div>
+        {{/if}}
+        {{else}}
+            Không có Combo được gợi ý.
+        {{/each}}
     </div>
-    
     {{!-- FOOD --}}
-    {{!-- <div class="content__header">
+    <div class="content__header">
         <h3 class="content__header-heading">
             <span class="under-line-effect under-line-effect--red">FOOD</span>
         </h3>
-    </div> --}}
-    
+    </div>
+    <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        {{#if (isMatch this.type_dish "Food")}}
+        <div class="feature-item col l-4 m-12">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">{{this.name}}</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">${{this.price}}</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        {{/if}}
+        {{else}}
+            Không có món ăn được gợi ý.
+        {{/each}}
+    </div>
 {{!-- DRINK --}}
-    {{!-- <div class="content__header">
+    <div class="content__header">
         <h3 class="content__header-heading">
             <span class="under-line-effect under-line-effect--red">DRINK</span>
         </h3>
-    </div> --}}
-    
+    </div>
+    <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        {{#if (isMatch this.type_dish "Drink")}}
+        <div class="feature-item col l-4 m-12">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">{{this.name}}</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">${{this.price}}</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        {{/if}}
+        {{else}}
+            Không có đồ uống được gợi ý.
+        {{/each}}
+    </div>
 
 </div>
-
-<script src="/javascripts/tabUI.js"></script>
 
 {{!-- MODAL/ITEM FEATURES --}}
 <div class="modal">

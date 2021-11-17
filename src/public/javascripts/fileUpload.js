@@ -10,5 +10,4 @@ FilePond.setOptions({
     imageResizeTargetWidth: 50,
 });
 
-  
 FilePond.parse(document.body);
