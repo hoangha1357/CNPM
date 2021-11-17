@@ -155,6 +155,7 @@ a:hover {
     line-height: 2.5rem;
     color: #555;
     margin: 10px 0;
+    
 }
 
 .slidebar__wrap-list {
@@ -287,7 +288,7 @@ a:hover {
 
 .header__logo-img {
     filter: drop-shadow( -1px 2px 2px rgba(0, 0, 0, 1));
-    width: 70px;
+    width: 100px;
     position: relative;
     display: block;
 }
@@ -475,6 +476,7 @@ a:hover {
 .header-content__heading {
     text-align: center;
     line-height: 5rem;
+    
 }
 
 .header-content__heading-title {
@@ -1546,7 +1548,6 @@ label.modal-label {
 .tabs {
     position: relative;
     display: flex;
-    margin-left: 41.5%;
 }
 
 .categories {
