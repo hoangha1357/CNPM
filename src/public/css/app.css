@@ -1544,9 +1544,9 @@ label.modal-label {
 /* TAB */
 
 .tabs {
-    margin-left: 37%;
     position: relative;
     display: flex;
+    margin-left: 41.5%;
 }
 
 .categories {
