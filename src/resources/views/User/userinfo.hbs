@@ -4,37 +4,47 @@
     </h3>
 </div>
 
+
 <div class="grid" style="padding-left: 120px;"> 
     <div class="row">
         <div class="col l-6">
             <div class="pl-40 testing">
-                <label class="info__label" for="Name">Profile Picture</label>
-                <div id="profile-container">
-                    <div class="profileImage_change"><i class="far fa-edit"></i>Change your Avatar</div>
-                    <div class="profileImage__wrap">
-                        <image id="profileImage" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
-                    </div>
-                </div>
-                <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
+                <form method="POST" action="/user/updateinfo/{{user._id}}?_method=PUT">
+                    <label class="info__label" for="Name">Profile Picture</label>
+                    <div id="profile-container">
+                        <div class="profileImage_change"><i class="far fa-edit"></i>Change your Avatar</div>
+                        <div class="profileImage__wrap">
+                            {{#if user.image}}
+                            <image id="profileImage" src="{{imageload user.image  user.imageType}}" />
+                            {{else}}
+                            <image id="profileImage" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                            {{/if}}
+                        </div>
+                    </div> 
+                    <input id="imageUpload" type="file" name="image" placeholder="Photo" required="" capture>
+                    {{!-- <input type="file" class="filepond" name="image" > --}}
+                    <button type="submit" class="btn btn-primary">Submit</button>   
+                </form>
             </div>
         </div>
         <div class="col l-6">
             <div class="user__info pl-40">
-                <form>
-                    <label class="info__label" for="Name">Name</label><input class="info__value" type="text" name="Name"
-                        readonly value={{user.name}}></input>
+                <form method="POST" action="/user/updateinfo/{{user._id}}?_method=PUT">
+                    <label class="info__label" for="Name">Name</label><input class="info__value" type="text" name="name"
+                        readonly value='{{user.name}}'></input>
 
                     <label class="info__label" for="Address">Address</label><input class="info__value" type="text"
-                        name="Address" readonly value={{user.address}}></input>
+                        name="address" readonly value="{{user.address}}"></input>
 
                     <label class="info__label" for="Email">Email</label><input class="info__value" type="email"
-                        name="Email" readonly value={{user.email}}></input>
+                        name="email" readonly value={{user.email}}></input>
 
                     <input type="button" value="Edit profile" class="btn-large featured-product__btn mb-40 btn-red"
                         style="cursor: pointer; width: 150px"></input>
+                    <button type="submit" class="btn btn-primary">Submit</button>    
                 </form>
             </div>
-
         </div>
     </div>
 </div>
+     

@@ -3,7 +3,7 @@ const { mutiMongoosetoObject } = require('../../util/subfuntion');
 
 class BookTableController {
     booktable(req, res, next) {
-        res.render('Site/book_table');
+        res.render('Site/book_table', { user: req.user});
     }
     // [POST] /booktable/thankyou
   store(req, res, next) {
