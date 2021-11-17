@@ -1876,7 +1876,14 @@ label.modal-label {
     margin-bottom: 8px;
 }
 
-
+.info__image{
+    display: block;
+    width: 60%;
+    height: 80px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
 /*  */
 
 
