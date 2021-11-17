@@ -1,20 +1,33 @@
 const Table = require('../models/Table');
-const { mutiMongoosetoObject } = require('../../util/subfuntion');
+const Userid = require('../models/Userid');
+const { mutiMongoosetoObject, MongoosetoObject } = require('../../util/subfuntion');
 
 class BookTableController {
     booktable(req, res, next) {
-        res.render('Site/book_table', { user: req.user});
+        // res.render('Site/book_table');
+        Table.findById(req.params.id)
+            .then((table) => 
+                res.render('Site/book_table', {table: MongoosetoObject(table)})
+            )
+            .catch(next);
     }
-    // [POST] /booktable/thankyou
-  store(req, res, next) {
-      const formData = req.body;
-      const table = new Table(formData);
-      course.save()
-        .then(() => res.redirect('/booktable'))
-        .catch(error => {
+    
+    // [GET] /booktable/reservated
+    reservated(req, res, next) {
+        res.render('Site/book_table_reservated');
+    }
 
-        });
-  }
+    // [POST] /booktable/thankyou
+    thankyou(req, res, next) {
+        const formData = req.body;
+        const table = new Table(formData);
+        table.save()
+          .then(() => res.render('Site/book_table_thankyou'))
+          .catch(error => {
+            
+          });
+        // res.json(req.body);
+    }
 }
 
 
