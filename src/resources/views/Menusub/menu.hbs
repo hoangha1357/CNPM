@@ -1,49 +1,156 @@
 <div class="grid" style="margin-top: 100px">
     <div class="row">
-        <div class="category col l-3">
+        <div class="category col l-2">
             <div class="category-wrap">
-                <h1 class="category-title">CATEGORY</h1>
-                <a href="?category=Combo" class="category-item">COMBO</a>
+                <h1 class="category-title" style="color: grey; font-size: 30px; text-align: center">CATEGORY</h1>
+                {{!-- <a href="?category=Combo" class="category-item">COMBO</a>
                 <a href="?category=Food" class="category-item">FOOD</a>
-                <a href="?category=Drink" class="category-item">DRINK</a>
+                <a href="?category=Drink" class="category-item">DRINK</a> --}}
+                <div class='categories'>
+                    <div class="tab-item active">COMBO</div>
+                    <div class="tab-item">FOOD</div>
+                    <div class="tab-item">DRINK</div>
+                    <div class="line"></div>
+                </div>            
             </div>
         </div>
         <div class="col l-9">
             <div class="grid">
                 {{!-- COMBO --}}
-                <div class="content__header">
-                    <h3 class="content__header-heading">
-                        <span class="under-line-effect under-line-effect--red">{{category}}</span>
-                    </h3>
-                </div>
-                   <div class="shop__wrap row feature-home">
-                        {{#each dishes }}
-                        <div class="feature-item col l-4 m-12">
-                            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
-                            <div class="product-body">
-                                <div class="product__item-heading">{{this.name}}</div>
-                                <div class="product__item-quanlity">
-                                    <i class="product__item-icon fas fa-star"></i>
-                                    <i class="product__item-icon fas fa-star"></i>
-                                    <i class="product__item-icon fas fa-star"></i>
-                                    <i class="product__item-icon fas fa-star"></i>
-                                    <i class="product__item-icon fas fa-star"></i>
-                                </div>
-                                <div class="product__item-price">
-                                    <span class="product__item-price-sale">${{this.price}}</span>
-                                </div>
-                                <a href="" class="product__item-btn">ADD TO CART</a>
-                                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
-                            </div>
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <div class="content__header">
+                            <h3 class="content__header-heading">
+                                <span class="under-line-effect under-line-effect--red">{{category}}</span>
+                            </h3>
                         </div>
-                        {{else}}
-                            Chưa có món ăn được thêm.
-                        {{/each}}
+                        <div class="shop__wrap row feature-home">
+                                {{#each dishes }}
+                                <div class="feature-item col l-4 m-12">
+                                    <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+                                    <div class="product-body">
+                                        <div class="product__item-heading">{{this.name}}</div>
+                                        <div class="product__item-quanlity">
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                        </div>
+                                        <div class="product__item-price">
+                                            <span class="product__item-price-sale">${{this.price}}</span>
+                                        </div>
+                                        <a href="" class="product__item-btn">ADD TO CART</a>
+                                        <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+                                    </div>
+                                </div>
+                                {{else}}
+                                    Chưa có món ăn được thêm.
+                                {{/each}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane">
+                        <div class="content__header">
+                            <h3 class="content__header-heading">
+                                <span class="under-line-effect under-line-effect--red">{{category}}</span>
+                            </h3>
+                        </div>
+                        <div class="shop__wrap row feature-home">
+                                {{#each dishes }}
+                                <div class="feature-item col l-4 m-12">
+                                    <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+                                    <div class="product-body">
+                                        <div class="product__item-heading">{{this.name}}</div>
+                                        <div class="product__item-quanlity">
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                        </div>
+                                        <div class="product__item-price">
+                                            <span class="product__item-price-sale">${{this.price}}</span>
+                                        </div>
+                                        <a href="" class="product__item-btn">ADD TO CART</a>
+                                        <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+                                    </div>
+                                </div>
+                                {{else}}
+                                    Chưa có món ăn được thêm.
+                                {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane">
+                        <div class="content__header">
+                            <h3 class="content__header-heading">
+                                <span class="under-line-effect under-line-effect--red">{{category}}</span>
+                            </h3>
+                        </div>
+                        <div class="shop__wrap row feature-home">
+                                {{#each dishes }}
+                                <div class="feature-item col l-4 m-12">
+                                    <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+                                    <div class="product-body">
+                                        <div class="product__item-heading">{{this.name}}</div>
+                                        <div class="product__item-quanlity">
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                            <i class="product__item-icon fas fa-star"></i>
+                                        </div>
+                                        <div class="product__item-price">
+                                            <span class="product__item-price-sale">${{this.price}}</span>
+                                        </div>
+                                        <a href="" class="product__item-btn">ADD TO CART</a>
+                                        <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+                                    </div>
+                                </div>
+                                {{else}}
+                                    Chưa có món ăn được thêm.
+                                {{/each}}
+                        </div>
+                    </div>
                 </div>
             </div>
             {{{paging count page}}}
         </div>
     </div>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        const tabs = $$(".tab-item");
+        const panes = $$(".tab-pane");
+
+        const tabActive = $(".tab-item.active");
+        const line = $(".categories .line");
+
+        //console.log(tabActive);
+
+        line.style.left = tabActive.offsetLeft + "px";
+        line.style.h = tabActive.offsetHeight + "px";
+
+        tabs.forEach((tab, index) => {
+            const pane = panes[index];
+
+            tab.onclick = function() {
+                $(".tab-item.active").classList.remove("active");
+                $(".tab-pane.active").classList.remove("active");
+
+                line.style.left = this.offsetLeft + "px";
+                line.style.h = this.offsetHeight + "px";
+
+                this.classList.add("active");
+                pane.classList.add("active");
+            };
+        });
+    </script>
 </div>
 
 {{!-- MODAL/ITEM FEATURES --}}
