@@ -95,6 +95,12 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner_disable.png" alt="">
+                    </div>
+                    <div class="col l-4 table-wrapper">
+                        <img class="table-img" src="./image/dinner.png" alt="">
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -119,7 +125,7 @@
     var table = document.querySelectorAll('img');
     //console.log(table);
     var table_temporary = [];
-    for (var i = 0; i < table.length; i++) {
+    for (var i = 1; i < table.length; i++) {
             table[i].onclick = function (e){
                 //console.log(e.target.src);
                 if(e.target.src === "http://localhost:3000/image/dinner_disable.png"){
@@ -146,4 +152,13 @@
         }
         alert('You have successfully booked your table!');
     }
+
+
+    var id_table = [];
+    for (var i = 1; i < table.length; i++) {
+        table[i].id = i;
+        //console.log(table[i].id);
+        id_table.push(table[i].id);
+    }
+    //console.log(id_table);
 </script>
