@@ -2,10 +2,7 @@ const Dish = require('../models/Dish');
 const User = require('../models/Userid');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {
-    mutiMongoosetoObject,
-    MongoosetoObject,
-} = require('../../util/subfuntion');
+const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
 
 class UserController {
     index(req, res) {
@@ -15,57 +12,29 @@ class UserController {
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
-        res.render('user/cart')
+        res.render('user/cart',{user: req.user})
     }
 
     // [GET] /user/ordered
     payment(req, res, next) {
-        res.render('user/onlPayment')
+        res.render('user/onlPayment',{user: req.user})
     }
 
-    // [GET] /user/viewrevenue
-    viewrevenue(req, res, next) {
-        if (!req.query.page) req.query.page = 1;
-        // res.json(req.session.email);
-        Promise.all([
-            Dish.find({})
-                .limit(6)
-                .skip((req.query.page - 1) * 6)
-                .sortable(req),
-            Dish.countDocumentsDeleted(),
-            Dish.countDocuments(),
-        ])
-            .then(([dishes, deletedCount, count]) => {
-                res.render('user/viewrevenue', {
-                    dishes: mutiMongoosetoObject(dishes),
-                    page: req.query.page,
-                    user: req.user,
-                    count,
-                    deletedCount,
-                });
-            })
-            .catch(next);
-    }
-
-    // [GET] /user/trash
-    trash(req, res, next) {
-        Dish.findDeleted({})
-            .then((dishes) => {
-                res.render('user/trash', {
-                    dishes: mutiMongoosetoObject(dishes),
-                });
-            })
-            .catch(next);
-    }
     // [POST] /user/updateImage
     updateImage(req, res, next) {
-        modifyRequestImage(req);
-        User.updateOne(
-            { _id: req.params.id },
-            { $set: { image: req.body.image, imageType: req.body.imageType } },
-        )
-            .then(() => res.redirect('/'))
-            .catch(next);
+        // res.json(req.body);
+        if(req.body.image) {
+            // res.json(req.body);
+            modifyRequestImage(req);
+            User.updateOne({_id: req.params.id },{$set:{image: req.body.image, imageType: req.body.imageType}})
+                .then(() => res.redirect('back'))
+                .catch(next);
+        }
+        if (req.body.name){
+            User.updateOne({ _id: req.params.id },{ $set: { name: req.body.name, address: req.body.address } })
+                .then(() => res.redirect('back'))
+                .catch(next);
+        }
     }
 
     // [POST] /user/register
@@ -73,20 +42,18 @@ class UserController {
         User.findOne({ email: req.body.email })
             .then((user) => {
                 if (user) {
-                    res.render('register', {
+                    res.render('Site/register', {
                         resinfo: req.body,
-                        massage: 'User existed',
+                        message: 'User existed',
                     });
-                } else if (req.body.password != req.body.cfpassword) {
-                    res.render('register', {
+                } 
+                else if (req.body.password != req.body.cfpassword) {
+                    res.render('Site/register', {
                         resinfo: req.body,
-                        massage: 'Password not match',
+                        message: 'Password not match',
                     });
                 } else {
-                    bcryt.hash(
-                        req.body.password,
-                        10,
-                        function (err, hashedPass) {
+                    bcryt.hash(req.body.password,10,function (err, hashedPass) {
                             if (err) return res.json(err);
                             let newuser = new User({
                                 email: req.body.email,
@@ -114,25 +81,22 @@ class UserController {
             .then((user) => {
                 if (!user)
                     return res.render('site/loginpage', {
-                        massage: 'Wrong user or password',
+                        message: 'Wrong user or password',
                     });
                 const email = user.email;
                 bcryt.compare(req.body.password, user.password)
                     .then((result) => {
                         if (!result)
                             return res.render('site/loginpage', {
-                                massage: 'Wrong user or password',
+                                message: 'Wrong user or password',
                                 name: req.body.email,
                             });
-                        const token = jwt.sign(
-                            { username: email },
-                            process.env.ACCESS_TOKEN_SECRET,
-                        );
+                        const token = jwt.sign({ username: email },process.env.ACCESS_TOKEN_SECRET,);
                         req.headers.authorization = 'Bearer ' + token;
                         next();
                     })
                     .catch((error) => {
-                        res.send({ massage: error });
+                        res.send({ message: error });
                     });
             })
             .catch(next);
@@ -149,6 +113,55 @@ class UserController {
                 }
             });
         }
+    }
+
+    // [GET] /user/resetpassword/:id/:token
+    resetPassword(req, res, next) {
+        const {id, token} = req.params
+        User.findOne({_id: id})
+            .then(user =>{
+                user = user.toObject();
+                if(!user){
+                    res.send('invalid id or token');
+                    return
+                }
+                const secret = process.env.ACCESS_TOKEN_SECRET + user.password;
+                try {
+                    const payload = jwt.verify(token,secret);
+                    res.render('user/resetUserPassword',{email: user.email, id: id, token})
+                }catch(err){
+                    res.send(err.message);
+                }
+            })
+            .catch(err => {res.send(err.message)});
+    }
+
+    updatePassword(req, res, next){
+        const {id, token} = req.params
+        User.findOne({_id: id})
+            .then(user =>{
+                user = user.toObject();
+                if(!user){
+                    res.send('invalid id or token');
+                    return
+                }
+                const secret = process.env.ACCESS_TOKEN_SECRET + user.password;
+                try {
+                    const payload = jwt.verify(token,secret);
+                    bcryt.hash(req.body.password,10,function (err, hashedPass) {
+                        if (err){ 
+                            res.json(err) 
+                            return 
+                        };
+                        User.updateOne({ _id: id}, {$set: {password: hashedPass}})
+                            .then(() => res.redirect('/loginpage'))
+                            .catch(err =>{res.json(err.message)});
+                    })
+                }catch(err){
+                    res.send(err.message);
+                }
+            })
+            .catch(err => {res.send(err.message)});
     }
 }
 
