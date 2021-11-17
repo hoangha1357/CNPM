@@ -1362,7 +1362,7 @@ label.modal-label {
   padding-top: 50px;
   padding-left: 20px;
   padding-right: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 
@@ -1385,10 +1385,11 @@ label.modal-label {
 }
 
 .table-location {
-  background-color: #f0f0f0;
-  border: 2px dashed red;
+  background-color: #FFFFFF;
+  border: 5px dashed rgb(155, 15, 15);
   padding-bottom: 16px;
-  border-radius: 10px;
+  border-radius: 50px;
+  margin: 16px auto 16px auto;
 }
 
 .table__header-heading {
@@ -1404,9 +1405,10 @@ label.modal-label {
   height: 40px;
   margin-bottom: 20px;
   margin-top: 10px;
-  border: none;
-  background-color: #f0f0f0;
+  /* border: none; */
+  background-color: #fff;
   border-radius: 3px;
+  border-style:solid;
   text-align: center;
   font-size: 1.8rem;
   font-family: 'Asap', sans-serif;
@@ -1417,7 +1419,6 @@ label.modal-label {
 }
 .table-reservation {
   font-size:30px;
-  
 }
 
 .btn-group-all {
@@ -1430,13 +1431,13 @@ label.modal-label {
 }
 
 .table-img-background {
-  height:80px;
-  width:80px;
+  height:150px;
+  width:150px;
   /* background-color: #9ACD32; */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 30px;
   border: 2px solid #B22222;
   border-radius: 3px;
 }
@@ -1530,4 +1531,23 @@ label.modal-label {
 #content {
   margin-top: 80px;
   margin-bottom: 80px;
+}
+
+.booktable-banner {
+  color: rgb(155, 15, 15);
+  font-size:40px;
+  display:flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  font-weight:700;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.under-line-effect-2 {
+  color: rgb(155, 15, 15);
+  position: relative;
+  display:flex;
+  justify-content: flex-start;
+  z-index: 0 !important; 
+  font-family:'Courier New', Courier, monospace;
 }

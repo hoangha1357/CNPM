@@ -5,7 +5,7 @@ const Table = new Schema(
     {
         email: { type: String},
         name: { type: String, maxlength: 100},
-        address: { type: String },
+        phone: { type: String },
         numofguests: { type: Number},
         time: { type: String},
         date: { type: String},
