@@ -22,6 +22,7 @@
                 
                 <button class="btn-large featured-product__btn mb-40 btn-red" type="submit" href="">BOOK NOW</button>
             </div>
+            {{!-- <button class="btn btn-dark btn-sm check-all-submit-btn" disabled>Thực hiện</button> --}}
             <div class="col l-7 table-location mb-40">
                 <div class="content__header">
                     <h3 class="content__header-heading">
@@ -31,9 +32,8 @@
                 <div class="grid">
                     <div class="row">
                         <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <img class="table-img" id="img-1" src="./image/dinner.png" alt="">
-                            </div>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+                            <img class="form-check-label table-img" for="checkbox-all" src="./image/dinner.png" alt="">
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
@@ -138,4 +138,13 @@
         console.log(table[i].id);
         id_table.push(table[i].id);
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var tableImage1 = $('.table-img-1');
+        var checkAllSubmitBtn = $('.check-all-submit-btn');
+        var checkBoxAll = $('#checkbox-all');
+        console.log(checkBoxAll);
+    
+    });
+
 </script>

@@ -26,6 +26,7 @@ class BookTableController {
           .catch(error => {
             
           });
+        // res.json(req.body);
     }
 }
 

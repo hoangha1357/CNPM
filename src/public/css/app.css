@@ -1369,6 +1369,7 @@ label.modal-label {
 .table-wrapper {
   /* text-align: center; */
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
