@@ -28,7 +28,7 @@ class SiteController {
                     });
                 })    
         }
-        
+        res.render('Site/search', { user: req.user});
         
     }
 

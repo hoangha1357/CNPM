@@ -21,6 +21,7 @@ class UserController {
             return res.render('user/cart', {dishes: null});
         }
         var cart = new Cart(req.session.cart);
+        // if(cart) res.json(cart);
         res.render('user/cart',{
             user: req.user,
             dishes: cart.generateArray(),
@@ -35,10 +36,10 @@ class UserController {
     }
     addToCart(req, res, next){
         var cart = new Cart(req.session.cart ? req.session.cart : {});
-
+        
         Dish.findById(req.body.id)
             .then((dish) => {
-                cart.add(dish, dish._id);
+                cart.add(MongoosetoObject(dish), dish._id);
                 req.session.cart = cart;
                 console.log(req.session.cart,);
                 res.redirect('back'); 

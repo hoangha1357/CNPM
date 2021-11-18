@@ -25,6 +25,9 @@ module.exports = {
     imageload: (image, type) => {
         return 'data:' + type + ';charset=uft-8;base64,' + image.toString('base64');
     },
+    imageload2: (image, type) => {
+        return 'data:' + type + ';charset=uft-8;base64,' + image.data.toString('base64');
+    },
     paging: (count, currentpage) => {
         const limit = 6;
         const page = Math.ceil(count / limit);
