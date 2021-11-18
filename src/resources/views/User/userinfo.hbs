@@ -9,10 +9,10 @@
     <div class="row">
         <div class="col l-6">
             <div class="pl-40 testing">
-                <form method="POST" action="/user/updateinfo/{{user._id}}?_method=PUT">
+                {{!-- <form method="POST" action="/user/updateinfo/{{user._id}}?_method=PUT"> --}}
                     <label class="info__label" for="Name">Profile Picture</label>
                     <div id="profile-container">
-                        <div class="profileImage_change"><i class="far fa-edit"></i>Change your Avatar</div>
+                        {{!-- <div class="profileImage_change"><i class="far fa-edit"></i>Change your Avatar</div> --}}
                         <div class="profileImage__wrap">
                             {{#if user.image}}
                             <image id="profileImage" src="{{imageload user.image  user.imageType}}" />
@@ -21,9 +21,9 @@
                             {{/if}}
                         </div>
                     </div> 
-                    <input id="imageUpload" type="file" name="image" placeholder="Photo" required="" capture>
+                    {{!-- <input id="imageUpload" type="file" name="image" required="" capture> --}}
                     {{!-- <input type="file" class="filepond" name="image" > --}}
-                    <button type="submit" class="btn btn-primary">Submit</button>   
+                    {{!-- <button type="submit" class="btn btn-primary">Submit</button>    --}}
                 </form>
             </div>
         </div>
@@ -38,9 +38,11 @@
 
                     <label class="info__label" for="Email">Email</label><span class="info__value" type="email"
                         name="email" readonly >{{user.email}}</span>
-
+                    <label class="info__label" for="image">Change image</label>
+                    <input type="file" class="filepond info__image" name="image" >
                     <input type="button" value="Edit profile" class="btn-large featured-product__btn mb-40 btn-red"
                         style="cursor: pointer; width: 150px"></input>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>    
                 </form>
             </div>

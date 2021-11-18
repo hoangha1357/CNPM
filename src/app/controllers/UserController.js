@@ -2,7 +2,10 @@ const Dish = require('../models/Dish');
 const User = require('../models/Userid');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
+
+
 
 class UserController {
     index(req, res) {
@@ -22,15 +25,15 @@ class UserController {
 
     // [POST] /user/updateImage
     updateImage(req, res, next) {
-        // res.json(req.body);
+
         if(req.body.image) {
             // res.json(req.body);
             modifyRequestImage(req);
-            User.updateOne({_id: req.params.id },{$set:{image: req.body.image, imageType: req.body.imageType}})
+            User.updateOne({_id: req.params.id },{$set:{image: req.body.image, imageType: req.body.imageType, name: req.body.name, address: req.body.address}})
                 .then(() => res.redirect('back'))
                 .catch(next);
         }
-        if (req.body.name){
+        else if (req.body.name){
             User.updateOne({ _id: req.params.id },{ $set: { name: req.body.name, address: req.body.address } })
                 .then(() => res.redirect('back'))
                 .catch(next);
@@ -136,6 +139,7 @@ class UserController {
             .catch(err => {res.send(err.message)});
     }
 
+    // [PUT] /user/updatepassword/:id/:token
     updatePassword(req, res, next){
         const {id, token} = req.params
         User.findOne({_id: id})
