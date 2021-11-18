@@ -16,8 +16,16 @@ class SiteController {
             .catch(next);
     }
 
-    search(req, res) {
-        res.render('Site/home1', { user: req.user });
+    search(req, res, next) {
+        const searchFied = req.query.foodname;
+        Dish.find({name:{$regex: searchFied, $options: '$i'}})
+            .then((dishes) => {
+                res.render('Site/search', { 
+                    user: req.user,
+                    dishes: mutiMongoosetoObject(dishes),
+                });
+            })
+        
     }
 
     loginpage(req, res, next) {
