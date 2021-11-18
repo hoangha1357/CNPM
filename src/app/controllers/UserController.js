@@ -24,7 +24,7 @@ class UserController {
         // if(cart) res.json(cart);
         res.render('user/cart',{
             user: req.user,
-            dishes: cart.generateArray(),
+            cartdishes: cart.generateArray(),
             totalPrice: cart.totalPrice,
             totalQty: cart.totalQty
         })

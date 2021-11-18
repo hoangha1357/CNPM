@@ -10,7 +10,7 @@ class MenuController {
         if(!req.query.page) req.query.page = 1;
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
-                res.render('Menusub/menu', { 
+                res.render('Menusub/menu', {
                     dishes: mutiMongoosetoObject(dishes),
                     page: req.query.page,
                     user: req.user,

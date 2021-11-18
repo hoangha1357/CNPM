@@ -1,6 +1,6 @@
 <div id="content" class="col-sm-12">
       <h1 class="under-line-effect under-line-effect--red" style="text-align: center; color: grey">SHOPPING CART</h1>
-{{#if dishes}}
+{{#if cartdishes}}
       <form method="post">
         <div class="table-responsive table-checkout-cart">
           <table class="table table-bordered">
@@ -18,7 +18,7 @@
               
               <!- Loop qua cac dish >
 
-              {{#each dishes }}
+              {{#each cartdishes }}
               
               <tr data-line="1">
                 <td class="text-center btn-remove-product">
