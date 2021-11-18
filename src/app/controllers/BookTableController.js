@@ -43,7 +43,8 @@ class BookTableController {
             numofguests: req.body.numofguests,
             time: req.body.time,
             date: req.body.date,
-            tableID: req.body.tableID
+            tableID: req.body.tableID,
+            reservated: 1
           });
         newtable.save() 
             .then(() => res.render('Site/book_table_thankyou', {
