@@ -8,7 +8,8 @@ const Table = new Schema(
         numofguests: { type: Number},
         time: { type: String},
         date: { type: String},
-        tableID: { type: Number},
+        tableID: { type: String, default: ''},
+        reservated: {type: Number, default: 0},
     },
     { 
         timestamps: true,
