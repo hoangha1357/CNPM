@@ -3,6 +3,7 @@ const route = express.Router();
 
 const BookTableController = require('../app/controllers/BookTableController');
 
+route.post('/choosetable',BookTableController.choosetable);
 route.post('/thankyou', BookTableController.thankyou);
 route.get('/reservated', BookTableController.reservated);
 route.get('/', BookTableController.booktable);

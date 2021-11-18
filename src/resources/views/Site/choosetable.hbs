@@ -1,29 +1,9 @@
 <form method="POST" action="/booktable/thankyou">
+    <img class="table-img" src="./image/dinner.png" alt="">
     <div class="grid table-reservation">
         <div class="row">
-            <div class="col l-5 table-date-time">
-                <label for="name" class="table__header-heading under-line-effect">Name</label>
-                <input type="text" class="table__input" id="name" name="name">
-                
-                <label for="email" class="table__header-heading under-line-effect">Email</label>
-                <input type="text" class="table__input" id="email" name="email">
-
-                <label for="phone" class="table__header-heading under-line-effect">Phone</label>
-                <input type="phone" class="table__input" id="phone" name="phone">
-                
-                <label for="date" class="table__header-heading under-line-effect">Date</label>
-                <input type="Date" class="table__input" id="date" name="date">
-
-                <label for="time" class="table__header-heading under-line-effect">Time</label>
-                <input class="table__input" id="time" name="time" type="time" >
-
-                <label for="numofguests" class="table__header-heading under-line-effect">Num of Guests</label>
-                <input class="table__input" id="numofguests" name="numofguests" type="numofguests">
-                
-                <button class="btn-large featured-product__btn mb-40 btn-red" type="submit" href="">BOOK NOW</button>
-            </div>
             {{!-- <button class="btn btn-dark btn-sm check-all-submit-btn" disabled>Thực hiện</button> --}}
-            {{!-- <div class="col l-7 table-location mb-40">
+            <div class="col l-7 table-location mb-40">
                 <div class="content__header">
                     <h3 class="content__header-heading">
                         <span class="under-line-effect under-line-effect--red">BOOK YOUR TABLE</span>
@@ -81,13 +61,13 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </form>
 
 
-<script>
+{{!-- <script>
     //document.addEventListener('changeTable', function () {
     //    var table = document.getElementById('table1');
     //    console.log(table);
@@ -147,4 +127,4 @@
     
     });
 
-</script>
+</script> --}}
