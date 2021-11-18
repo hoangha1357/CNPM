@@ -17,32 +17,13 @@ module.exports = {
             desc: 'asc',
         };
         var href;
-        if (page)
-            href = Handlebars.escapeExpression(
-                '?_sort&column=' +
-                    field +
-                    '&type=' +
-                    types[sortType] +
-                    '&page=' +
-                    page +
-                    '',
-            );
-        else
-            href = Handlebars.escapeExpression(
-                '?_sort&column=' + field + '&type=' + types[sortType] + '',
-            );
-        const result =
-            '<a href="' +
-            href +
-            '"><span class="' +
-            icons[sortType] +
-            '"></span></a>';
+        if (page) href = Handlebars.escapeExpression('?_sort&column=' + field + '&type=' + types[sortType] + '&page=' + page + '' );
+        else href = Handlebars.escapeExpression('?_sort&column=' + field + '&type=' + types[sortType] + '');
+        const result = '<a href="' + href +'"><span class="' +icons[sortType] +'"></span></a>';
         return result;
     },
     imageload: (image, type) => {
-        return (
-            'data:' + type + ';charset=uft-8;base64,' + image.toString('base64')
-        );
+        return 'data:' + type + ';charset=uft-8;base64,' + image.toString('base64');
     },
     paging: (count, currentpage) => {
         const limit = 6;
@@ -50,26 +31,12 @@ module.exports = {
         var result =
             '<div class=""> <nav aria-label="Page navigation example "> <ul class="pagination justify-content-center">';
         if (currentpage > 1)
-            result +=
-                '<li class="page-item"><a class="page-link" href="?page=' +
-                (currentpage - 1) +
-                '">Previous</a></li>';
+            result += '<li class="page-item"><a class="page-link" href="?page='+(currentpage - 1)+'">Previous</a></li>';
         for (i = currentpage; i <= page; i++) {
-            result +=
-                '<li class="page-item"><a class="page-link" href="?page=' +
-                i +
-                '">' +
-                i +
-                '</a></li>';
+            result +='<li class="page-item"><a class="page-link" href="?page=' +i +'">' + i +'</a></li>';
         }
         if (currentpage < page)
-            result +=
-                '<li class="page-item"><a class="page-link" href="?page=' +
-                ++currentpage +
-                '">Next</a></li>';
-        // =1
-        // <li class="page-item"><a class="page-link" href="?page=2">1</a></li>
-        // <li class="page-item"><a class="page-link" href="?page=3">Next</a></li>
+            result +='<li class="page-item"><a class="page-link" href="?page=' +(++currentpage) + '">Next</a></li>';
         result + '</ul></nav></div>';
 
         return result;

@@ -2,10 +2,10 @@ const Dish = require('../models/Dish');
 const User = require('../models/Userid');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {
-    mutiMongoosetoObject,
-    MongoosetoObject,
-} = require('../../util/subfuntion');
+
+const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
+
+
 
 class UserController {
     index(req, res) {
@@ -59,13 +59,20 @@ class UserController {
     }
     // [POST] /user/updateImage
     updateImage(req, res, next) {
-        modifyRequestImage(req);
-        User.updateOne(
-            { _id: req.params.id },
-            { $set: { image: req.body.image, imageType: req.body.imageType } },
-        )
-            .then(() => res.redirect('/'))
-            .catch(next);
+        
+        if(req.body.image) {
+        //     // res.json(req.body);
+            modifyRequestImage(req);
+            // res.json(req.body.imageType);
+            User.updateOne({_id: req.params.id },{$set:{image: req.body.image, imageType: req.body.imageType, name: req.body.name, address: req.body.address}})
+                .then(() => res.redirect('back'))
+                .catch(next);
+        }
+        else if (req.body.name){
+            User.updateOne({ _id: req.params.id },{ $set: { name: req.body.name, address: req.body.address } })
+                .then(() => res.redirect('back'))
+                .catch(next);
+        }
     }
 
     // [POST] /user/register
@@ -149,6 +156,56 @@ class UserController {
                 }
             });
         }
+    }
+
+    // [GET] /user/resetpassword/:id/:token
+    resetPassword(req, res, next) {
+        const {id, token} = req.params
+        User.findOne({_id: id})
+            .then(user =>{
+                user = user.toObject();
+                if(!user){
+                    res.send('invalid id or token');
+                    return
+                }
+                const secret = process.env.ACCESS_TOKEN_SECRET + user.password;
+                try {
+                    const payload = jwt.verify(token,secret);
+                    res.render('user/resetUserPassword',{email: user.email, id: id, token})
+                }catch(err){
+                    res.send(err.message);
+                }
+            })
+            .catch(err => {res.send(err.message)});
+    }
+
+    // [PUT] /user/updatepassword/:id/:token
+    updatePassword(req, res, next){
+        const {id, token} = req.params
+        User.findOne({_id: id})
+            .then(user =>{
+                user = user.toObject();
+                if(!user){
+                    res.send('invalid id or token');
+                    return
+                }
+                const secret = process.env.ACCESS_TOKEN_SECRET + user.password;
+                try {
+                    const payload = jwt.verify(token,secret);
+                    bcryt.hash(req.body.password,10,function (err, hashedPass) {
+                        if (err){ 
+                            res.json(err) 
+                            return 
+                        };
+                        User.updateOne({ _id: id}, {$set: {password: hashedPass}})
+                            .then(() => res.redirect('/loginpage'))
+                            .catch(err =>{res.json(err.message)});
+                    })
+                }catch(err){
+                    res.send(err.message);
+                }
+            })
+            .catch(err => {res.send(err.message)});
     }
 }
 

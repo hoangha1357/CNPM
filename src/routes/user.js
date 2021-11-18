@@ -6,12 +6,12 @@ const UserController = require('../app/controllers/UserController');
 const authenticateUser = require('../app/middlewares/Authenticate');
 const requireLogin = require('../app/middlewares/LoginRequires');
 
-route.get('/ordered', UserController.ordered);
+route.get('/ordered', requireLogin, UserController.ordered);
 route.post('/register', UserController.register);
-route.put('/:id', UserController.updateImage);
+route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
+route.get('/payment', requireLogin, UserController.payment);
 route.post('/login', UserController.login, authenticateUser);
 route.get('/logout', UserController.logout);
-route.get('/payment', UserController.payment);
-route.get('/', UserController.index);
+route.get('/', requireLogin, UserController.index);
 
 module.exports = route;
