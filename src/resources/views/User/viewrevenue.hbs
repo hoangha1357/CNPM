@@ -1,5 +1,7 @@
-<form style="margin-top: 100px" name="container-form" method="POST" action="/menu/handle-form-action">
-    <h2>
+<div class="create">
+
+<form name="container-form" method="POST" action="/menu/handle-form-action" style="font-size: 1.4rem;">
+    <h2 class="under-line-effect under-line-effect--red">
       Doanh thu các món ăn
       {{#if deletedCount }}
       <a href="/manager/trash">
@@ -8,7 +10,7 @@
       </a>
       {{/if}}
     </h2>
-    <div class="mt-4 d-flex align-items-center">
+    <div class="mt-4 d-flex align-items-center form__action">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
           <label class="form-check-label" for="checkbox-all">
@@ -23,7 +25,7 @@
           <option value="remove-recommed">Xóa gợi ý</option>
         </select>
 
-        <button class="btn btn-primary btn-sm btn-check-submit" disabled>Thực hiện</button>
+        <button class="product__item-btn btn-red" style="color: white; margin-top: -20px;" disabled>Thực hiện</button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -75,8 +77,8 @@
               </td>
               <td>{{mul this.sale this.price}} VNĐ</td>
               <td>
-                  <a href="/manager/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
-                  <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
+                  <a href="/manager/{{this._id}}/edit"  class="product__item-btn btn-red" style="color: white;">Sửa</a>
+                  <a href=""  class="product__item-btn btn-red" style="color: white;" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
               </td>
           </tr>
           {{else}}
@@ -91,6 +93,7 @@
     </table>
     {{{paging count page}}}
 </form>
+</div>
 
 <!--confirm delete-->
 <div id="delete-dish-modal" class="modal" tabindex="-1" role="dialog">

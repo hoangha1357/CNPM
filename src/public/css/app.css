@@ -1928,3 +1928,25 @@ label.modal-label {
     height: 300px;
     font-size: 1.8rem;
 }
+
+/* DOANH THU */
+.form__action {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 350px;
+    justify-content: space-between;
+}
+
+.form-check {
+    position: relative;
+    display: flex;
+    padding-left: 1.25rem;
+    top: -20%;
+    align-items: center;
+}
+
+.form-control.form-control-sm.select-all-option {
+    position: relative;
+    top: -17%;
+}
