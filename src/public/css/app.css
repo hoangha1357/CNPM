@@ -1625,11 +1625,11 @@ label.modal-label {
 
 .info__value {
     display: block;
-    width: 60%;
+    width: 70%;
     height: 40px;
     margin-bottom: 20px;
     margin-top: 10px;
-    background-color: #f0f0f0;
+    background-color: #f8f8f8;
     border-radius: 3px;
     font-size: 1.8rem;
     font-family: 'Asap', sans-serif;
@@ -1908,4 +1908,24 @@ label.modal-label {
     align-items: center;
     margin-top: 20px;
     margin-left: 30px;
+}
+
+.profile-wrapper {
+    margin-left: 100px;
+}
+
+/* CREATE */
+.create {
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.filepond {
+    height: 300px;
+    font-size: 1.8rem;
 }

@@ -1,29 +1,37 @@
-<div class="mt-4">
-    <h1>Thêm món ăn</h1>
+<div class="create grid">
+    <h1 class="under-line-effect under-line-effect--red">Thêm món ăn</h1>
 
     <form method="POST" action="/menu/store">
-        <div class="form-group">
-            <label for="name">Tên món ăn</label>
-            <input type="text"  class="form-control" id="name" name="name">
+    <div class="row">
+        <div class="col l-6" style="padding-right: 60px;">
+            <div class="form-group">
+                <label class="info__label" for="name">Tên món ăn</label>
+                <input type="text"  class="info__value" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label class="info__label" for="type_dish-input">Loại món ăn</label>
+                <select name="type_dish" class="info__value" id="type_dish-input">
+                    <option value="">--Loại món ăn--</option>
+                    <option value="Combo">Combo</option>
+                    <option value="Food">Thức ăn</option>
+                    <option value="Drink">Đồ uống</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="info__label" for="price">Giá cả</label>
+                <input type="number"  class="info__value" id="price" name="price">       
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="type_dish-input">Loại món ăn</label>
-            <select name="type_dish" class="form-control" id="type_dish-input">
-                <option value="">--Loại món ăn--</option>
-                <option value="Combo">Combo</option>
-                <option value="Food">Thức ăn</option>
-                <option value="Drink">Đồ uống</option>
-            </select>
+        <div class="col l-6" style="padding-right: 100px;">
+            <div class="form-group">
+                <label class="info__label" for="image">Hình ảnh món ăn</label>
+                <input type="file" name="image" class="filepond"/>
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="price">Giá cả</label>
-            <input type="number"  class="form-control" id="price" name="price">       
-        </div>
-        <div class="form-group">
-            <label for="image">Hình ảnh món ăn</label>
-            <input type="file" name="image" class="filepond"/>
-        </div>
+    </div>
             
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="product__item-btn btn-red" style="color: white; margin-top: -20px;">Submit</button>
     </form>
 </div>
