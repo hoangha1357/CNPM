@@ -17,7 +17,6 @@ class SiteController {
     }
 
     search(req, res, next) {
-        
         if(req.query.foodname){
             const searchFied = req.query.foodname;
             Dish.find({name:{$regex: searchFied, $options: '$i'}})
@@ -28,8 +27,7 @@ class SiteController {
                     });
                 })    
         }
-        res.render('Site/search', { user: req.user});
-        
+        else return res.render('Site/search', { user: req.user});   
     }
 
     loginpage(req, res, next) {

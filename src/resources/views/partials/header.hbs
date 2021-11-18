@@ -3,7 +3,7 @@
     <div class="header__logo">
      
       <a href="/" class="header__logo-link">
-        <img src="image/logo123.png"
+        <img src="/image/logo123.png"
           alt="" class="header__logo-img">
       </a>
     </div>
@@ -86,13 +86,13 @@
 
     <div class="header-content__search">
       <div class="header-content__search-input">
-        <input type="text" class="header-content__search-input-wrap" placeholder="Search products...">
+        <form method="GET" action="/search">
+        <input type="text" class="header-content__search-input-wrap" name='foodname' placeholder="Search products...">
         <div class="header-content__search-history">
-
         </div>
-        <div class="header-content__search-btn">
-          <i class="header-content__search-icon fal fa-search"></i>
+        <button class="header-content__search-btn header-content__search-icon fal fa-search" type="submit"></button>  
         </div>
+        </form>
       </div>
     </div>
     {{#if (isMatch user.permission "Customer")}}
@@ -100,7 +100,7 @@
 
     <label for="header-nav" class="header-slide__menu ">
       <i class="far fa-shopping-cart header-slide__menu-img"></i>
-      <span class="header-slide__notice">{{session.cart.totalQty}}</span>
+      <span class="header-slide__notice">3</span>
 
     </label>
 
