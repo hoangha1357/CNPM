@@ -141,10 +141,13 @@
         $('.user__info input[type="button"]').on('click', function () {
             $('.user__info input[type="text"]').attr('readonly', !readonly);
             $('.user__info input[type="email"]').attr('readonly', !readonly);
+            $('.user__info input[type="button"]').prop('disabled', function(i, v) { return readonly? !v : v; })
+            $('.user__info input[type="submit"]').prop('disabled', function(i, v) { return readonly? !v : v; })
             readonly = !readonly;
-            $('.user__info input[type="button"]').val(readonly ? 'Edit profile' : 'Save profile');
             return false;
         });
+
+       
 
         $("#profileImage").click(function (e) {
             $("#imageUpload").click();

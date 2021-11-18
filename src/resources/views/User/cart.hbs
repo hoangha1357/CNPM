@@ -34,25 +34,15 @@
                   </a>
                 </td>
                 <td class="text-center">
-<<<<<<< HEAD
-                  <h5 style="margin-top: 45px;"><a href="">Fried Chicken</a></h5>
-=======
                   <h5><a href="">{{this.item.name}}</a></h5>
->>>>>>> df06ade (Add to cart)
                  
                 </td>
                 <td class="text-center">
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
-<<<<<<< HEAD
-                      <button class="btn-minus">-</button>
-                      <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
-                      <button class="btn-plus">+</button>
-=======
                       <div class="btn-minus"><input type="button" value="-" class="qty minus" onclick="decrease({{this}},{{totalQty}},{{totalPrice}})"></div>
                       <input type="text" name="updates[]" value="{{this.qty}}" min="0" class="form-control cart-qty" data-line="1">
                       <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div>
->>>>>>> df06ade (Add to cart)
                     </div>
                   </div>
                 </td>
@@ -60,36 +50,9 @@
                 <td class="text-right"><span class="total-price"><span class="money">${{this.price}}</span></span></td>
               </tr>
               
-<<<<<<< HEAD
-              <tr data-line="2">
-                <td class="text-center btn-remove-product">
-                  <a type="button" title="" class="btn-remove" href="" data-line="2"><i class="fal fa-trash-alt"></i></a>
-                </td>
-                <td class="text-center">
-                  <a href="">
-                    <img src="/image/fried_chicken.jpg" alt="" title="" class="img-thumbnail">
-                  </a>
-                </td>
-                <td class="text-center">
-                  <h5 style="margin-top: 45px;"><a href="">Fried Chicken</a></h5>
-                </td>
-                <td class="text-center">
-                  <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
-                    <div class="form-quantity">
-                      <button class="btn-minus">-</button>
-                      <input class="slidebar__wrap-info-quantity" type="text" value="2"></input>
-                      <button class="btn-plus">+</button>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right"><span class="price-product"><span class="money" >5</span></span></td>
-                <td class="text-right"><span class="total-price"><span class="money" >10</span></span></td>
-              </tr>
-=======
               {{/each}}
 
             
->>>>>>> df06ade (Add to cart)
               
             </tbody>
           </table>
