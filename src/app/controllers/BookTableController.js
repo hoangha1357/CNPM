@@ -7,7 +7,10 @@ class BookTableController {
         // res.render('Site/book_table');
         Table.findById(req.params.id)
             .then((table) => 
-                res.render('Site/book_table', {table: MongoosetoObject(table)})
+                res.render('Site/book_table', {
+                    table: MongoosetoObject(table),
+                    user: req.user,
+                })
             )
             .catch(next);
     }
