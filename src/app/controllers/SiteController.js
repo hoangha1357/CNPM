@@ -17,14 +17,18 @@ class SiteController {
     }
 
     search(req, res, next) {
-        const searchFied = req.query.foodname;
-        Dish.find({name:{$regex: searchFied, $options: '$i'}})
-            .then((dishes) => {
-                res.render('Site/search', { 
-                    user: req.user,
-                    dishes: mutiMongoosetoObject(dishes),
-                });
-            })
+        
+        if(req.query.foodname){
+            const searchFied = req.query.foodname;
+            Dish.find({name:{$regex: searchFied, $options: '$i'}})
+                .then((dishes) => {
+                    res.render('Site/search', { 
+                        user: req.user,
+                        dishes: mutiMongoosetoObject(dishes),
+                    });
+                })    
+        }
+        
         
     }
 
