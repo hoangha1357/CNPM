@@ -126,6 +126,7 @@ a:hover {
 
 /* slider bar on pc */
 
+
 /* slider bar on pc */
 
 .slidebar__container {
@@ -193,12 +194,12 @@ a:hover {
     margin: 10px 0;
 }
 
-.slidebar__wrap-item{
-  display: flex;
-  width: 100%;
-  margin: 30px 0;
-  align-items: center;
-  position: relative;
+.slidebar__wrap-item {
+    display: flex;
+    width: 100%;
+    margin: 30px 0;
+    align-items: center;
+    position: relative;
 }
 
 .slidebar__wrap-list {
@@ -264,8 +265,6 @@ a:hover {
     margin-bottom: 20px;
     cursor: pointer;
 }
-
-    
 
 .slidebar__wrap-list {
     list-style: none;
@@ -586,7 +585,6 @@ a:hover {
 .header-content__heading {
     text-align: center;
     line-height: 5rem;
-    
 }
 
 .header-content__heading-title {
@@ -731,6 +729,14 @@ a:hover {
     margin-top: 70px;
     margin-bottom: 50px;
     text-align: center;
+    /* padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column; */
 }
 
 .header__img {
@@ -873,7 +879,6 @@ a:hover {
     letter-spacing: 2px;
     text-decoration: none;
 }
-
 
 .feature-item__fadeIn {
     position: absolute;
@@ -1694,9 +1699,10 @@ label.modal-label {
 }
 
 #content {
-  margin-top: 80px;
-  margin-bottom: 80px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
+
 
 /* PAYMENT */
 
@@ -1758,10 +1764,8 @@ label.modal-label {
     margin-right: 60px;
 }
 
-
 .payment__method {
     list-style: none;
-    
 }
 
 .payment__method-wrapper {
@@ -1771,7 +1775,6 @@ label.modal-label {
 
 .payment__label {
     margin-left: 20px;
-    
 }
 
 .payment__method-desc {
@@ -1788,6 +1791,7 @@ label.modal-label {
     margin: 30px 0;
     width: 70%;
 }
+
 
 /* TAB */
 
@@ -1874,7 +1878,7 @@ label.modal-label {
     margin-bottom: 8px;
 }
 
-.info__image{
+.info__image {
     display: block;
     width: 60%;
     height: 80px;
@@ -1882,10 +1886,169 @@ label.modal-label {
     margin-top: 10px;
     border-radius: 3px;
 }
+
+
 /*  */
 
 
 /* SHOPPING CART */
+
+
+/*  */
+
+
+/* SLIDER BACKGROUND IMAGE */
+
+body {
+    /* padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column; */
+    /* background: rgb(24, 24, 24); */
+    /* width: 100%;
+    max-height: 500px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    text-align: center;
+    display: flex; */
+}
+
+
+/* * {
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+} */
+
+
+/* html {
+    font-family: 'Asap', sans-serif;
+    font-size: 62.5%;
+} */
+
+.slider__simple {
+    /* padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; */
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+@media screen and(max-width: 504px) {
+    .slider__container {
+        width: 80%;
+        height: 90%;
+    }
+}
+
+.slider__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow: auto;
+}
+
+.slider__image {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slider__image::-webkit-scrollbar {
+    display: none;
+}
+
+.slider__item {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    object-fit: fill;
+    position: relative;
+    left: 0;
+    transition: 0.5 s ease-out;
+}
+
+.slider__button {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.next__btn,
+.prev__btn {
+    border: none;
+    font-size: 2rem;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:active {
+    background-color: rgb(92, 92, 92);
+}
+
+.slider__dots {
+    position: absolute;
+    bottom: 0rem;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 999999;
+}
+
+.dot__item {
+    background-color: rgba(255, 255, 255, 0.466);
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    font-size: 5rem;
+    cursor: pointer;
+    transition: 0.35s ease-in-out;
+}
+
+.dot__item.active {
+    background-color: rgb(255, 255, 255);
+}
+
+
+/*  */
+
 #content {
     padding-left: 100px;
     padding-right: 100px;
@@ -1913,7 +2076,9 @@ label.modal-label {
     margin-left: 100px;
 }
 
+
 /* CREATE */
+
 .create {
     margin-top: 100px;
     margin-left: 40px;

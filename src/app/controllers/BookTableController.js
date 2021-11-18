@@ -24,18 +24,20 @@ class BookTableController {
 
     // [POST] /booktable/choosetable
     choosetable(req, res, next) {
-        const table = new Table({
+        const newtable = new Table({
           email: req.user.email,  
           name: req.user.name,
           numofguests: req.body.numofguests,
           time: req.body.time,
           date: req.body.date
         });
-        table.save()
-          .then(() => res.render('Site/choosetable'))
-          .catch(error => {
+        res.render('Site/choosetable',{table: MongoosetoObject(newtable)});
+        // res.json(newtable);
+        // newtable.save()
+        //   .then(() => res.render('Site/choosetable',{table: newtable}))
+        //   .catch(error => {
             
-          });
+        //   });
     }
 
     thankyou(req, res, next) {

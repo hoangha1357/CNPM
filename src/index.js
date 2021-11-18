@@ -8,7 +8,7 @@ const session           = require('express-session');
 const handlebars        = require('express-handlebars');
 const SortMiddleware    = require('./app/middlewares/SortMiddleware');
 const app               = express();
-const port              = 3000;
+const port              = 3001;
 const db                = require('./config/db');
 const route             = require('./routes/index');
 const methodOverride    = require('method-override');
@@ -25,6 +25,11 @@ app.use(
         saveUninitialized: false,
     }),
 );
+
+app.use(function(req,res,next) {
+    res.locals.session = req.session;
+    next();
+});
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));

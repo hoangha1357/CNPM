@@ -1,7 +1,9 @@
 const Dish = require('../models/Dish');
 const User = require('../models/Userid');
+const Cart = require('../models/Cart');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
 
@@ -15,12 +17,33 @@ class UserController {
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
-        res.render('user/cart',{user: req.user})
+        if(!req.session.cart)   {
+            return res.render('user/cart', {dishes: null});
+        }
+        var cart = new Cart(req.session.cart);
+        res.render('user/cart',{
+            user: req.user,
+            dishes: cart.generateArray(),
+            totalPrice: cart.totalPrice,
+            totalQty: cart.totalQty
+        })
     }
 
     // [GET] /user/ordered
     payment(req, res, next) {
         res.render('user/onlPayment',{user: req.user})
+    }
+    addToCart(req, res, next){
+        var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+        Dish.findById(req.body.id)
+            .then((dish) => {
+                cart.add(dish, dish._id);
+                req.session.cart = cart;
+                console.log(req.session.cart,);
+                res.redirect('back'); 
+            })
+            .catch(next);
     }
 
     // [POST] /user/updateImage
