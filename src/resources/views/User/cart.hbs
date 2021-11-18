@@ -1,6 +1,8 @@
 <div id="content" class="col-sm-12">
       <h1 class="under-line-effect under-line-effect--red" style="text-align: center; color: grey">SHOPPING CART</h1>
+  {{#if dishes}}
 
+    
       <form method="post">
         <div class="table-responsive table-checkout-cart">
           <table class="table table-bordered">
@@ -16,6 +18,10 @@
             </thead>
             <tbody>
               
+              <!- Loop qua cac dish >
+
+              {{#each dishes }}
+              
               <tr data-line="1">
                 <td class="text-center btn-remove-product">
                   
@@ -24,26 +30,37 @@
                 </td>
                 <td class="text-center">
                   <a href="">
-                    <img src="/image/fried_chicken.jpg" alt="" title="" class="img-thumbnail">
+                    <img src="{{imageload this.item.image this.item.imageType}}" alt=""  class="product_item-img">
                   </a>
                 </td>
                 <td class="text-center">
+<<<<<<< HEAD
                   <h5 style="margin-top: 45px;"><a href="">Fried Chicken</a></h5>
+=======
+                  <h5><a href="">{{this.item.name}}</a></h5>
+>>>>>>> df06ade (Add to cart)
                  
                 </td>
                 <td class="text-center">
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
+<<<<<<< HEAD
                       <button class="btn-minus">-</button>
                       <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
                       <button class="btn-plus">+</button>
+=======
+                      <div class="btn-minus"><input type="button" value="-" class="qty minus" onclick="decrease({{this}},{{totalQty}},{{totalPrice}})"></div>
+                      <input type="text" name="updates[]" value="{{this.qty}}" min="0" class="form-control cart-qty" data-line="1">
+                      <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div>
+>>>>>>> df06ade (Add to cart)
                     </div>
                   </div>
                 </td>
-                <td class="text-right"><span class="price-product"><span class="money">5</span></span></td>
-                <td class="text-right"><span class="total-price"><span class="money">5</span></span></td>
+                <td class="text-right"><span class="price-product"><span class="money">${{this.item.price}}</span></span></td>
+                <td class="text-right"><span class="total-price"><span class="money">${{this.price}}</span></span></td>
               </tr>
               
+<<<<<<< HEAD
               <tr data-line="2">
                 <td class="text-center btn-remove-product">
                   <a type="button" title="" class="btn-remove" href="" data-line="2"><i class="fal fa-trash-alt"></i></a>
@@ -68,6 +85,11 @@
                 <td class="text-right"><span class="price-product"><span class="money" >5</span></span></td>
                 <td class="text-right"><span class="total-price"><span class="money" >10</span></span></td>
               </tr>
+=======
+              {{/each}}
+
+            
+>>>>>>> df06ade (Add to cart)
               
             </tbody>
           </table>
@@ -107,7 +129,7 @@
                 
                 <tr>
                   <td class="text-right"><strong>Subtotal:</strong></td>
-                  <td class="text-right"><span class="total-price"><span class="money" data-currency-usd="$250.00">$250.00</span></span></td>
+                  <td class="text-right"><span class="total-price"><span class="money" data-currency-usd="$250.00">${{totalPrice}}</span></span></td>
                 </tr>
               </tbody></table>
               <div class="checkout-cart-buttons group-btn-2">
@@ -123,6 +145,15 @@
         </div>
       </form>
       <script>
+
+        {{!-- function increase(this, totalQty, totalPrice) {
+          this.qty++;
+          this.price += this.item.price;
+          totalQty++;
+          totalPrice += this.item.price;
+        } --}}
+
+
         $(document).ready(function () {
             var plus = $('.btn-plus')
             var minus = $('.btn-minus')
@@ -200,4 +231,9 @@
             })
         })
       </script>
+
+
+      {{else}}
+       {{/if}}
+
     </div>
