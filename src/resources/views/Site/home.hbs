@@ -1,14 +1,15 @@
-<div class="header__slider">
+{{!-- <div class="header__slider">
     <img src="/image/background-home.jpg" alt="" class="header__img">
-</div>
-{{!-- <div class="slider__simple ">
-    <div class="slider__container">
-        <div class="slider__image">
-            <img class="slider__item" src="/image/background-home.jpg" />
-            <img class="slider__item" src="/image/background-home1.jpg" />
-            <img class="slider__item" src="/image/background-home2.jpg" />
-            <img class="slider__item" src="/image/background-home3.jpg" />
-            <img class="slider__item" src="/image/background-home4.jpg" />
+</div> --}}
+<div class="slider__simple ">
+        <div class="slider__container">
+            <div class="slider__image">
+                <img class="slider__item header__img" src="/image/background-home.jpg" />
+                <img class="slider__item header__img" src="/image/background-home1.jpg" />
+                <img class="slider__item header__img" src="/image/background-home2.jpg" />
+                <img class="slider__item header__img" src="/image/background-home3.jpg" />
+                <img class="slider__item header__img" src="/image/background-home4.jpg" />
+            </div>
             <div class="slider__dots">
                 <div class="dot__item active"><input name="dot" type="radio"></div>
                 <div class="dot__item"><input name="dot" type="radio"></div>
@@ -16,12 +17,12 @@
                 <div class="dot__item"><input name="dot" type="radio"></div>
                 <div class="dot__item"><input name="dot" type="radio"></div>
             </div>
-            <div class="slider__button "><button class="prev__btn "></button> <button class="next__btn "></button> </div>
+            <div class="slider__button "> <button class="prev__btn "><<</button> <button class="next__btn ">>></button> </div>        </div>
         </div>
-    </div>
-    <script src="/javascripts/j-query.js"></script>
-    <script src="/javascripts/slider_backimg.js "></script>
-</div> --}}
+        
+</div>
+{{!-- <script src="/javascripts/j-query.js"></script>
+<script src="/javascripts/slider_backimg.js "></script> --}}
 
 <div class="shop grid ">
     <span class="content__header-decs" style="color: grey; font-size: 30px">FEATURE PRODUCTS</span>
@@ -150,7 +151,7 @@
 
 </div>
 
-<script src="/javascripts/tabUI.js"></script>
+
 
 {{!-- MODAL/ITEM FEATURES --}}
 <div class="modal">
@@ -194,6 +195,7 @@
         </div>
     </div>
 </div>
+
 <script>
     const buyBtns = document.querySelectorAll('.js-details-btn')
     const modal = document.querySelector('.modal')
@@ -224,3 +226,7 @@
     })
 
 </script>
+
+
+
+<script src="/javascripts/tabUI.js"></script>

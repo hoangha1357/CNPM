@@ -741,8 +741,8 @@ a:hover {
 
 .header__img {
     width: 100%;
-    object-fit: cover;
-    max-height: 400px;
+    object-fit: contain;
+    max-height: 500px;
 }
 
 
@@ -1896,48 +1896,55 @@ label.modal-label {
 
 /*  */
 
+#content {
+    padding-left: 100px;
+    padding-right: 100px;
+}
 
-/* SLIDER BACKGROUND IMAGE */
+.table-checkout-cart {
+    font-size: 1.4rem;
+}
 
-body {
-    /* padding: 0;
-    margin: 0;
+.btn-remove {
+    color: #333;
+    font-size: 1.6rem;
+    margin-top: 40px;
+}
+
+.form-quantity {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column; */
-    /* background: rgb(24, 24, 24); */
-    /* width: 100%;
-    max-height: 500px;
-    margin-top: 70px;
-    margin-bottom: 50px;
-    text-align: center;
-    display: flex; */
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.profile-wrapper {
+    margin-left: 100px;
 }
 
 
-/* * {
-    text-decoration: none;
-    list-style-type: none;
-    box-sizing: border-box;
-} */
+/* CREATE */
+
+.create {
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.filepond {
+    height: 300px;
+    font-size: 1.8rem;
+}
 
 
-/* html {
-    font-family: 'Asap', sans-serif;
-    font-size: 62.5%;
-} */
+/*  */
 
 .slider__simple {
-    /* padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh; */
     flex-direction: column;
     width: 100%;
     height: 60%;
@@ -1946,13 +1953,13 @@ body {
 }
 
 .slider__container {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 15px; */
     overflow: hidden;
 }
 
@@ -1964,7 +1971,7 @@ body {
 }
 
 .slider__image {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     height: 100%;
     display: grid;
@@ -1986,7 +1993,7 @@ body {
     width: 100%;
     height: 100%;
     overflow-x: auto;
-    object-fit: fill;
+    object-fit: cover;
     position: relative;
     left: 0;
     transition: 0.5 s ease-out;
@@ -2044,52 +2051,4 @@ button:active {
 
 .dot__item.active {
     background-color: rgb(255, 255, 255);
-}
-
-
-/*  */
-
-#content {
-    padding-left: 100px;
-    padding-right: 100px;
-}
-
-.table-checkout-cart {
-    font-size: 1.4rem;
-}
-
-.btn-remove {
-    color: #333;
-    font-size: 1.6rem;
-    margin-top: 40px;
-}
-
-.form-quantity {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 30px;
-}
-
-.profile-wrapper {
-    margin-left: 100px;
-}
-
-
-/* CREATE */
-
-.create {
-    margin-top: 100px;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.form-group {
-    width: 100%;
-}
-
-.filepond {
-    height: 300px;
-    font-size: 1.8rem;
 }
