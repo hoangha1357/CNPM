@@ -1,5 +1,4 @@
 <form method="POST" action="/booktable/thankyou">
-    <img class="table-img" src="./image/dinner.png" alt="">
     <div class="grid table-reservation">
         <div class="row">
             {{!-- <button class="btn btn-dark btn-sm check-all-submit-btn" disabled>Thực hiện</button> --}}
@@ -9,56 +8,61 @@
                         <span class="under-line-effect under-line-effect--red">BOOK YOUR TABLE</span>
                     </h3>
                 </div>
+
                 <div class="grid">
                     <div class="row">
                         <div class="col l-4 table-wrapper">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-                            <img class="form-check-label table-img" for="checkbox-all" src="/image/dinner.png" alt="">
-                        </div>
-                        <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input id="table-img-1" value="1" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
+                                <input id="table-img-2" value="2" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
+                                <input id="table-img-3" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
+                                <input id="table-img-4" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
+                                <input id="table-img-5" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <img class="table-img" src="/image/dinner.png" alt="">
+                                <input id="table-img-6" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input id="table-img-7" type="image" class="table-img" src="/image/dinner.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input id="table-img-8" type="image" class="table-img" src="/image/dinner.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input id="table-img-9" type="image" class="table-img" src="/image/dinner.png" alt="">
+                            </div>
+                        </div>
+
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label s="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
                 </div>
             </div>
@@ -128,3 +132,21 @@
     });
 
 </script> --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tableImage1 = $('#table-img-1');
+        var tableImage2 = $('#table-img-2');
+        var tableImage3 = $('#table-img-3');
+        var tableImage4 = $('#table-img-4');
+        var tableImage5 = $('#table-img-5');
+        var tableImage6 = $('#table-img-6');
+        var tableImage7 = $('#table-img-7');
+        var tableImage8 = $('#table-img-8');
+        var tableImage9 = $('#table-img-9');
+        
+        tableImage1.onclick = function () {
+            
+        }
+    });
+</script>

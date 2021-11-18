@@ -17,15 +17,26 @@ class BookTableController {
         res.render('Site/book_table_reservated');
     }
 
-
+    
 
     // [POST] /booktable/choosetable
     choosetable(req, res, next) {
-        res.render('Site/choosetable');
+        const table = new Table({
+          email: req.user.email,  
+          name: req.user.name,
+          numofguests: req.body.numofguests,
+          time: req.body.time,
+          date: req.body.date
+        });
+        table.save()
+          .then(() => res.render('Site/choosetable'))
+          .catch(error => {
+            
+          });
     }
 
     thankyou(req, res, next) {
-        res.render('Site/thankyou');
+        res.render('Site/book_table_thankyou')
     }
 }
 
