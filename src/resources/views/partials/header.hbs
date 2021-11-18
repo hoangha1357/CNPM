@@ -95,6 +95,9 @@
         </form>
       </div>
     </div>
+
+        {{!-- CART --}}
+
     {{#if (isMatch user.permission "Customer")}}
     <input type="checkbox" hidden id="header-nav" class="header-input">
 
@@ -118,22 +121,29 @@
           </h3>
         </div>
         <ul class="slidebar__wrap-list">
+          {{#if cartdishes}}
+            
+          
+          {{#each cartdishes}}
           <li class="slidebar__wrap-item">
-            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <img src="{{imageload this.item.image this.item.imageType}}" alt="" class="slidebar__wrap-img">
             <div class="slidebar__wrap-info">
-              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+              <a href="" class="slidebar__wrap-info-product">{{this.item.name}}</a>
 
               <span class="slidebar__wrap-info-food">
                 <button class="btn-minus">-</button>
-                <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
+                <input class="slidebar__wrap-info-quantity" type="text" value="{{ this.qty }}"></input>
                 <button class="btn-plus">+</button>
               </span>
             </div>
             <div class="slidebar__wrap-trash-and-price">
               <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
+              <div class="slidebar__wrap-price">{{this.price}}</div>
             </div>
           </li>
+            
+          {{/each}}
+          {{/if}}
           <li class="slidebar__wrap-item">
             <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
             <div class="slidebar__wrap-info">
@@ -150,29 +160,14 @@
               <div class="slidebar__wrap-price">5</div>
             </div>
           </li>
-          <li class="slidebar__wrap-item">
-            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
-            <div class="slidebar__wrap-info">
-              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
 
-              <a href="" class="slidebar__wrap-info-food">
-                <button class="btn-minus">-</button>
-                <span class="slidebar__wrap-info-quantity">1</span>
-                <button class="btn-plus">+</button>
-              </a>
-            </div>
-            <div class="slidebar__wrap-trash-and-price">
-              <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
-            </div>
-          </li>
         </ul>
         <div class="slidebar__wrap-total">
           <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
-          <span class="slidebar__wrap-sub-total">20</span>
+          <span class="slidebar__wrap-sub-total">{{totalPrice}}</span>
         </div>
         <button class="btn-large featured-product__btn checkout-btn" type="submit"
-          href="">CHECKOUT</button>
+          href="/user/payment">CHECKOUT</button>
       </div>
 
     </div>
