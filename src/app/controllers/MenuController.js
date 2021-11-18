@@ -1,4 +1,5 @@
 const Dish                      = require('../models/Dish');
+const Cart                      = require('../models/Cart');
 const { mutiMongoosetoObject,MongoosetoObject,modifyRequestImage }  = require('../../util/subfuntion');
 
 
@@ -10,13 +11,27 @@ class MenuController {
         if(!req.query.page) req.query.page = 1;
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
-                res.render('Menusub/menu', {
-                    dishes: mutiMongoosetoObject(dishes),
-                    page: req.query.page,
-                    user: req.user,
-                    count,
-                    category,
-                });
+                if(req.session.cart){ 
+                    var cart = new Cart(req.session.cart);
+                    res.render('Menusub/menu', { 
+                        cartdishes: cart.generateArray(),
+                        totalPrice: cart.totalPrice,
+                        totalQty: cart.totalQty,
+                        dishes: mutiMongoosetoObject(dishes),
+                        page: req.query.page,
+                        user: req.user,
+                        count,
+                        category,
+                    });
+                }else{
+                    res.render('Menusub/menu', { 
+                        dishes: mutiMongoosetoObject(dishes),
+                        page: req.query.page,
+                        user: req.user,
+                        count,
+                        category,
+                    });
+                }
             })
             .catch(next);
     }
