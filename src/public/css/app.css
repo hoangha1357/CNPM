@@ -1452,6 +1452,7 @@ label.modal-label {
 
 .product__item-btn:hover {
     background-color: #f1f1f1;
+    filter: brightness(1.2);
 }
 
 .product__item-btn .product__item-btn-active-icon {
@@ -1885,3 +1886,25 @@ label.modal-label {
 
 
 /* SHOPPING CART */
+#content {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.table-checkout-cart {
+    font-size: 1.4rem;
+}
+
+.btn-remove {
+    color: #333;
+    font-size: 1.6rem;
+    margin-top: 40px;
+}
+
+.form-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 30px;
+}

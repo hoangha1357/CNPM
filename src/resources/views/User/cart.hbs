@@ -18,7 +18,9 @@
               
               <tr data-line="1">
                 <td class="text-center btn-remove-product">
-                  <a type="button" title="" class="btn-remove" href="" data-line="1"><i class="fal fa-trash-alt"></i></a>
+                  
+                    <a type="button" title="" class="btn-remove" href="" data-line="1"><i class="fal fa-trash-alt"></i></a>
+
                 </td>
                 <td class="text-center">
                   <a href="">
@@ -26,15 +28,15 @@
                   </a>
                 </td>
                 <td class="text-center">
-                  <h5><a href="">Fried Chicken</a></h5>
+                  <h5 style="margin-top: 45px;"><a href="">Fried Chicken</a></h5>
                  
                 </td>
                 <td class="text-center">
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
-                      <div class="btn-minus"><input type="button" value="-" class="qty minus"></div>
-                      <input type="text" name="updates[]" value="1" min="0" class="form-control cart-qty" data-line="1">
-                      <div class="btn-plus"><input type="button" value="+" class="qty plus"></div>
+                      <button class="btn-minus">-</button>
+                      <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
+                      <button class="btn-plus">+</button>
                     </div>
                   </div>
                 </td>
@@ -52,26 +54,26 @@
                   </a>
                 </td>
                 <td class="text-center">
-                  <h5><a href="">Fried Chicken</a></h5>
+                  <h5 style="margin-top: 45px;"><a href="">Fried Chicken</a></h5>
                 </td>
                 <td class="text-center">
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
-                      <div class="btn-minus"><input type="button" value="-"class="qty minus"></div>
-                      <input type="text" name="updates[]" value="2" min="0" class="form-control cart-qty" data-line="2">
-                      <div class="btn-plus"><input type="button" value="+" class="qty plus"></div>
+                      <button class="btn-minus">-</button>
+                      <input class="slidebar__wrap-info-quantity" type="text" value="2"></input>
+                      <button class="btn-plus">+</button>
                     </div>
                   </div>
                 </td>
-                <td class="text-right"><span class="price-product"><span class="money" >$100.00</span></span></td>
-                <td class="text-right"><span class="total-price"><span class="money" >$200.00</span></span></td>
+                <td class="text-right"><span class="price-product"><span class="money" >5</span></span></td>
+                <td class="text-right"><span class="total-price"><span class="money" >10</span></span></td>
               </tr>
               
             </tbody>
           </table>
           <div class="checkout-cart-buttons group-btn-1">
             <div class="button-shopping">
-              <a href="/" class=" btn featured-product__btn mb-40 btn-red" style="cursor: pointer; margin-top: 20px; margin-left: 90%">Continue Shopping</a>
+              <a href="/" class="product__item-btn btn-red" style="color: white; cursor: pointer; margin: 20px 0; float: right">Continue Shopping</a>
             </div>
             
             {{!-- <div class="button-update-cart">
@@ -109,9 +111,9 @@
                 </tr>
               </tbody></table>
               <div class="checkout-cart-buttons group-btn-2">
-                <div class="button-checkout-cart" style="display: flex">
+                <div class="button-checkout-cart">
                   {{!-- <button type="submit" title="Update" class=" btn featured-product__btn mb-40 btn-red" style="cursor: pointer; margin-right: 10px;">Update cart</button> --}}
-                  <a href="/user/payment" class="btn featured-product__btn mb-40 btn-red" style="cursor: pointer; margin-left: 63%">PROCEED TO CHECK OUT</a>
+                  <a href="/user/payment" class="product__item-btn btn-red" style="cursor: pointer; float: right; color: white">PROCEED TO CHECK OUT</a>
                 </div>
 
                 

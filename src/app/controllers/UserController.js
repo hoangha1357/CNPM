@@ -25,10 +25,11 @@ class UserController {
 
     // [POST] /user/updateImage
     updateImage(req, res, next) {
-
+        
         if(req.body.image) {
-            // res.json(req.body);
+        //     // res.json(req.body);
             modifyRequestImage(req);
+            // res.json(req.body.imageType);
             User.updateOne({_id: req.params.id },{$set:{image: req.body.image, imageType: req.body.imageType, name: req.body.name, address: req.body.address}})
                 .then(() => res.redirect('back'))
                 .catch(next);
