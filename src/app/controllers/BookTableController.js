@@ -19,14 +19,19 @@ class BookTableController {
 
     // [POST] /booktable/thankyou
     thankyou(req, res, next) {
-        const formData = req.body;
-        const table = new Table(formData);
+        const table = new Table({
+          email: req.user.email,  
+          name: req.user.name,
+          numofguests: req.body.numofguests,
+          time: req.body.time,
+          date: req.body.date,
+          tableID: req.body.tableID
+        });
         table.save()
           .then(() => res.render('Site/book_table_thankyou'))
           .catch(error => {
             
           });
-        // res.json(req.body);
     }
 }
 
