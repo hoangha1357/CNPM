@@ -2051,7 +2051,6 @@ button:active {
 
 .dot__item.active {
     background-color: rgb(255, 255, 255);
-    <<<<<<< HEAD=======
 }
 
 .product_item-img {
@@ -2150,5 +2149,4 @@ input[type='button'][disabled] {
 
 input[type='button'][disabled]:hover {
     filter: brightness(1);
-    >>>>>>>6967a8d2fe2aabe06d1521aca7d9ffc41961b5f8
 }
