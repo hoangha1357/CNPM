@@ -257,6 +257,7 @@ a:hover {
     letter-spacing: 2px;
     font-weight: 700;
     border: none;
+    text-align: center;
 }
 
 .trash-btn {
@@ -691,6 +692,9 @@ a:hover {
     top: 13px;
     color: #a1a1a2;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+
 }
 
 .header-content__nav {
@@ -1905,19 +1909,7 @@ label.modal-label {
     font-size: 1.4rem;
 }
 
-.btn-remove {
-    color: #333;
-    font-size: 1.6rem;
-    margin-top: 40px;
-}
 
-.form-quantity {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 30px;
-}
 
 .profile-wrapper {
     margin-left: 100px;
@@ -2054,7 +2046,9 @@ button:active {
 }
 
 .product_item-img {
+    height: 100px;
     width: 100px;
+    object-fit: cover;
 }
 
 
@@ -2072,15 +2066,15 @@ button:active {
 .btn-remove {
     color: #333;
     font-size: 1.6rem;
-    margin-top: 40px;
+   
 }
 
 .form-quantity {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    height: 45px;
     margin-left: 30px;
+    
 }
 
 .profile-wrapper {
@@ -2149,4 +2143,14 @@ input[type='button'][disabled] {
 
 input[type='button'][disabled]:hover {
     filter: brightness(1);
+}
+
+.table-bordered {
+    font-size: 1.4rem;
+}
+
+.user-img-background {
+    margin-bottom: 101px;
+    padding-top: 56px;
+    background-color: #ededed;
 }
