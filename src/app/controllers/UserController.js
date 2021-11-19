@@ -26,9 +26,9 @@ class UserController {
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
-        if(!req.session.cart)   {
-            return res.render('user/cart', {dishes: null});
-        }
+        // if(!req.session.cart)   {
+        //     return res.render('user/cart', {cartdishes: null});
+        // }
         var cart = new Cart(req.session.cart);
         // if(cart) res.json(cart);
         res.render('user/cart',{
@@ -44,7 +44,7 @@ class UserController {
         res.render('user/onlPayment',{user: req.user})
     }
     addToCart(req, res, next){
-        var cart = new Cart(req.session.cart ? req.session.cart : {});
+        var cart = new Cart(req.session.cart);
         
         Dish.findById(req.body.id)
             .then((dish) => {

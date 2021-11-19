@@ -20,6 +20,9 @@
         <li class="header__navbar-item">
           <a href="/booktable" class="header__navbar-item-link">TABLE RESERVATION</a>
         </li>
+
+
+
         {{#if (isMatch user.permission "Manager")}}
         <li class="header__navbar-item">
           <a href="" class="header__navbar-item-link">
@@ -42,6 +45,9 @@
           </ul>
         </li>
         {{/if}}
+
+
+
         {{#if (isMatch user.permission "Customer")}}
         <li class="header__navbar-item">
           <a href="/user" class="header__navbar-item-link">
@@ -64,6 +70,9 @@
           </ul>
         </li>
         {{/if}}
+
+
+        
         {{#unless user}}
         <li class="header__navbar-item">
             <a href="/loginpage" class="header__navbar-item-link">ACCOUNT</a>
@@ -95,10 +104,13 @@
       </div>
     </div>
 
-        {{!-- CART --}}
 
+<<<<<<< HEAD
     {{#if (isMatch user.permission "Customer")}}
     
+=======
+        {{#if (isMatch user.permission "Customer")}}
+>>>>>>> d6e936ee (Fix gio hang tren header)
     <input type="checkbox" hidden id="header-nav" class="header-input">
     
     <label for="header-nav" class="header-slide__menu ">
@@ -121,6 +133,12 @@
           </h3>
         </div>
         <ul class="slidebar__wrap-list">
+<<<<<<< HEAD
+=======
+         
+          {{#if cartdishes}}
+            
+>>>>>>> d6e936ee (Fix gio hang tren header)
           
             
         {{#if cartdishes}}  
@@ -143,7 +161,27 @@
           </li>
             
           {{/each}}
+<<<<<<< HEAD
           {{/if}}
+=======
+          
+          <li class="slidebar__wrap-item">
+            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <div class="slidebar__wrap-info">
+              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+
+              <a href="" class="slidebar__wrap-info-food">
+                <button class="btn-minus">-</button>
+                <span class="slidebar__wrap-info-quantity">1</span>
+                <button class="btn-plus">+</button>
+              </a>
+            </div>
+            <div class="slidebar__wrap-trash-and-price">
+              <i class="fal fa-trash-alt trash-btn"></i>
+              <div class="slidebar__wrap-price">5</div>
+            </div>
+          </li>
+>>>>>>> d6e936ee (Fix gio hang tren header)
 
         </ul>
         <div class="slidebar__wrap-total">
@@ -152,11 +190,18 @@
         </div>
         <button class="btn-large featured-product__btn checkout-btn" type="submit"
           href="/user/payment">CHECKOUT</button>
+
+            {{/if}} 
       </div>
 
     </div>
+             
     {{/if}}
     <!-- end silebar -->
+
+        {{!-- CART --}}
+
+    
   </section>
 
 </div>

@@ -7,31 +7,25 @@ class MenuController {
     //get menu
     index(req, res, next) {
         var category = 'Combo';
+        var cart = new Cart(req.session.cart);
+
         if(req.query.category) category = req.query.category;
         if(!req.query.page) req.query.page = 1;
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
-                if(req.session.cart){ 
-                    var cart = new Cart(req.session.cart);
-                    res.render('Menusub/menu', { 
-                        cartdishes: cart.generateArray(),
-                        totalPrice: cart.totalPrice,
-                        totalQty: cart.totalQty,
-                        dishes: mutiMongoosetoObject(dishes),
-                        page: req.query.page,
-                        user: req.user,
-                        count,
-                        category,
-                    });
-                }else{
-                    res.render('Menusub/menu', { 
-                        dishes: mutiMongoosetoObject(dishes),
-                        page: req.query.page,
-                        user: req.user,
-                        count,
-                        category,
-                    });
-                }
+                res.render('Menusub/menu', { 
+                    // cartdishes: req.session.cart ? cart.generateArray() : null ,
+                    // totalPrice: req.session.cart ? cart.totalPrice : 0,
+                    // totalQty: req.session.cart ? cart.totalQty : 0,
+                    cartdishes: cart.generateArray() ,
+                    totalPrice:  cart.totalPrice ,
+                    totalQty:  cart.totalQty ,
+                    dishes: mutiMongoosetoObject(dishes),
+                    page: req.query.page,
+                    user: req.user,
+                    count,
+                    category,
+                });
             })
             .catch(next);
     }
