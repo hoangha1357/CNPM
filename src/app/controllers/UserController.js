@@ -7,13 +7,22 @@ const jwt = require('jsonwebtoken');
 
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
 
-
-
 class UserController {
-    index(req, res) {
-        res.render('user/userinfo',{
-            user: req.user,
-        });
+    index(req, res, next) {
+        if(req.session.cart){
+            var cart = new Cart(req.session.cart);
+            res.render('user/userinfo',{
+                user: req.user,
+                cartdishes: cart.generateArray(),
+                totalPrice: cart.totalPrice,
+                totalQty: cart.totalQty,
+            });
+        }else{
+            res.render('user/userinfo',{
+                user: req.user,
+            });
+        }
+        
     }
     // [GET] /user/ordered
     ordered(req, res, next) {

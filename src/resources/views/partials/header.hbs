@@ -45,7 +45,7 @@
         {{#if (isMatch user.permission "Customer")}}
         <li class="header__navbar-item">
           <a href="/user" class="header__navbar-item-link">
-                <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="{{imageload user.image user.imageType}}" id="profileImage" width="30" height="30" class="d-inline-block align-top" alt="">
                 {{user.name}}
           </a>
           <ul class="header__subnav-list">
@@ -74,9 +74,6 @@
               <li class="header__subnav-item header__subnav-item">
                 <a href="/register" class="header__subnav-link">Register</a>
               </li>
-              <li class="header__subnav-item header__subnav-item">
-                <a href="" class="header__subnav-link">Checkout</a>
-              </li>
             </ul>
           </li>
         {{/unless}}
@@ -91,9 +88,9 @@
         <div class="header-content__search-history">
         </div>
         <button class="header-content__search-btn header-content__search-icon fal fa-search" type="submit"></button> 
-        {{!-- <input type="text" class="header-content__search-input-wrap" placeholder="Search products...">
-        <div class="header-content__search-history">  --}}
-        {{!-- </div> --}}
+        {{!-- <div class="header-content__search-btn" >
+          <button class="header-content__search-icon fal fa-search" type="submit"></button>
+        </div> --}}
         </form>
       </div>
     </div>
@@ -101,11 +98,12 @@
         {{!-- CART --}}
 
     {{#if (isMatch user.permission "Customer")}}
+    
     <input type="checkbox" hidden id="header-nav" class="header-input">
-
+    
     <label for="header-nav" class="header-slide__menu ">
       <i class="far fa-shopping-cart header-slide__menu-img"></i>
-      <span class="header-slide__notice">3</span>
+      <span class="header-slide__notice">{{totalQty}}</span>
 
     </label>
 
@@ -123,9 +121,9 @@
           </h3>
         </div>
         <ul class="slidebar__wrap-list">
-          {{#if cartdishes}}
-            
           
+            
+        {{#if cartdishes}}  
           {{#each cartdishes}}
           <li class="slidebar__wrap-item">
             <img src="{{imageload this.item.image this.item.imageType}}" alt="" class="slidebar__wrap-img">

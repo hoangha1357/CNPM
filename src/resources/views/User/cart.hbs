@@ -40,8 +40,8 @@
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
                       <div class="btn-minus"><input type="button" value="-" class="qty minus" onclick="decrease({{this}},{{totalQty}},{{totalPrice}})"></div>
-                      <input type="text" name="updates[]" value="{{this.qty}}" min="0" class="form-control cart-qty" data-line="1">
-                      {{!-- <p>{{this.qty}}</p> --}}
+                      <input type="text" name="updates[]" value="{{this.qty}}" style="color: black" min="0" class="form-control cart-qty" data-line="1">
+                      <p>{{this.qty}}</p>
                       <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div>
                     </div>
                   </div>
