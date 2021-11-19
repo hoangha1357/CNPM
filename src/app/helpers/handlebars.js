@@ -23,6 +23,7 @@ module.exports = {
         return result;
     },
     imageload: (image, type) => {
+        if(!image) return null;
         return 'data:' + type + ';charset=uft-8;base64,' + image.toString('base64');
     },
     paging: (count, currentpage) => {
