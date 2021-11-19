@@ -52,6 +52,9 @@ class BookTableController {
             }))
             .catch(next);
     }
+    le(req, res) {
+        
+    }
 }
 
 
