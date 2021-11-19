@@ -1,0 +1,12 @@
+
+<button onclick="clicked(-1)">Previous</button>
+<span id="test">--</span>
+<button onclick="clicked(1)">next</button>
+<script>
+var i = 0;
+function clicked(n) {
+    var test = document.getElementById("test");
+    i = i + n;
+    test.innerHTML = i;
+};
+</script>

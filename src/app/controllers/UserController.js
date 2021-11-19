@@ -41,8 +41,18 @@ class UserController {
 
     // [GET] /user/ordered
     payment(req, res, next) {
-        res.render('user/onlPayment',{user: req.user})
+        // res.render('user/onlPayment',{user: req.user})
+        var cart = new Cart(req.session.cart);
+        // if(cart) res.json(cart);
+        res.render('User/onlPayment',{
+            user: req.user,
+            cartdishes: cart.generateArray(),
+            totalPrice: cart.totalPrice,
+            totalQty: cart.totalQty
+        })
     }
+
+
     addToCart(req, res, next){
         var cart = new Cart(req.session.cart);
         
