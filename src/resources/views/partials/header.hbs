@@ -3,7 +3,7 @@
     <div class="header__logo">
      
       <a href="/" class="header__logo-link">
-        <img src="image/logo123.png"
+        <img src="/image/logo123.png"
           alt="" class="header__logo-img">
       </a>
     </div>
@@ -20,6 +20,9 @@
         <li class="header__navbar-item">
           <a href="/booktable" class="header__navbar-item-link">TABLE RESERVATION</a>
         </li>
+
+
+
         {{#if (isMatch user.permission "Manager")}}
         <li class="header__navbar-item">
           <a href="" class="header__navbar-item-link">
@@ -42,10 +45,13 @@
           </ul>
         </li>
         {{/if}}
+
+
+
         {{#if (isMatch user.permission "Customer")}}
         <li class="header__navbar-item">
           <a href="/user" class="header__navbar-item-link">
-                <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="{{imageload user.image user.imageType}}" id="profileImage" width="30" height="30" class="d-inline-block align-top" alt="">
                 {{user.name}}
           </a>
           <ul class="header__subnav-list">
@@ -64,6 +70,9 @@
           </ul>
         </li>
         {{/if}}
+
+
+        
         {{#unless user}}
         <li class="header__navbar-item">
             <a href="/loginpage" class="header__navbar-item-link">ACCOUNT</a>
@@ -74,9 +83,6 @@
               <li class="header__subnav-item header__subnav-item">
                 <a href="/register" class="header__subnav-link">Register</a>
               </li>
-              <li class="header__subnav-item header__subnav-item">
-                <a href="" class="header__subnav-link">Checkout</a>
-              </li>
             </ul>
           </li>
         {{/unless}}
@@ -86,21 +92,29 @@
 
     <div class="header-content__search">
       <div class="header-content__search-input">
-        <input type="text" class="header-content__search-input-wrap" placeholder="Search products...">
+        <form method="GET" action="/search">
+        <input type="text" class="header-content__search-input-wrap" name='foodname' placeholder="Search products...">
         <div class="header-content__search-history">
-
         </div>
-        <div class="header-content__search-btn">
-          <i class="header-content__search-icon fal fa-search"></i>
-        </div>
+        <button class="header-content__search-btn header-content__search-icon fal fa-search" type="submit"></button> 
+        {{!-- <div class="header-content__search-btn" >
+          <button class="header-content__search-icon fal fa-search" type="submit"></button>
+        </div> --}}
+        </form>
       </div>
     </div>
-    {{#if (isMatch user.permission "Customer")}}
-    <input type="checkbox" hidden id="header-nav" class="header-input">
 
+
+
+    {{#if (isMatch user.permission "Customer")}}
+    
+
+       
+    <input type="checkbox" hidden id="header-nav" class="header-input">
+    
     <label for="header-nav" class="header-slide__menu ">
       <i class="far fa-shopping-cart header-slide__menu-img"></i>
-      <span class="header-slide__notice">3</span>
+      <span class="header-slide__notice">{{totalQty}}</span>
 
     </label>
 
@@ -118,22 +132,33 @@
           </h3>
         </div>
         <ul class="slidebar__wrap-list">
+
+         
+          {{#if cartdishes}}
+              
+       
+          {{#each cartdishes}}
           <li class="slidebar__wrap-item">
-            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
+            <img src="{{imageload this.item.image this.item.imageType}}" alt="" class="slidebar__wrap-img">
             <div class="slidebar__wrap-info">
-              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+              <a href="" class="slidebar__wrap-info-product">{{this.item.name}}</a>
 
               <span class="slidebar__wrap-info-food">
                 <button class="btn-minus">-</button>
-                <input class="slidebar__wrap-info-quantity" type="text" value="1"></input>
+                <input class="slidebar__wrap-info-quantity" type="text" value="{{ this.qty }}"></input>
                 <button class="btn-plus">+</button>
               </span>
             </div>
             <div class="slidebar__wrap-trash-and-price">
               <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
+              <div class="slidebar__wrap-price">{{this.price}}</div>
             </div>
           </li>
+            
+          {{/each}}
+
+
+          
           <li class="slidebar__wrap-item">
             <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
             <div class="slidebar__wrap-info">
@@ -150,34 +175,26 @@
               <div class="slidebar__wrap-price">5</div>
             </div>
           </li>
-          <li class="slidebar__wrap-item">
-            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
-            <div class="slidebar__wrap-info">
-              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
 
-              <a href="" class="slidebar__wrap-info-food">
-                <button class="btn-minus">-</button>
-                <span class="slidebar__wrap-info-quantity">1</span>
-                <button class="btn-plus">+</button>
-              </a>
-            </div>
-            <div class="slidebar__wrap-trash-and-price">
-              <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">5</div>
-            </div>
-          </li>
         </ul>
         <div class="slidebar__wrap-total">
           <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
-          <span class="slidebar__wrap-sub-total">20</span>
+          <span class="slidebar__wrap-sub-total">{{totalPrice}}</span>
         </div>
         <button class="btn-large featured-product__btn checkout-btn" type="submit"
-          href="">CHECKOUT</button>
+          href="/user/payment">CHECKOUT</button>
+
+            {{/if}} 
       </div>
 
     </div>
+             
     {{/if}}
     <!-- end silebar -->
+
+        {{!-- CART --}}
+
+    
   </section>
 
 </div>

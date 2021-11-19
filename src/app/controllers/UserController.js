@@ -1,26 +1,59 @@
 const Dish = require('../models/Dish');
 const User = require('../models/Userid');
+const Cart = require('../models/Cart');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
 
-
-
 class UserController {
-    index(req, res) {
-        res.render('user/userinfo',{
-            user: req.user,
-        });
+    index(req, res, next) {
+        if(req.session.cart){
+            var cart = new Cart(req.session.cart);
+            res.render('user/userinfo',{
+                user: req.user,
+                cartdishes: cart.generateArray(),
+                totalPrice: cart.totalPrice,
+                totalQty: cart.totalQty,
+            });
+        }else{
+            res.render('user/userinfo',{
+                user: req.user,
+            });
+        }
+        
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
-        res.render('user/cart',{user: req.user})
+        // if(!req.session.cart)   {
+        //     return res.render('user/cart', {cartdishes: null});
+        // }
+        var cart = new Cart(req.session.cart);
+        // if(cart) res.json(cart);
+        res.render('user/cart',{
+            user: req.user,
+            cartdishes: cart.generateArray(),
+            totalPrice: cart.totalPrice,
+            totalQty: cart.totalQty
+        })
     }
 
     // [GET] /user/ordered
     payment(req, res, next) {
         res.render('user/onlPayment',{user: req.user})
+    }
+    addToCart(req, res, next){
+        var cart = new Cart(req.session.cart);
+        
+        Dish.findById(req.body.id)
+            .then((dish) => {
+                cart.add(MongoosetoObject(dish), dish._id);
+                req.session.cart = cart;
+                console.log(req.session.cart,);
+                res.redirect('back'); 
+            })
+            .catch(next);
     }
 
     // [POST] /user/updateImage

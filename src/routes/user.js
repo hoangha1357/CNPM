@@ -7,6 +7,7 @@ const authenticateUser = require('../app/middlewares/Authenticate');
 const requireLogin = require('../app/middlewares/LoginRequires');
 
 route.get('/ordered', requireLogin, UserController.ordered);
+route.post('/add-to-cart/:id',UserController.addToCart);
 route.post('/register', UserController.register);
 route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
 route.get('/payment', requireLogin, UserController.payment);

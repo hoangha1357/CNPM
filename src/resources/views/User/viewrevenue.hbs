@@ -76,8 +76,8 @@
               </td>
               <td>{{mul this.sale this.price}} VNĐ</td>
               <td>
-                  <a href="/manager/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
-                  <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
+                  <a href="/manager/{{this._id}}/edit"  class="product__item-btn btn-red" style="color: white;">Sửa</a>
+                  <a href=""  class="product__item-btn btn-red" style="color: white;" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
               </td>
           </tr>
           {{else}}
@@ -92,6 +92,7 @@
     </table>
     {{{paging count page}}}
 </form>
+</div>
 
 <!--confirm delete-->
 <div id="delete-dish-modal" class="modal" tabindex="-1" role="dialog">

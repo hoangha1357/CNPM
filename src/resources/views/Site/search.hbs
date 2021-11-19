@@ -1,9 +1,37 @@
-<div class="mt-4">
-    <form method="GET" action="">
+<div class="header__slider">
+    <img src="/image/background-home.jpg" alt="" class="header__img">
+</div>
+
+<div class="">
+    <form method="GET" action="/search">
         <div class="form-group">
             <label for="search-input">Từ khóa</label>
-            <input type="text" name="q" class="form-control" id="search-input" placeholder="nhập từ khóa">
+            <input type="text" name="foodname" class="form-control" id="search-input" placeholder="nhập từ khóa">
         </div>
         <button type="submit" class="btn btn-primary">Tìm kiếm</button>
     </form>
+    <div class="shop__wrap row feature-home">
+        {{#each dishes }}
+        <div class="feature-item col l-4 m-12">
+            <img src="{{imageload this.image this this.imageType}}" alt="" class="product__item-img">
+            <div class="product-body">
+                <div class="product__item-heading">{{this.name}}</div>
+                <div class="product__item-quanlity">
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                    <i class="product__item-icon fas fa-star"></i>
+                </div>
+                <div class="product__item-price">
+                    <span class="product__item-price-sale">${{this.price}}</span>
+                </div>
+                <a href="" class="product__item-btn">ADD TO CART</a>
+                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+            </div>
+        </div>
+        {{else}}
+            Không có kết quả trùng
+        {{/each}}
+    </div>
 </div>

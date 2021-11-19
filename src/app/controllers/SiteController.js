@@ -1,23 +1,47 @@
 const Dish = require('../models/Dish');
 const User = require('../models/Userid');
+const Cart = require('../models/Cart');
 const jwt  = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const { mutiMongoosetoObject } = require('../../util/subfuntion');
 
 class SiteController {
     home(req, res, next) {
+        
         Dish.find({ recommend: true })
             .then((dishes) => {
-                res.render('Site/home', {
-                    dishes: mutiMongoosetoObject(dishes),
-                    user: req.user,
-                });
+                if(req.session.cart){
+                    var cart = new Cart(req.session.cart);
+                    res.render('Site/home', {
+                        cartdishes: cart.generateArray(),
+                        totalPrice: cart.totalPrice,
+                        totalQty: cart.totalQty,
+                        dishes: mutiMongoosetoObject(dishes),
+                        user: req.user,
+                    });
+                }else{
+                    res.render('Site/home', {
+                        dishes: mutiMongoosetoObject(dishes),
+                        user: req.user,
+                    });
+                }
+                
             })
             .catch(next);
     }
 
-    search(req, res) {
-        res.render('Site/home1', { user: req.user });
+    search(req, res, next) {
+        if(req.query.foodname){
+            const searchFied = req.query.foodname;
+            Dish.find({name:{$regex: searchFied, $options: '$i'}})
+                .then((dishes) => {
+                    res.render('Site/search', { 
+                        user: req.user,
+                        dishes: mutiMongoosetoObject(dishes),
+                    });
+                })    
+        }
+        else return res.render('Site/search', { user: req.user});   
     }
 
     loginpage(req, res, next) {

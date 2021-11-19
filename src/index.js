@@ -26,6 +26,11 @@ app.use(
     }),
 );
 
+app.use(function(req,res,next) {
+    res.locals.session = req.session;
+    next();
+});
+
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 

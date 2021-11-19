@@ -1,4 +1,5 @@
 const Dish                      = require('../models/Dish');
+const Cart                      = require('../models/Cart');
 const { mutiMongoosetoObject,MongoosetoObject,modifyRequestImage }  = require('../../util/subfuntion');
 
 
@@ -6,11 +7,19 @@ class MenuController {
     //get menu
     index(req, res, next) {
         var category = 'Combo';
+        var cart = new Cart(req.session.cart);
+
         if(req.query.category) category = req.query.category;
         if(!req.query.page) req.query.page = 1;
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
                 res.render('Menusub/menu', { 
+                    // cartdishes: req.session.cart ? cart.generateArray() : null ,
+                    // totalPrice: req.session.cart ? cart.totalPrice : 0,
+                    // totalQty: req.session.cart ? cart.totalQty : 0,
+                    cartdishes: cart.generateArray() ,
+                    totalPrice:  cart.totalPrice ,
+                    totalQty:  cart.totalQty ,
                     dishes: mutiMongoosetoObject(dishes),
                     page: req.query.page,
                     user: req.user,
@@ -27,7 +36,7 @@ class MenuController {
         const dish = new Dish(req.body);
 
         dish.save()
-            .then(() => res.redirect('/user/viewrevenue'))
+            .then(() => res.redirect('/manager/viewrevenue'))
             .catch((error) => {
                 res.json(error);
             });
@@ -39,12 +48,12 @@ class MenuController {
         if(req.body.image){
             modifyRequestImage(req);
             Dish.updateOne({ _id: req.params.id }, req.body)
-                .then(() => res.redirect('/User/viewrevenue'))
+                .then(() => res.redirect('/manager/viewrevenue'))
                 .catch(next);
         }
         else{
             Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, type_dish: req.body.type_dish ,price: req.body.price }})
-                .then(() => res.redirect('/User/viewrevenue'))
+                .then(() => res.redirect('/manager/viewrevenue'))
                 .catch(next);
         }
     }
