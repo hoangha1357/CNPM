@@ -9,19 +9,15 @@ const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('
 
 class UserController {
     index(req, res, next) {
-        if(req.session.cart){
-            var cart = new Cart(req.session.cart);
-            res.render('user/userinfo',{
-                user: req.user,
-                cartdishes: cart.generateArray(),
-                totalPrice: cart.totalPrice,
-                totalQty: cart.totalQty,
-            });
-        }else{
-            res.render('user/userinfo',{
-                user: req.user,
-            });
-        }
+
+        var cart = new Cart(req.session.cart);
+        // if(cart) res.json(cart);
+        res.render('user/userinfo',{
+            user: req.user,
+            cartdishes: cart.generateArray(),
+            totalPrice: cart.totalPrice,
+            totalQty: cart.totalQty
+        })
         
     }
     // [GET] /user/ordered
@@ -39,7 +35,7 @@ class UserController {
         })
     }
 
-    // [GET] /user/ordered
+    // [GET] /user/payment
     payment(req, res, next) {
         // res.render('user/onlPayment',{user: req.user})
         var cart = new Cart(req.session.cart);
@@ -47,12 +43,12 @@ class UserController {
         res.render('User/onlPayment',{
             user: req.user,
             cartdishes: cart.generateArray(),
-            totalPrice: cart.totalPrice,
-            totalQty: cart.totalQty
+            subtotalPrice: cart.totalPrice,
+            totalPrice: cart.totalPrice + 5,
         })
     }
 
-
+    // [POST] /user/add-to-cart/:id
     addToCart(req, res, next){
         var cart = new Cart(req.session.cart);
         
@@ -60,10 +56,28 @@ class UserController {
             .then((dish) => {
                 cart.add(MongoosetoObject(dish), dish._id);
                 req.session.cart = cart;
-                console.log(req.session.cart,);
-                res.redirect('back'); 
+                console.log(req.session.cart);
+                res.redirect('back');
+                // res.json(req.session.cart);
             })
             .catch(next);
+    }
+
+    // [POST] /user/remove-from-cart
+    removeFromCart(req, res, next) {
+        var cart = new Cart(req.session.cart);
+        
+        Dish.findById(req.body.id)
+            .then( ()=> {
+                cart.remove(req.body.id);
+                req.session.cart = cart;
+                console.log(req.session.cart);
+                res.redirect('back');
+                // res.json(req.session.cart);
+            })
+            .catch(next);
+
+       
     }
 
     // [POST] /user/updateImage

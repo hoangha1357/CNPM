@@ -1,7 +1,7 @@
 <div id="content" class="col-sm-12">
       <h1 class="under-line-effect under-line-effect--red" style="text-align: center; color: grey">SHOPPING CART</h1>
 {{#if cartdishes}}
-      <form method="post">
+      {{!-- <form method="post"> --}}
         <div class="table-responsive table-checkout-cart">
           <table class="table table-bordered">
             <thead>
@@ -21,15 +21,20 @@
               {{#each cartdishes }}
               
               <tr data-line="1">
+                
                 <td class="text-center btn-remove-product">
-                  
-                    <a type="button" title="" class="btn-remove" href="" data-line="1"><i class="fal fa-trash-alt"></i></a>
 
+                 <form method="POST" action="/user/remove-from-cart/{{this.item._id}}">
+                    <input type="hidden" name="id" value="{{this.item._id}}">
+                  <button type="submit" class="btn-remove"  id="id" value="{{this.item._id}}"><i class="fal fa-trash-alt"></i> </button>
+                 </form>
+                 
                 </td>
+                 
                 <td class="text-center">
                   <a href="">
                     <img src="{{imageload this.item.image this.item.imageType}}" alt=""  class="product_item-img">
-                    {{!-- <p>{{this.item.image.data}}</p> --}}
+                    
                   </a>
                 </td>
                 <td class="text-center">
@@ -106,7 +111,7 @@
             </div>
           </div>
         </div>
-      </form>
+      {{!-- </form> --}}
 
 
 

@@ -45,4 +45,6 @@ module.exports = {
     isMatch: (object, value) => {
         return object === value;
     },
+
+    calTotalQty: (totalQty) => {return totalQty ? totalQty : 0;},
 };
