@@ -19,9 +19,6 @@ class BookTableController {
     reservated(req, res, next) {
         res.render('Site/book_table_reservated');
     }
-
-    
-
     // [POST] /booktable/choosetable
     choosetable(req, res, next) {
         const newtable = new Table({
