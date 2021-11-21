@@ -1,4 +1,4 @@
-<form method="POST" action="/booktable/thankyou" id="form-all">
+<form method="POST" name="choose-table-form" action="/booktable/thankyou" id="form-all">
     <div class="grid table-reservation">
         <div class="row">
             {{!-- <button class="btn btn-dark btn-sm check-all-submit-btn" disabled>Thực hiện</button> --}}
@@ -27,51 +27,51 @@
                     <div class="row">
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-1" value="1" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-1" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input id="table-img-2" value="2" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-2" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input id="table-img-3" value="3" type="image" class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <input id="table-img-4" type="image" class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <input id="table-img-5" type="image" class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <input id="table-img-6" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-3" value="3" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input id="table-img-7" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-4" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input id="table-img-8" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-5" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input id="table-img-9" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-6" type="image" class="table-img" src="/image/dinner.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-7" type="image" class="table-img" src="/image/dinner.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-8" type="image" class="table-img" src="/image/dinner.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-9" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -81,12 +81,30 @@
     </div>
 </form>
 
-
 {{!-- Confirm delete course --}}
 <!-- Button trigger modal -->
 <!-- Modal -->
+<div class="modal fade" id="delete-course-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn chọn bàn này?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+        <button id="btn-choose-table" type="button" class="btn btn-danger">Chọn bàn</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<form name="choose-table-form" method="POST"></form>
+{{!-- <form name="choose-table-form" action="/booktable/thankyou" method="POST"></form> --}}
 {{!-- <script>
     //document.addEventListener('changeTable', function () {
     //    var table = document.getElementById('table1');
@@ -160,36 +178,49 @@
         var tableImage7 = $('#table-img-7');
         var tableImage8 = $('#table-img-8');
         var tableImage9 = $('#table-img-9');
+        var btnChooseTable = $('#btn-choose-table');
         var tableID = $('#tableID');
         var formAll = $('#form-all');
         var tableImage = $('.table-img');
         var chooseTableForm = document.forms['choose-table-form'];
-        tableImage1.click(function(){
+        tableImage1.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 1");
         });
-        tableImage2.click(function(){
+        tableImage2.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 2");
         });
-        tableImage3.click(function(){
+        tableImage3.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 3");
         });
-        tableImage4.click(function(){
+        tableImage4.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 4");
         });
-        tableImage5.click(function(){
+        tableImage5.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 5");
         });
-        tableImage6.click(function(){
+        tableImage6.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 6");
         });
-        tableImage7.click(function(){
+        tableImage7.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 7");
         });
-        tableImage8.click(function(){
+        tableImage8.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 8");
         });
-        tableImage9.click(function(){
+        tableImage9.click(function(e){
+            e.preventDefault();
             tableID.val("Bàn 9");
+        });
+        btnChooseTable.click(function(){
+            chooseTableForm.submit();
         });
     });
 </script>
