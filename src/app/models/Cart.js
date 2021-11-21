@@ -15,6 +15,35 @@ module.exports = function Cart(oldCart) {
         this.totalPrice += storedItem.item.price;
 
     };
+
+    this.remove = function(id) {
+        // const removeIndex = this.items.findIndex(item => item.dishid === itemId);
+        // // var filtered = someArray.filter(function(el) { return el.Name != "Kristian"; }); 
+        // this.items.splice(removeIndex, 1);
+
+        // delete this.items.itemId;
+
+        var deletedItem = this.items[id]; 
+       
+        this.totalQty -= deletedItem.qty  ; // Giảm tổng số lượng 
+        this.totalPrice -= deletedItem.price; // Giảm tổng giá
+
+        // Tạo object mới chứa các phần tử có id != 'id'
+        const ObjdeleteItem = Object.keys(this.items).reduce((acc, key) => {
+            if (key !== id ) {
+                acc[key] = this.items[key]
+            }
+            return acc
+        }, {}) 
+
+        this.items =  ObjdeleteItem;
+        
+    }
+
+
+
+
+
     
     this.generateArray = function() {
           var arr = [];

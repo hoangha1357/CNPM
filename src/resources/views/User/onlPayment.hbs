@@ -144,17 +144,24 @@
             <button class="product__item-btn" >Return to shop</button>
         </div>
         <div class="col l-6">
+
+            
+
             <div class="payment-product__wrap" style="margin-top: -30px">
                 <ul class="slidebar__wrap-list">
+
+                    {{#each cartdishes}}
+
                     <li class="slidebar__wrap-item">
-                        <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
-                        <span class="payment-product__quantity">1</span>
+                        <img src="{{imageload this.item.image this.item.imageType}}" alt="" class="slidebar__wrap-img">
+                        <span class="payment-product__quantity">{{this.qty}}</span>
                         <div class="slidebar__wrap-info" style="flex: 1;">
-                            <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
+                            <a href="" class="slidebar__wrap-info-product">{{this.item.name}}</a>
 
                         </div>
-                        <div class="slidebar__wrap-price">5</div>       
+                        <div class="slidebar__wrap-price">{{this.price}}</div>      
                     </li>
+
                     <li class="slidebar__wrap-item">
                         <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
                         <span class="payment-product__quantity">1</span>
@@ -163,19 +170,13 @@
                         </div>
                         <div class="slidebar__wrap-price">5</div>
                     </li>
-                    <li class="slidebar__wrap-item">
-                        <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
-                        <span class="payment-product__quantity">1</span>
-                        <div class="slidebar__wrap-info" style="flex: 1;">
-                            <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
-                        </div>
-                        <div class="slidebar__wrap-price">5</div>
 
-                    </li>
+                   {{/each}}
+
                 </ul>
                 <div class="slidebar__wrap-total">
                     <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
-                    <span class="slidebar__wrap-sub-total">15</span>
+                    <span class="slidebar__wrap-sub-total">{{subtotalPrice}}</span>
                 </div>
                 <div class="slidebar__wrap-total">
                     <span class="slidebar__wrap-sub-total">SHIPPING</span>
@@ -183,7 +184,7 @@
                 </div>
                 <div class="slidebar__wrap-total">
                     <span class="slidebar__wrap-sub-total">TOTAL</span>
-                    <span class="slidebar__wrap-sub-total">20</span>
+                    <span class="slidebar__wrap-sub-total">{{totalPrice}}</span>
                 </div>
             </div>
         </div>
