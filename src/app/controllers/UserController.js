@@ -45,6 +45,7 @@ class UserController {
         var cart = new Cart(req.session.cart);
         // if(cart) res.json(cart);
         res.render('User/onlPayment',{
+            noheader: true,
             user: req.user,
             cartdishes: cart.generateArray(),
             totalPrice: cart.totalPrice,

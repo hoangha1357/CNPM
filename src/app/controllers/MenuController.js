@@ -11,15 +11,13 @@ class MenuController {
 
         if(req.query.category) category = req.query.category;
         if(!req.query.page) req.query.page = 1;
+        
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
                 res.render('Menusub/menu', { 
-                    // cartdishes: req.session.cart ? cart.generateArray() : null ,
-                    // totalPrice: req.session.cart ? cart.totalPrice : 0,
-                    // totalQty: req.session.cart ? cart.totalQty : 0,
-                    cartdishes: cart.generateArray() ,
-                    totalPrice:  cart.totalPrice ,
-                    totalQty:  cart.totalQty ,
+                    cartdishes: req.session.cart ? cart.generateArray() : null ,
+                    totalPrice: req.session.cart ? cart.totalPrice : 0,
+                    totalQty: req.session.cart ? cart.totalQty : 0,
                     dishes: mutiMongoosetoObject(dishes),
                     page: req.query.page,
                     user: req.user,
@@ -32,9 +30,9 @@ class MenuController {
     
     // [POST] /menu/store
     store(req, res, next) {
+        if(!req.body.name || !req.body.image || !req.body.price) return res.redirect('back');
         modifyRequestImage(req);
         const dish = new Dish(req.body);
-
         dish.save()
             .then(() => res.redirect('/manager/viewrevenue'))
             .catch((error) => {

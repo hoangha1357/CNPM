@@ -7,25 +7,17 @@ const { mutiMongoosetoObject } = require('../../util/subfuntion');
 
 class SiteController {
     home(req, res, next) {
-        
+
+        var cart = new Cart(req.session.cart);
         Dish.find({ recommend: true })
             .then((dishes) => {
-                if(req.session.cart){
-                    var cart = new Cart(req.session.cart);
-                    res.render('Site/home', {
-                        cartdishes: cart.generateArray(),
-                        totalPrice: cart.totalPrice,
-                        totalQty: cart.totalQty,
-                        dishes: mutiMongoosetoObject(dishes),
-                        user: req.user,
-                    });
-                }else{
-                    res.render('Site/home', {
-                        dishes: mutiMongoosetoObject(dishes),
-                        user: req.user,
-                    });
-                }
-                
+                res.render('Site/home', {
+                    cartdishes: req.session.cart ? cart.generateArray() : null ,
+                    totalPrice: req.session.cart ? cart.totalPrice : 0,
+                    totalQty: req.session.cart ? cart.totalQty : 0,
+                    dishes: mutiMongoosetoObject(dishes),
+                    user: req.user,
+                });  
             })
             .catch(next);
     }

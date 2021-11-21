@@ -36,7 +36,7 @@
                                  <input type="hidden" id="id" name="id" value="{{this._id}}">
                                 <button type="submit"  class="product__item-btn">ADD TO CART</button>
                                 </form>
-                                <a href="" class="product__item-btn"><i class="far fa-search"></i></a>
+                                <a href="" class="product__item-btn" data-toggle="modal" data-target="#item-feature"><i class="far fa-search"></i></a>
                             </div>
                         </div>
                         {{else}}
@@ -50,9 +50,10 @@
 </div>
 
 {{!-- MODAL/ITEM FEATURES --}}
-<div class="modal">
+<div class="modal" id="item-feature">
     <div class="modal-container js-modal-container">
         <div class="modal-close js-modal-close">
+            
             <i class="ti-close"></i>
         </div>
 

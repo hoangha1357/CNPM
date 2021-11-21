@@ -45,9 +45,11 @@
 </head>
 
 <body>
+    {{#unless noheader}}
     <div class="container-fluid">
         {{> header}}
     </div>
+    {{/unless}}
     <div class="wrapper">
         {{{body}}}
     </div>
