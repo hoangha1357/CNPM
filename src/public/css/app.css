@@ -1189,7 +1189,7 @@ a:hover {
     color: var(--green-color);
 }
 
-/* .modal {
+.modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -1200,8 +1200,8 @@ a:hover {
     justify-content: center;
     display: none;
     z-index: 5;
-} */
-/* 
+}
+
 .modal-container {
     background-color: white;
     width: 900px;
@@ -1213,7 +1213,7 @@ a:hover {
 
 .modal.open {
     display: flex;
-} */
+}
 
 header.modal-header {
     background-color: #009688;
