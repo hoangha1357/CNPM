@@ -1,15 +1,11 @@
-<div class="header__slider">
-    <img src="/image/background-home.jpg" alt="" class="header__img">
-</div>
-
-<div class="">
-    <form method="GET" action="/search">
+<div class="" style="margin-top: 100px">
+    {{!-- <form method="GET" action="/search">
         <div class="form-group">
             <label for="search-input">Từ khóa</label>
             <input type="text" name="foodname" class="form-control" id="search-input" placeholder="nhập từ khóa">
         </div>
         <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-    </form>
+    </form> --}}
     <div class="shop__wrap row feature-home">
         {{#each dishes }}
         <div class="feature-item col l-4 m-12">
@@ -31,7 +27,12 @@
             </div>
         </div>
         {{else}}
-            Không có kết quả trùng
+        <div class="search__wrapper">
+
+            <img class="noresult" src="/image/noresult.png" alt="">
+            <h3 class="heading">No results found</h3>
+            <p class="desc">We couldn't find what you're looking for</p>
+        </div>
         {{/each}}
     </div>
 </div>
