@@ -131,8 +131,8 @@
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
                             <input type="hidden" id="id" name="id" value="{{this._id}}">
                             <button type="submit"  class="product__item-btn">ADD TO CART</button>
+                            <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
                         </form>
-                        <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
                     </div>
                 </div>
                 {{/if}}
@@ -213,7 +213,8 @@
 
 
     //Hàm hiển thị  modal (thêm class open vào modal)
-    function showBuyTickets() {
+    function showBuyTickets(e) {
+        e.preventDefault()
         modal.classList.add('open')
     }
     //lặp qua từng thẻ button và nghe hành vi click
