@@ -10,6 +10,7 @@ class BookTableController {
                 res.render('Site/book_table', {
                     table: MongoosetoObject(table),
                     user: req.user,
+                    message: 'Vui lòng điền đầy đủ thông tin'
                 })
             )
             .catch(next);
@@ -48,9 +49,6 @@ class BookTableController {
                 newtable: MongoosetoObject(newtable),
             }))
             .catch(next);
-    }
-    le(req, res) {
-        
     }
 }
 

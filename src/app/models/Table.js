@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const Table = new Schema(
     {
-        email: { type: String},
-        name: { type: String, maxlength: 100},
-        numofguests: { type: Number},
-        time: { type: String},
-        date: { type: String},
-        tableID: { type: String, default: ''},
-        reservated: {type: Number, default: 0},
+        email: { type: String, required: true},
+        name: { type: String, maxlength: 100, required: true},
+        numofguests: { type: Number, required: true, default: 0},
+        time: { type: String, required: true, default: ''},
+        date: { type: String, required: true, default: ''},
+        tableID: { type: String, default: '', required: true},
+        reservated: {type: Number, default: 0, required: true},
     },
     { 
         timestamps: true,

@@ -13,7 +13,7 @@
                 <input class="table__input" id="numofguests" name="numofguests" type="numofguests" value="{{newtable.numofguests}}">
 
                 <label for="tableID" class="table__header-heading under-line-effect">Table ID</label>
-                <input class="table__input" id="tableID" name="tableID" type="tableID" value="{{newtable.numofguests}}">
+                <input class="table__input" id="tableID" name="tableID" type="tableID" value="">
 
             </div>
             <div class="col l-7 table-location mb-40">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-3" value="3" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-3" type="image" class="table-img" src="/image/dinner.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -94,10 +94,10 @@
         </button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn chọn bàn này?
+        Bạn có chắc chắn muốn chọn bàn số này?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+        <button type="button" id="btn-cancel-table" class="btn btn-dark" data-dismiss="modal">Hủy</button>
         <button id="btn-choose-table" type="button" class="btn btn-danger">Chọn bàn</button>
       </div>
     </div>
@@ -179,45 +179,51 @@
         var tableImage8 = $('#table-img-8');
         var tableImage9 = $('#table-img-9');
         var btnChooseTable = $('#btn-choose-table');
+        var btnCancelTable = $('#btn-cancel-table');
         var tableID = $('#tableID');
         var formAll = $('#form-all');
         var tableImage = $('.table-img');
         var chooseTableForm = document.forms['choose-table-form'];
+
+        btnCancelTable.click(function(e) {
+            e.preventDefault();
+            tableID.val("")
+        });
         tableImage1.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 1");
+            tableID.val("1");
         });
         tableImage2.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 2");
+            tableID.val("2");
         });
         tableImage3.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 3");
+            tableID.val("3");
         });
         tableImage4.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 4");
+            tableID.val("4");
         });
         tableImage5.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 5");
+            tableID.val("5");
         });
         tableImage6.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 6");
+            tableID.val("6");
         });
         tableImage7.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 7");
+            tableID.val("7");
         });
         tableImage8.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 8");
+            tableID.val("8");
         });
         tableImage9.click(function(e){
             e.preventDefault();
-            tableID.val("Bàn 9");
+            tableID.val("9");
         });
         btnChooseTable.click(function(){
             chooseTableForm.submit();
