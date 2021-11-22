@@ -362,10 +362,9 @@ a:hover {
 }
 
 .checkout-btn {
-    
+    transform: translateX(60%);
     cursor: pointer;
     background-color: #e61038;
-    
 }
 
 
@@ -1190,7 +1189,7 @@ a:hover {
     color: var(--green-color);
 }
 
-.modal {
+/* .modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -1201,8 +1200,8 @@ a:hover {
     justify-content: center;
     display: none;
     z-index: 5;
-} 
-
+} */
+/* 
 .modal-container {
     background-color: white;
     width: 900px;
@@ -1214,7 +1213,7 @@ a:hover {
 
 .modal.open {
     display: flex;
-} 
+} */
 
 header.modal-header {
     background-color: #009688;
@@ -1240,7 +1239,6 @@ header.modal-header {
     padding: 16px;
     font-size: 12px;
     cursor: pointer;
-    z-index: 6;
 }
 
 .modal-close:hover {
@@ -1316,7 +1314,6 @@ label.modal-label {
     width: 60%;
     padding-right: 30px;
     padding-top: 20px;
-    font-size: 1.2rem;
 }
 
 .modal-product .product-info .price-box {
