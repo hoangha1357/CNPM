@@ -2154,3 +2154,7 @@ input[type='button'][disabled]:hover {
     padding-top: 56px;
     background-color: #ededed;
 }
+
+.modal-backdrop {
+    z-index: 0;
+}
