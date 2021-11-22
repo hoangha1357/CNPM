@@ -5,6 +5,7 @@ const { mutiMongoosetoObject, MongoosetoObject } = require('../../util/subfuntio
 class BookTableController {
     booktable(req, res, next) {
         // res.render('Site/book_table');
+        var cart = new Cart(req.session.cart);
         Table.findById(req.params.id)
             .then((table) => 
                 res.render('Site/book_table', {
