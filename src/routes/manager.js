@@ -10,6 +10,7 @@ const requireLogin = require('../app/middlewares/LoginRequires');
 route.get('/viewrevenue', ManagerController.viewrevenue);
 route.get('/trash', ManagerController.trash);
 route.get('/:id/edit', ManagerController.edit);
+// route.get('/viewtablereservation', ManagerController.viewtablereservation);
 route.get('/create', ManagerController.create);
 
 module.exports = route;

@@ -398,3 +398,45 @@ input[readonly] {
   border-top: 1px solid #d8d8d8;
 }
 
+.modal-body {
+  font-size:25px;
+}
+
+.btn-delete-course {
+  font-size:100px;
+}
+
+.btn-2 {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: rgb(201, 0, 0); 
+  color: var(--white-color);
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  letter-spacing: 2px;
+  line-height: 1.3rem;
+  font-size: 1.3rem;
+  text-align: center;
+  text-decoration: none; }
+
+
+.btn-large-2 {
+  display: inline-block;
+  /* background-color: #ccc; */
+  /* color: var(--white-color); */
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  letter-spacing: 2px;
+  padding: 15px 35px;
+  text-align: center; }
+
+.table-reservation-info {
+  display:flex;
+  justify-content:space-between;
+  max-width: 500px;
+}

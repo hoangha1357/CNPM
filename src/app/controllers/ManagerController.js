@@ -1,5 +1,6 @@
-const Dish      = require('../models/Dish');
-const User    = require('../models/Userid');
+const Dish      =  require('../models/Dish');
+const Table     =  require('../models/Table');
+const User      =  require('../models/Userid');
 
 const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/subfuntion');
 
@@ -49,6 +50,18 @@ class ManagerController {
                 }),
             )
             .catch(next);
+    }
+    viewtablereservation(req, res, next) {
+        // if(!req.query.page) req.query.page = 1;
+        // // res.json(req.session.email);
+        // Promise.all([Table.find({}).limit(6).skip((req.query.page - 1) * 6).sortable(req), Table.countDocumentsDeleted(),Table.countDocuments()])
+        //     .then(([tables, deletedCount, count]) => {
+        //         res.render('user/viewtablereservation', {
+        //             tables: mutiMongoosetoObject(tables),
+        //             user: req.user,
+        //         });
+        //     })
+        //     .catch(next);
     }
 }
 

@@ -13,6 +13,7 @@ route.post('/add-to-cart/:id',UserController.addToCart);
 route.post('/register', UserController.register);
 route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
 route.get('/payment', requireLogin, UserController.payment);
+route.get('/viewtablereservation', requireLogin, UserController.viewTableReservation);
 route.post('/login', UserController.login, authenticateUser);
 route.get('/resetpassword/:id/:token', UserController.resetPassword);
 route.put('/updatepassword/:id/:token', UserController.updatePassword);

@@ -226,6 +226,16 @@ class UserController {
             })
             .catch(err => {res.send(err.message)});
     }
+    viewTableReservation(req, res, next) {
+        User.findOne({email: req.body.email})
+        .then((user) => {
+            if (!user)
+                return res.render('User/viewtablereservation', {
+                    message: 'Wrong email',
+                });
+        })
+        .catch(next);
+    }
 }
 
 module.exports = new UserController();
