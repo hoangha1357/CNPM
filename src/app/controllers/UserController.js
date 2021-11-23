@@ -24,7 +24,7 @@ class UserController {
     // [GET] /user/ordered
     ordered(req, res, next) {
         //res.json(req.user._id)
-        Order.find({userID: req.user._id})
+        Order.find({userID: req.user._id}).sort({createdAt : -1})
             .then((orders) => {
                 res.render('user/ordered',{
                     user: req.user,

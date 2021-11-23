@@ -5,7 +5,7 @@ const BookTableController = require('../app/controllers/BookTableController');
 const requireLogin = require('../app/middlewares/LoginRequires');
 
 
-route.use(requireLogin)
+// route.use(requireLogin)
 route.post('/choosetable',BookTableController.choosetable);
 route.post('/thankyou', BookTableController.thankyou);
 route.get('/reservated', BookTableController.reservated);

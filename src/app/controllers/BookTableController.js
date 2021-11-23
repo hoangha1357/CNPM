@@ -29,23 +29,67 @@ class BookTableController {
     choosetable(req, res, next) {
         var dinner = "http://localhost:3000/image/dinner.png";
         var dinner_disable = "http://localhost:3000/image/dinner_disable.png"
+        var tablelist = {
+            table1: dinner,
+            table2: dinner,
+            table3: dinner,
+            table4: dinner,
+            table5: dinner,
+            table6: dinner,
+            table7: dinner,
+            table8: dinner,
+            table9: dinner,
+        }
         // console.log(dinner);
         const newtable = new Table({
-            email: req.user.email,  
-            name: req.user.name,
+            //email: req.user.email,  
+           // name: req.user.name,
             time: req.body.time,
             date: req.body.date,
             image: dinner,
         });
-        Table.find({ date: req.body.date})
-            .then((tables) => 
-                tables.image = dinner_disable,
-            )
-            .catch(next);
-
-        res.render('Site/choosetable', {
-            newtable: MongoosetoObject(newtable),
+        Table.find({ date: req.body.date}, function(err,tables){
+            //res.json(tables);
+            if(err) return res.json(err);
+            for(var table of tables){
+                //console.log(table.tableID);
+                table = table.toObject();
+                //res.json(table);
+                // if(table.tableID === 1) tablelist.table1 = dinner_disable;
+                switch(table.tableID){
+                    case '1': 
+                        //console.log(table)
+                        tablelist.table1 = dinner_disable
+                        console.log(tablelist.table1)
+                        break;
+                    case 2: tablelist.table2 = dinner_disable
+                        break;
+                    case 3: tablelist.table3 = dinner_disable
+                        break;
+                    case 4: tablelist.table4 = dinner_disable
+                        break;
+                    case 5: tablelist.table5 = dinner_disable
+                        break;
+                    case 6: tablelist.table6 = dinner_disable
+                        break;
+                    case 7: tablelist.table7 = dinner_disable
+                        break;
+                    case 8: tablelist.table8 = dinner_disable
+                        break;
+                    case 9: tablelist.table9 = dinner_disable
+                        break;   
+                }
+                console.log(tablelist)
+                res.render('Site/choosetable', {
+                    newtable: MongoosetoObject(newtable),
+                    tablelist
+                })
+            }
+            
         })
+
+
+        
     }
 
     thankyou(req, res, next) {
