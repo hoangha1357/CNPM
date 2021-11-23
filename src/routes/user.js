@@ -6,9 +6,10 @@ const UserController = require('../app/controllers/UserController');
 const authenticateUser = require('../app/middlewares/Authenticate');
 const requireLogin = require('../app/middlewares/LoginRequires');
 
-route.post('/remove-from-cart/:id',UserController.removeFromCart);
+route.post('/remove-from-cart/:id', requireLogin,UserController.removeFromCart);
 route.get('/ordered', requireLogin, UserController.ordered);
-route.post('/add-to-cart/:id',UserController.addToCart);
+route.get('/ordering', requireLogin, UserController.ordering);
+route.post('/add-to-cart/:id', requireLogin,UserController.addToCart);
 route.get('/payment', requireLogin, UserController.payment);
 route.post('/stored-order', UserController.storedOrder);
 route.post('/register', UserController.register);

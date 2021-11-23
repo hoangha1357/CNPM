@@ -1,0 +1,50 @@
+<div class="" style="margin-top: 100px">
+  <div id="accordion">
+  <div class="card">
+    {{#each orders}}
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Hóa đơn {{sum @index 1}} 
+          {{#if (isMatch user.permission "Manager")}}
+           Của {{this.userID}} 
+          {{/if}}
+           Đặt vào: {{this.createdAt}}
+        </button>
+      </h5>
+    </div>
+    
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      
+        </tbody>
+      </table>
+      
+      <div class="card-body">
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Foodname</th>
+            <th scope="col">total</th>
+            <th scope="col">price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.orders}}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{this.item.name}}</td>
+            <td>{{this.qty}}</td>
+            <td>{{this.price}}</td>
+          </tr>
+          {{/each}}
+          <p>Total : {{this.totalPrice}} VNĐ</p>
+          <p>Payment method: {{this.paymentMethod}} </p>
+      </div>
+      
+    </div>
+    
+    {{/each}}
+  </div>
+</div>
+</div>

@@ -1,7 +1,7 @@
 const Dish = require('../models/Dish');
 const User = require('../models/Userid');
 const Cart = require('../models/Cart');
-const Order = require('../models/Order')
+const Order = require('../models/Order');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -23,6 +23,20 @@ class UserController {
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
+        //res.json(req.user._id)
+        Order.find({userID: req.user._id})
+            .then((orders) => {
+                res.render('user/ordered',{
+                    user: req.user,
+                    orders: mutiMongoosetoObject(orders)
+                })
+            })
+            .catch(next)
+        
+    }
+
+    // [GET] /user/ordering
+    ordering(req, res, next) {
         // if(!req.session.cart)   {
         //     return res.render('user/cart', {cartdishes: null});
         // }

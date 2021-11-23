@@ -1,6 +1,7 @@
 const Dish      =  require('../models/Dish');
 const Table     =  require('../models/Table');
 const User      =  require('../models/Userid');
+const Order = require('../models/Order');
 
 const { mutiMongoosetoObject,MongoosetoObject }  = require('../../util/subfuntion');
 
@@ -23,6 +24,20 @@ class ManagerController {
                 });
             })
             .catch(next);
+    }
+
+    // [GET] /manager/vieworders
+    viewOrders(req, res, next) {
+        //if(!req.query.page) req.query.page = 1;
+        // res.json(req.session.email);
+        Order.find({})
+            .then((orders) => {
+                res.render('user/ordered',{
+                    user: req.user,
+                    orders: mutiMongoosetoObject(orders)
+                })
+            })
+            .catch(next)
     }
 
     // [GET] /manager/trash
