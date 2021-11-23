@@ -157,7 +157,9 @@
               </span>
             </div>
             <div class="slidebar__wrap-trash-and-price">
-              <i class="fal fa-trash-alt trash-btn"></i>
+              <form method="POST" action="/user/remove-from-cart/{{this.item._id}}">
+                  <button type="submit" class="btn-remove"  id="id" name="id" value="{{this.item._id}}"><i class="fal fa-trash-alt"></i> </button>
+                </form>
               <div class="slidebar__wrap-price">${{this.price}}</div>
             </div>
           </li>
