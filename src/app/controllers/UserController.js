@@ -76,7 +76,8 @@ class UserController {
                 newOrder.save()
                         .then(() => {
                             // console.log('Order stored successful');
-                            res.redirect('/user/update-Sale');
+                            req.session.cart = null;
+                            res.redirect('/user/ordered');
                         })
                         .catch(next);
 
@@ -85,37 +86,61 @@ class UserController {
 
     }
 
-    //[GET] /user/update-Sale
-    updateSale(req,res,next) {
-        var cart = new Cart(req.session.cart);
-        var cartdishes = cart.generateArray();
-        // console.log(cartdishes);
-        for(let i=0; i< cartdishes.length; i++)
-        {
-            Dish.updateOne({_id :cartdishes[i].item._id},{
-                $set : {
-                    sale: cartdishes[i].item.sale + cartdishes[i].price
-                }
-            })
-                .then()
-                .catch(next);
-        }
-        req.session.cart = null;
-        res.redirect('/user/ordered');
+    //[POST] /user/delete-order
+    deleteOrder(req,res,next){
+        // res.json('Deleted ' +req.body.id);
+        Order.deleteOne({_id: req.body.id})
+            .then(()=> res.redirect('back'))
+            .catch(next);
+    }
+    
+    //[POST] /user/cancel-order
+    cancelOrder(req,res,next){
+        Order.updateOne({_id: req.body.id},{
+            $set: {status: 'Canceled'}
+        })
+            .then(()=> res.redirect('back'))
+            .catch(next)
     }
 
     //[POST] /user/complete
-
     complete(req,res,next) {
-        Order.updateOne({_id: req.body.id},{
+        // var cart = new Cart(req.session.cart);
+        // var cartdishes = cart.generateArray();
+        // // console.log(cartdishes);
+        // for(let i=0; i< cartdishes.length; i++)
+        // {
+        //     Dish.updateOne({_id :cartdishes[i].item._id},{
+        //         $set : {
+        //             sale: cartdishes[i].item.sale + cartdishes[i].price
+        //         }
+        //     })
+        //         .then()
+        //         .catch(next);
+        // }
+        // req.session.cart = null;
+        // res.redirect('/user/ordered');
+
+        Order.findByIdAndUpdate( req.body.id,{
             $set: {
                 status: 'Completed',
                 paymentStatus: 'Paid'
             }
         })
-            .then(() => res.redirect('back'))
+            .then((order) => {
+                var arr = order.orders;
+                for(let i=0; i< arr.length;i++)
+                {
+                    Dish.updateOne({ _id : arr[i].item._id},{$inc : {sale: arr[i].price}})
+                        .then()
+                        .catch(next);
+                }
+                
+                res.redirect('/user/ordered');
+            })
             .catch(next);
     }
+
 
     // [GET] /user/payment
     payment(req, res, next) {
