@@ -1,3 +1,4 @@
+
 <div class="content__header" style="margin-top: 100px">
     <h3 class="content__header-heading">
         <span class="under-line-effect under-line-effect--red">PAYMENT</span>
@@ -25,7 +26,7 @@
                 <ul class="payment__list">
                     <li class="payment__method">
                         <label class="payment__method-wrapper">
-                            <input type="radio" readonly="" name="payment-methods" value="cod" /><span
+                            <input type="radio" readonly="" name="payment-methods" value="cod" id="cod" /><span
                                 class="radio-fake"></span>
                             <span class="payment__label">
                                 <div class="payment__method-desc">
@@ -40,25 +41,10 @@
                             </span>
                         </label>
                     </li>
+                    
                     <li class="payment__method">
                         <label class="payment__method-wrapper">
-                            <input type="radio" readonly="" name="payment-methods" value="viettelpay" /><span
-                                class="radio-fake"></span>
-                            <span class="payment__label">
-                                <div class="payment__method-desc">
-                                    <img class="method-icon" width="32"
-                                        src="https://salt.tikicdn.com/ts/upload/76/80/08/62e0faf2af2869ba93da5f79a9dc4c4b.png"
-                                        alt="viettelpay" />
-                                    <div class="method-content">
-                                        <div class="method-content__name"><span>Thanh toán bằng ViettelPay</span></div>
-                                    </div>
-                                </div>
-                            </span>
-                        </label>
-                    </li>
-                    <li class="payment__method">
-                        <label class="payment__method-wrapper">
-                            <input type="radio" readonly="" name="payment-methods" value="momo" checked="" /><span
+                            <input type="radio" readonly="" name="payment-methods" value="momo" id="momo" checked="" /><span
                                 class="radio-fake"></span>
                             <span class="payment__label">
                                 <div class="payment__method-desc">
@@ -73,9 +59,10 @@
                             </span>
                         </label>
                     </li>
+
                     <li class="payment__method">
                         <label class="payment__method-wrapper">
-                            <input type="radio" readonly="" name="payment-methods" value="zalopay" /><span
+                            <input type="radio" readonly="" name="payment-methods" id="zalopay" value="zalopay" /><span
                                 class="radio-fake"></span>
                             <span class="payment__label">
                                 <div class="payment__method-desc">
@@ -89,26 +76,10 @@
                             </span>
                         </label>
                     </li>
+                    
                     <li class="payment__method">
                         <label class="payment__method-wrapper">
-                            <input type="radio" readonly="" name="payment-methods" value="pay123" /><span
-                                class="radio-fake"></span>
-                            <span class="payment__label">
-                                <div class="payment__method-desc">
-                                    <img class="method-icon" width="32"
-                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-atm.svg"
-                                        alt="pay123" />
-                                    <div class="method-content">
-                                        <div class="method-content__name"><span>Thẻ ATM nội địa/Internet Banking (Hỗ trợ
-                                                Internet Banking)</span></div>
-                                    </div>
-                                </div>
-                            </span>
-                        </label>
-                    </li>
-                    <li class="payment__method">
-                        <label class="payment__method-wrapper">
-                            <input type="radio" readonly="" name="payment-methods" value="cybersource" /><span
+                            <input type="radio" readonly="" id="credit" name="payment-methods" value="cybersource" /><span
                                 class="radio-fake"></span>
                             <span class="payment__label">
                                 <div class="payment__method-desc">
@@ -140,7 +111,7 @@
                 </ul>
             </div>
 
-            <button class="product__item-btn btn-red" style="color: white;">Complete Order</button>
+            <button class="product__item-btn btn-red" style="color: white;" id="checkout-btn" name="checkout-btn"  data-toggle="modal" data-target="#momo-form"  >Checkout</button>
             <button class="product__item-btn" >Return to shop</button>
         </div>
         <div class="col l-6">
@@ -159,16 +130,7 @@
                             <a href="" class="slidebar__wrap-info-product">{{this.item.name}}</a>
 
                         </div>
-                        <div class="slidebar__wrap-price">{{this.price}}</div>      
-                    </li>
-
-                    <li class="slidebar__wrap-item">
-                        <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
-                        <span class="payment-product__quantity">1</span>
-                        <div class="slidebar__wrap-info" style="flex: 1;">
-                            <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
-                        </div>
-                        <div class="slidebar__wrap-price">5</div>
+                        <div class="slidebar__wrap-price">${{this.price}}</div>      
                     </li>
 
                    {{/each}}
@@ -176,16 +138,165 @@
                 </ul>
                 <div class="slidebar__wrap-total">
                     <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
-                    <span class="slidebar__wrap-sub-total">{{subtotalPrice}}</span>
+                    <span class="slidebar__wrap-sub-total">${{subtotalPrice}}</span>
                 </div>
                 <div class="slidebar__wrap-total">
                     <span class="slidebar__wrap-sub-total">SHIPPING</span>
-                    <span class="slidebar__wrap-sub-total">5</span>
+                    <span class="slidebar__wrap-sub-total">$5</span>
                 </div>
                 <div class="slidebar__wrap-total">
                     <span class="slidebar__wrap-sub-total">TOTAL</span>
-                    <span class="slidebar__wrap-sub-total">{{totalPrice}}</span>
+                    <span class="slidebar__wrap-sub-total">${{totalPrice}}</span>
                 </div>
             </div>
         </div>
     </div>
+
+{{!-- FORM Payment Info --}}
+
+ <form action="/user/stored-order" method="post" class="form" id="checkout-form">
+
+
+<div class="modal fade" id="credit-card-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+   
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-name">Card Holder Name</label>
+                        <input type="text" id="card-name" name="name" class="form-control" required>
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-number">Credit Card Number</label>
+                        <input type="text" id="card-number" name="number" class="form-control" required>
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-month">Expiration Month</label>
+                        <input type="text" id="card-month" name="month" class="form-control" required>
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-year">Expiration Year</label>
+                        <input type="text" id="card-year" name="year" class="form-control" required >
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-name">CVC</label>
+                        <input type="text" id="card-cvc" name="CVC" class="form-control" required >
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <input type="hidden" id="method" name="method" value="Credit Card">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" >Submit</button>
+      </div>
+       
+    </div>
+</div>
+
+    
+
+
+      </div>
+    
+     </form>
+      
+
+<form action="/user/stored-order" method="POST">
+<!-- Modal -->
+<div class="modal fade" id="order-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        BẠN MUỐN XÁC NHẬN ĐẶT HÀNG?
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="method" name="method" value="MOMO">
+        <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+
+
+     
+
+
+    </div>
+  
+{{!-- Modal for Zalopay --}}
+
+<div class="modal fade" id="zalopay-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+       ZALOPAY
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#order-success"  >XÁC NHẬN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Modal for MOMO --}}
+
+<div class="modal fade" id="momo-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+       MOMO
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#order-success"  >XÁC NHẬN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+
+
+
+
+<script src="/javascripts/checkout.js"></script>
+</div>
+
+

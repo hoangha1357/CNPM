@@ -1,6 +1,7 @@
 const Dish = require('../models/Dish');
 const User = require('../models/Userid');
 const Cart = require('../models/Cart');
+const Order = require('../models/Order');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -22,6 +23,20 @@ class UserController {
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
+        //res.json(req.user._id)
+        Order.find({userID: req.user._id})
+            .then((orders) => {
+                res.render('user/ordered',{
+                    user: req.user,
+                    orders: mutiMongoosetoObject(orders)
+                })
+            })
+            .catch(next)
+        
+    }
+
+    // [GET] /user/ordering
+    ordering(req, res, next) {
         // if(!req.session.cart)   {
         //     return res.render('user/cart', {cartdishes: null});
         // }
@@ -35,17 +50,52 @@ class UserController {
         })
     }
 
+    //[POST] /user/stored-order
+
+    storedOrder(req,res,next) {
+        if(!req.session.cart) return res.redirect('/user/ordered');
+        User.updateOne({_id: req.user._id},{
+            $set: {
+                paymentInfo: req.body.name ? req.body : req.user.paymentInfo
+            }
+        })
+            .then (() => {
+                var cart = new Cart(req.session.cart);
+                let newOrder = new Order ({
+                    userID: req.user._id,
+                    userName: req.user.name,
+                    userAddress: req.user.address,
+                    totalPrice: cart.totalPrice+5,
+                    orders: cart.generateArray(),
+                    totalQty: cart.totalQty,
+                    paymentMethod: req.body.method
+                });
+
+                newOrder.save()
+                        .then(() => {
+                            // console.log('Order stored successful');
+                            req.session.cart = null;
+                            res.redirect('/');
+                        })
+                        .catch(next);
+
+            })
+            .catch(next);
+
+    }
+
     // [GET] /user/payment
     payment(req, res, next) {
         // res.render('user/onlPayment',{user: req.user})
         var cart = new Cart(req.session.cart);
-        // if(cart) res.json(cart);
+        if(!req.session.cart ) return res.redirect('back');
         res.render('User/onlPayment',{
             noheader: true,
             user: req.user,
             cartdishes: cart.generateArray(),
             subtotalPrice: cart.totalPrice,
             totalPrice: cart.totalPrice + 5,
+            totalQty: cart.totalQty,
         })
     }
 
@@ -83,7 +133,6 @@ class UserController {
 
     // [POST] /user/updateImage
     updateImage(req, res, next) {
-        
         if(req.body.image) {
         //     // res.json(req.body);
             modifyRequestImage(req);

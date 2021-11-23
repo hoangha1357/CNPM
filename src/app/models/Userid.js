@@ -11,6 +11,14 @@ const User = new Schema(
         permission: { type: String, default: 'Customer' },
         name: { type: String, maxlength: 100, required: true },
         address: { type: String },
+        paymentInfo: {
+            name: {type: String},
+            number: {type: String},
+            month: {type: Number },
+            year: {type: Number},
+            CVC: {type: Number},
+            method: {type: String}
+        }
     },
     {
         timestamps: true,

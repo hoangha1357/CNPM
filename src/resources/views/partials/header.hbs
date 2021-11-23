@@ -34,11 +34,15 @@
               <a href="/manager/viewrevenue" class="header__subnav-link">Thông tin doanh thu</a>
             </li>
             <li class="header__subnav-item header__subnav-item">
-              <a href="/manager/viewtablereservation" class="header__subnav-link">Quản lý đặt bàn</a>
-            </li>
-            <li class="header__subnav-item header__subnav-item">
               <a href="/manager/create" class="header__subnav-link">Thêm món ăn</a>
             </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/manager/vieworders" class="header__subnav-link">Xem đơn đặt món ăn</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/manager/viewtablereservation" class="header__subnav-link">Quản lý đặt bàn</a>
+            </li>
+            
             <li class="header__subnav-item header__subnav-item">
               <a href="/user/logout" class="header__subnav-link">Đăng xuất</a>
             </li>
@@ -59,7 +63,10 @@
               <a href="/user" class="header__subnav-link">Thông tin người dùng</a>
             </li>
             <li class="header__subnav-item header__subnav-item">
-              <a href="/user/ordered" class="header__subnav-link">Giỏ Hàng</a>
+              <a href="/user/ordering" class="header__subnav-link">Giỏ Hàng</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/user/ordered" class="header__subnav-link">Lịch sử mua hàng</a>
             </li>
             <li class="header__subnav-item header__subnav-item">
               <a href="/user/viewtablereservation" class="header__subnav-link">Bàn đã đặt</a>
@@ -151,7 +158,7 @@
             </div>
             <div class="slidebar__wrap-trash-and-price">
               <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">{{this.price}}</div>
+              <div class="slidebar__wrap-price">${{this.price}}</div>
             </div>
           </li>
             
@@ -159,7 +166,7 @@
 
 
           
-          <li class="slidebar__wrap-item">
+          {{!-- <li class="slidebar__wrap-item">
             <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
             <div class="slidebar__wrap-info">
               <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
@@ -174,12 +181,12 @@
               <i class="fal fa-trash-alt trash-btn"></i>
               <div class="slidebar__wrap-price">5</div>
             </div>
-          </li>
+          </li> --}}
 
         </ul>
         <div class="slidebar__wrap-total">
           <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
-          <span class="slidebar__wrap-sub-total">{{totalPrice}}</span>
+          <span class="slidebar__wrap-sub-total">${{totalPrice}}</span>
         </div>
         <a class="btn-large featured-product__btn checkout-btn"
           href="/user/payment">CHECKOUT</a>

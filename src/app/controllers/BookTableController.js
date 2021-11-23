@@ -1,13 +1,18 @@
 const Table = require('../models/Table');
 const Userid = require('../models/Userid');
+const Cart =    require('../models/Cart');
 const { mutiMongoosetoObject, MongoosetoObject } = require('../../util/subfuntion');
 
 class BookTableController {
     booktable(req, res, next) {
         // res.render('Site/book_table');
+        var cart = new Cart(req.session.cart);
         Table.findById(req.params.id)
             .then((table) => 
                 res.render('Site/book_table', {
+                    cartdishes: req.session.cart ? cart.generateArray() : null ,
+                    totalPrice: req.session.cart ? cart.totalPrice : 0,
+                    totalQty: req.session.cart ? cart.totalQty : 0,
                     table: MongoosetoObject(table),
                     user: req.user,
                     message: 'Vui lòng điền đầy đủ thông tin'
