@@ -17,7 +17,6 @@ const User = new Schema(
             month: {type: Number },
             year: {type: Number},
             CVC: {type: Number},
-            // method: {type: String}
         }
     },
     {

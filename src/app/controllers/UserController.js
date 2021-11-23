@@ -20,14 +20,17 @@ class UserController {
             totalPrice: cart.totalPrice,
             totalQty: cart.totalQty
         })
-        
     }
     // [GET] /user/ordered
     ordered(req, res, next) {
         //res.json(req.user._id)
+        var cart = new Cart(req.session.cart);
         Order.find({userID: req.user._id}).sort({createdAt : -1})
             .then((orders) => {
                 res.render('user/ordered',{
+                    cartdishes: cart.generateArray(),
+                    totalPrice: cart.totalPrice,
+                    totalQty: cart.totalQty,
                     user: req.user,
                     orders: mutiMongoosetoObject(orders)
                 })
