@@ -16,4 +16,7 @@ const Order = new Schema(
     { timestamps: true },
 );
 
+// Order.query.sortable = function () {
+//     return this.sort({[createdAt]: desc,});
+// };
 module.exports = mongoose.model('Order', Order);

@@ -30,8 +30,9 @@ class ManagerController {
     viewOrders(req, res, next) {
         //if(!req.query.page) req.query.page = 1;
         // res.json(req.session.email);
-        Order.find({})
+        Order.find({}).sort({createdAt : -1})
             .then((orders) => {
+                //res.json(req.user)
                 res.render('user/ordered',{
                     user: req.user,
                     orders: mutiMongoosetoObject(orders)
