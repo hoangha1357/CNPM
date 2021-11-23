@@ -11,7 +11,7 @@ route.get('/ordered', requireLogin, UserController.ordered);
 route.get('/ordering', requireLogin, UserController.ordering);
 route.post('/add-to-cart/:id', requireLogin,UserController.addToCart);
 route.get('/payment', requireLogin, UserController.payment);
-route.post('/stored-order', UserController.storedOrder);
+route.post('/stored-order', requireLogin, UserController.storedOrder);
 route.post('/register', UserController.register);
 route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
 route.get('/viewtablereservation', requireLogin, UserController.viewTableReservation);

@@ -53,6 +53,7 @@ class UserController {
     //[POST] /user/stored-order
 
     storedOrder(req,res,next) {
+        if(!req.session.cart) return res.redirect('/user/ordered');
         User.updateOne({_id: req.user._id},{
             $set: {
                 paymentInfo: req.body.name ? req.body : req.user.paymentInfo
@@ -62,8 +63,11 @@ class UserController {
                 var cart = new Cart(req.session.cart);
                 let newOrder = new Order ({
                     userID: req.user._id,
+                    userName: req.user.name,
+                    userAddress: req.user.address,
                     totalPrice: cart.totalPrice+5,
                     orders: cart.generateArray(),
+                    totalQty: cart.totalQty,
                     paymentMethod: req.body.method
                 });
 
