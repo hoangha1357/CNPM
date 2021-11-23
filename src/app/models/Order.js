@@ -12,7 +12,9 @@ const Order = new Schema(
         orders: [
             {type :Object}
         ],
-        paymentMethod: {type: String, required: true}
+        paymentMethod: {type: String, required: true},
+        status: {type: String, default:'Incomplete', required: true},
+        paymentStatus: {type: String, required: true}
 
        
     },

@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 
 
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
+const { Mongoose } = require('mongoose');
 
 class UserController {
     index(req, res, next) {
@@ -68,20 +69,52 @@ class UserController {
                     totalPrice: cart.totalPrice+5,
                     orders: cart.generateArray(),
                     totalQty: cart.totalQty,
-                    paymentMethod: req.body.method
+                    paymentMethod: req.body.method,
+                    paymentStatus: req.body.method == 'COD' ? 'Unpaid' : 'Paid' 
                 });
 
                 newOrder.save()
                         .then(() => {
                             // console.log('Order stored successful');
-                            req.session.cart = null;
-                            res.redirect('/');
+                            res.redirect('/user/update-Sale');
                         })
                         .catch(next);
 
             })
             .catch(next);
 
+    }
+
+    //[GET] /user/update-Sale
+    updateSale(req,res,next) {
+        var cart = new Cart(req.session.cart);
+        var cartdishes = cart.generateArray();
+        // console.log(cartdishes);
+        for(let i=0; i< cartdishes.length; i++)
+        {
+            Dish.updateOne({_id :cartdishes[i].item._id},{
+                $set : {
+                    sale: cartdishes[i].item.sale + cartdishes[i].price
+                }
+            })
+                .then()
+                .catch(next);
+        }
+        req.session.cart = null;
+        res.redirect('/user/ordered');
+    }
+
+    //[POST] /user/complete
+
+    complete(req,res,next) {
+        Order.updateOne({_id: req.body.id},{
+            $set: {
+                status: 'Completed',
+                paymentStatus: 'Paid'
+            }
+        })
+            .then(() => res.redirect('back'))
+            .catch(next);
     }
 
     // [GET] /user/payment

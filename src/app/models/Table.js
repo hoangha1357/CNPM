@@ -18,10 +18,3 @@ const Table = new Schema(
 
 
 module.exports = mongoose.model('Table', Table);
-
-
-// Table.findOne({ date: req.body.date })
-//      .then((table) =>{ 
-//          newtable.image = table ? dinner_disable : dinner ;
-//         })
-//      .catch(next);

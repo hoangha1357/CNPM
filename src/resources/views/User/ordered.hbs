@@ -7,15 +7,14 @@
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
           Hóa đơn {{sum @index 1}}
-          Của: {{this.username}}
-          {{#if (isMatch user.permission "Manager")}}
-          Của: {{user.name}}
-          {{/if}}
+          Của: {{this.userName}}
           Đặt vào: {{this.createdAt}}
         </button>
       </h5>
     </div>
-    
+    {{#if (isMatch user.permission "Manager")}}
+          ID người dùng: {{this.userID}}
+          {{/if}}
     <div id="collapse{{@index}}" class="collapse show" aria-labelledby="heading{{@index}}" data-parent="#accordion">
       <div class="card-body">
         <table class="table">
@@ -23,23 +22,37 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Foodname</th>
-            <th scope="col">total</th>
-            <th scope="col">price</th>
+            <th scope="col">Unit price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
           </tr>
         </thead>
         <tbody>
           {{#each this.orders}}
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{sum @index 1}}</th>
             <td>{{this.item.name}}</td>
+            <td>{{this.item.price}} VND</td>
             <td>{{this.qty}}</td>
-            <td>{{this.price}}</td>
+            <td>{{this.price}} VND</td>
           </tr>
           {{/each}}
         </tbody>
         </table>
-        <p>Total : {{this.totalPrice}} VNĐ</p>
-          <p>Payment method: {{this.paymentMethod}} </p>
+        <p>Total : {{this.totalPrice}} VND</p>
+        <p>Payment method: {{this.paymentMethod}} </p>
+        <p>Payment status: {{this.paymentStatus}} </p>
+        <p>Order status: {{this.status}} </p>
+        
+          {{!-- {{#if (isMatch this.status "Completed")}}
+            <span>Order completed</span>
+          {{else if (isMatch user.permission "Customer") }} --}}
+          <form method="POST" action="/user/complete">
+          <button type="submit" class="btn btn-success" name="id" value="{{this._id}}">Order Received</button>
+          </form>
+          {{!-- {{else}}
+          <span>Order pending</span>
+          {{/if}}  --}}
       </div> 
       
     </div>

@@ -43,7 +43,7 @@ module.exports = {
         return result;
     },
     isMatch: (object, value) => {
-        return object === value;
+        return object == value;
     },
 
     calTotalQty: (totalQty) => {return totalQty ? totalQty : 0;},
