@@ -42,7 +42,7 @@ class BookTableController {
         }
         // console.log(dinner);
         const newtable = new Table({
-            time: req.body.time,
+            time: req.body.timeee,
             date: req.body.date,
         });
 
@@ -96,12 +96,12 @@ class BookTableController {
                         // console.log(tablelist.table1)
                         break;
                 }
-                res.render('Site/choosetable', {
-                    newtable: MongoosetoObject(newtable),
-                    tablelist
-                })
             }
-        })  
+        }) 
+        res.render('Site/choosetable', {
+            newtable: MongoosetoObject(newtable),
+            tablelist
+        }) 
     }
 
     thankyou(req, res, next) {
