@@ -22,23 +22,31 @@ class BookTableController {
     }
     // [POST] /booktable/choosetable
     choosetable(req, res, next) {
+        var dinner = "http://localhost:3000/image/dinner.png";
+        var dinner_disable = "http://localhost:3000/image/dinner_disable.png"
+        // console.log(dinner);
         const newtable = new Table({
-          email: req.user.email,  
-          name: req.user.name,
-          numofguests: req.body.numofguests,
-          time: req.body.time,
-          date: req.body.date
+            email: req.user.email,  
+            name: req.user.name,
+            time: req.body.time,
+            date: req.body.date,
+            image: dinner,
         });
+        Table.find({ date: req.body.date})
+            .then((tables) => 
+                tables.image = dinner_disable,
+            )
+            .catch(next);
+
         res.render('Site/choosetable', {
             newtable: MongoosetoObject(newtable),
-        });
+        })
     }
 
     thankyou(req, res, next) {
         const newtable = new Table({
             email: req.user.email,  
             name: req.user.name,
-            numofguests: req.body.numofguests,
             time: req.body.time,
             date: req.body.date,
             tableID: req.body.tableID,

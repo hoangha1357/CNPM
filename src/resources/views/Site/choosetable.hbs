@@ -9,11 +9,8 @@
                 <label for="time" class="table__header-heading under-line-effect">Time</label>
                 <input class="table__input" id="time" name="time" type="time" value="{{newtable.time}}" >
 
-                <label for="numofguests" class="table__header-heading under-line-effect">Num of Guests</label>
-                <input class="table__input" id="numofguests" name="numofguests" type="numofguests" value="{{newtable.numofguests}}">
-
-                {{!-- <label for="tableID" class="table__header-heading under-line-effect">Table ID</label>
-                <input class="table__input" id="tableID" name="tableID" type="tableID" value=""> --}}
+                <label for="tableID" class="table__header-heading under-line-effect" hidden>Table ID</label>
+                <input class="table__input" id="tableID" name="tableID" type="tableID" value="" hidden>
 
             </div>
             <div class="col l-7 table-location mb-40">
@@ -26,51 +23,51 @@
                     <div class="row">
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-1" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-1" type="image" class="table-img" src="{{newtable.image}}" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-2" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-2" type="image" class="table-img" src="{{newtable.image}}" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-3" type="image" class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-4" type="image" class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-5" type="image" class="table-img" src="/image/dinner.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col l-4 table-wrapper">
-                            <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-6" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-3" type="image" class="table-img" src="{{newtable.image}}" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-7" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-4" type="image" class="table-img" src="{{newtable.image}}" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-8" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-5" type="image" class="table-img" src="{{newtable.image}}" alt="">
                             </div>
                         </div>
                         <div class="col l-4 table-wrapper">
                             <div class="table-img-background">
-                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-9" type="image" class="table-img" src="/image/dinner.png" alt="">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-6" type="image" class="table-img" src="{{newtable.image}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-7" type="image" class="table-img" src="{{newtable.image}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-8" type="image" class="table-img" src="{{newtable.image}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col l-4 table-wrapper">
+                            <div class="table-img-background">
+                                <input data-toggle="modal" data-target="#delete-course-model" id="table-img-9" type="image" class="table-img" src="{{newtable.image}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -93,7 +90,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn chọn bàn số này?
+        Bạn có chắc chắn muốn chọn bàn này?
       </div>
       <div class="modal-footer">
         <button type="button" id="btn-cancel-table" class="btn btn-dark" data-dismiss="modal">Hủy</button>

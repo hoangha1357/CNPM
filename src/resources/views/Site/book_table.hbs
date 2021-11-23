@@ -1,4 +1,4 @@
-<form method="POST" action="/booktable/choosetable">
+<form method="POST" name="form-post-info-booktable" action="/booktable/choosetable">
     <div class="grid table-reservation">
         <div class="row">
             <div class="col l-5 table-date-time">
@@ -11,10 +11,23 @@
                 <input type="Date" class="table__input" id="date" value="" name="date">
 
                 <label for="time" class="table__header-heading under-line-effect">Time</label>
-                <input class="table__input" id="time" name="time" value="" type="time" >
-
-                <label for="numofguests" class="table__header-heading under-line-effect">Num of Guests</label>
-                <input class="table__input" id="numofguests" name="numofguests" value="" type="numofguests">
+                <select class="table__input" id="time" name="time">
+                    <option value="">-- Chọn giờ --</option>
+                    <option value="9:00">9:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                </select>
                 
                 <button class="btn-2 btn-secondary book-btn" type="submit" disabled>BOOK NOW</button>
             </div>
@@ -24,18 +37,34 @@
     </div>
 </form>
 
-
+<p id="demo"></p>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var dateInput = $('#date');
         var timeInput = $('#time');
-        var numofguestsInput = $('#numofguests');
+        var formPostInfoBookTable = document.forms['form-post-info-booktable'];
         var btnFeaturedProduct = $('.book-btn');
-    
-        numofguestsInput.change(function() {
-            renderBtnFeaturedProduct();
-        });
+
+        const d = new Date();
+        var todayDate = d.getDate();
+        var todayMonth = d.getMonth() + 1;    // thang dau tien la 0 thang 12 là 11
+        var todayYear = d.getFullYear();
+
+        var chooseDateBookTable;
+        var chooseDate;
+        var chooseMonth;
+        var chooseYear;
+
         dateInput.change(function() {
+            chooseDateBookTable = dateInput.val();
+            dateArray = chooseDateBookTable.split("-");
+            chooseYear = dateArray[0];
+            chooseMonth = dateArray[1];
+            chooseDate = dateArray[2];
+            if ((chooseYear < todayYear) || (chooseMonth < todayMonth && chooseYear == todayYear) || (chooseDate < todayDate && chooseMonth == todayMonth && chooseYear == todayYear)) {
+                alert('Ngày không hợp lệ. Bạn vui lòng chọn lại');
+                dateInput.val("");
+            }
             renderBtnFeaturedProduct();
         });
         timeInput.change(function() {
@@ -43,11 +72,13 @@
         });
 
         function renderBtnFeaturedProduct() {
-            if ((dateInput.val() == "") || (timeInput.val() == "") || (numofguestsInput.val() == "")) {
+            if ((dateInput.val() == "") || (timeInput.val() == "")) {
                 btnFeaturedProduct.attr('disabled', true);
             }
             else btnFeaturedProduct.attr('disabled', false);
         };
+        
+
     });
 
 </script>
