@@ -42,54 +42,66 @@ class BookTableController {
         }
         // console.log(dinner);
         const newtable = new Table({
-            //email: req.user.email,  
-           // name: req.user.name,
             time: req.body.time,
             date: req.body.date,
-            image: dinner,
         });
+
         Table.find({ date: req.body.date}, function(err,tables){
-            //res.json(tables);
             if(err) return res.json(err);
             for(var table of tables){
-                //console.log(table.tableID);
-                table = table.toObject();
-                //res.json(table);
-                // if(table.tableID === 1) tablelist.table1 = dinner_disable;
                 switch(table.tableID){
                     case '1': 
                         //console.log(table)
                         tablelist.table1 = dinner_disable
-                        console.log(tablelist.table1)
+                        // console.log(tablelist.table1)
                         break;
-                    case 2: tablelist.table2 = dinner_disable
+                    case '2': 
+                        //console.log(table)
+                        tablelist.table2 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 3: tablelist.table3 = dinner_disable
+                    case '3': 
+                        //console.log(table)
+                        tablelist.table3 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 4: tablelist.table4 = dinner_disable
+                    case '4': 
+                        //console.log(table)
+                        tablelist.table4 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 5: tablelist.table5 = dinner_disable
+                    case '5': 
+                        //console.log(table)
+                        tablelist.table5 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 6: tablelist.table6 = dinner_disable
+                    case '6': 
+                        //console.log(table)
+                        tablelist.table6 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 7: tablelist.table7 = dinner_disable
+                    case '7': 
+                        //console.log(table)
+                        tablelist.table7 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 8: tablelist.table8 = dinner_disable
+                    case '8': 
+                        //console.log(table)
+                        tablelist.table8 = dinner_disable
+                        // console.log(tablelist.table1)
                         break;
-                    case 9: tablelist.table9 = dinner_disable
-                        break;   
+                    case '9': 
+                        //console.log(table)
+                        tablelist.table9 = dinner_disable
+                        // console.log(tablelist.table1)
+                        break;
                 }
-                console.log(tablelist)
                 res.render('Site/choosetable', {
                     newtable: MongoosetoObject(newtable),
                     tablelist
                 })
             }
-            
-        })
-
-
-        
+        })  
     }
 
     thankyou(req, res, next) {
