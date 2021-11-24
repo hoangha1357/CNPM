@@ -92,7 +92,7 @@ class UserController {
     //[POST] /user/delete-order
     deleteOrder(req,res,next){
         // res.json('Deleted ' +req.body.id);
-        Order.delete({_id: req.body.id})
+        Order.deleteOne({_id: req.body.id})
             .then(()=> res.redirect('back'))
             .catch(next);
     }

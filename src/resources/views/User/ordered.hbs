@@ -49,6 +49,7 @@
         <p>Total : {{this.totalPrice}} VND</p>
         <p>Payment method: {{this.paymentMethod}} </p>
         <p>Payment status: {{this.paymentStatus}} </p>
+        <p>Deliver to: {{this.userAddress}} </p>
         <p>Order status: {{this.status}} </p>
         
         {{!-- Đơn hàng hoàn thành --}}
@@ -92,8 +93,8 @@
       </div>
       <div class="modal-footer">
         <form method="POST" action="/user/delete-order">
-        <input type="hidden" name="id" id="id" value="{{this._id}}">
-        <button type="submit" id="btn-delete-dish" class="btn btn-danger" >Xóa</button>
+        <input type="hidden" name="total" value="{{this.totalPrice}}">
+        <button type="submit" id="btn-delete-dish" class="btn btn-danger" name="id" value="{{this._id}}" >Xóa</button>
         </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
       </div>
