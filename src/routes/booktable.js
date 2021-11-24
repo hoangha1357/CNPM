@@ -6,9 +6,11 @@ const requireLogin = require('../app/middlewares/LoginRequires');
 
 
 route.use(requireLogin)
-route.post('/choosetable',BookTableController.choosetable);
+route.post('/choosetable',requireLogin,BookTableController.choosetable);
+route.post('/handle-form-actions',BookTableController.handleFormActions);
+route.post('/handle-form-actions-2', BookTableController.handleFormActions2);
 route.post('/thankyou', BookTableController.thankyou);
-route.get('/reservated', BookTableController.reservated);
-route.get('/',BookTableController.booktable);
+route.get('/reservated',requireLogin, BookTableController.reservated);
+route.get('/', requireLogin, BookTableController.booktable);
 
 module.exports = route;

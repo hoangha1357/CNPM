@@ -42,7 +42,7 @@ class BookTableController {
         }
         // console.log(dinner);
         const newtable = new Table({
-            time: req.body.timeee,
+            time: req.body.time,
             date: req.body.date,
         });
 
@@ -119,7 +119,38 @@ class BookTableController {
             }))
             .catch(next);
     }
-}
 
+    handleFormActions(req, res, next) {
+        switch(req.body.action) {
+            case 'delete':
+              Table.delete({ _id: {  $in: req.body.courseIds } })
+                .then(() => res.redirect('back'))
+                .catch(next);
+              break;
+            default:
+              res.json( {message: 'Invalid action'} );
+          }
+    }
+
+    // [POST] /courses/handle-form-actions-2
+    handleFormActions2(req, res, next) {
+            switch(req.body.action) {
+                case 'restore':
+                    Table.restore({ _id: {  $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                    break;
+                // -----------------------------------------------------
+                case 'delete-force':
+                    Table.deleteOne({ _id: {  $in: req.body.courseIds } })
+                        .then(() => res.render('User/viewtablereservation'))
+                        .catch(next);
+                    break;
+                // -----------------------------------------------------
+                default:
+                    res.json( {message: 'Invalid action'} );
+        }
+    }
+}
 
 module.exports = new BookTableController();

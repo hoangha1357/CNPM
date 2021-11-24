@@ -14,10 +14,10 @@ route.get('/payment', requireLogin, UserController.payment);
 route.post('/stored-order', requireLogin, UserController.storedOrder);
 route.post('/delete-order', requireLogin, UserController.deleteOrder);
 route.post('/cancel-order', requireLogin, UserController.cancelOrder);
+route.get('/viewbooktable', requireLogin, UserController.viewTableReservation)
 route.post('/complete',requireLogin,UserController.complete);
 route.post('/register', UserController.register);
 route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
-route.get('/viewtablereservation', requireLogin, UserController.viewTableReservation);
 route.post('/login', UserController.login, authenticateUser);
 route.get('/resetpassword/:id/:token', UserController.resetPassword);
 route.put('/updatepassword/:id/:token', UserController.updatePassword);

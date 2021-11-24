@@ -68,16 +68,29 @@ class ManagerController {
             .catch(next);
     }
     viewtablereservation(req, res, next) {
-        // if(!req.query.page) req.query.page = 1;
-        // // res.json(req.session.email);
-        // Promise.all([Table.find({}).limit(6).skip((req.query.page - 1) * 6).sortable(req), Table.countDocumentsDeleted(),Table.countDocuments()])
-        //     .then(([tables, deletedCount, count]) => {
-        //         res.render('user/viewtablereservation', {
-        //             tables: mutiMongoosetoObject(tables),
-        //             user: req.user,
-        //         });
-        //     })
-        //     .catch(next);
+        if (req.query.hasOwnProperty('_sort')) {
+            res.json({ message: 'successfully!!!' });
+        }
+        
+        // Promise
+        Promise.all([Table.find({}), Table.countDocumentsDeleted()])
+        .then(([tables,deletedCount]) =>  
+            res.render('User/viewtablereservation', {
+                deletedCount,
+                tables: mutiMongoosetoObject(tables),
+            })
+        )
+        .catch(next);
+    }
+
+    trashedTableReservation(req,res, next) {
+        Table.findDeleted({}) 
+            .then((tables) => 
+            res.render('User/trashedtablereservation', {
+                tables: mutiMongoosetoObject(tables),
+            }), 
+            )
+            .catch(next);
     }
 }
 
