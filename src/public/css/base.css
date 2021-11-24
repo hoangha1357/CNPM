@@ -440,3 +440,8 @@ input[readonly] {
   justify-content:space-between;
   max-width: 500px;
 }
+
+.checkbox-select-all-options {
+  width: 500px;
+  margin: 0 32px;
+}

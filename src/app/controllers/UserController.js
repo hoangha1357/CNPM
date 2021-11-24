@@ -2,6 +2,7 @@ const Dish = require('../models/Dish');
 const User = require('../models/Userid');
 const Cart = require('../models/Cart');
 const Order = require('../models/Order');
+const Table = require('../models/Table');
 const bcryt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -92,7 +93,7 @@ class UserController {
     //[POST] /user/delete-order
     deleteOrder(req,res,next){
         // res.json('Deleted ' +req.body.id);
-        Order.delete({_id: req.body.id})
+        Order.deleteOne({_id: req.body.id})
             .then(()=> res.redirect('back'))
             .catch(next);
     }
@@ -339,14 +340,17 @@ class UserController {
     }
     
     viewTableReservation(req, res, next) {
-        User.findOne({email: req.body.email})
-        .then((user) => {
-            if (!user)
-                return res.render('User/viewtablereservation', {
-                    message: 'Wrong email',
-                });
-        })
-        .catch(next);
+        Table.findOne({email: req.body.email})
+            .then((table) => {
+                if (!table) 
+                    return res.render('User/viewbooktable', {
+                        message: 'Wrong user or password',
+                    });
+                else {
+                    res.render('User/cart')
+                }
+            })
+            .catch(err => {res.send(err.message)});
     }
 }
 
