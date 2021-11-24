@@ -15,7 +15,7 @@ class ManagerController {
         // res.json(req.session.email);
         Promise.all([Dish.find({}).limit(6).skip((req.query.page - 1) * 6).sortable(req), Dish.countDocumentsDeleted(),Dish.countDocuments()])
             .then(([dishes, deletedCount, count]) => {
-                res.render('user/viewrevenue', {
+                res.render('Manager/viewrevenue', {
                     dishes: mutiMongoosetoObject(dishes),
                     page: req.query.page,
                     user: req.user,
@@ -45,7 +45,7 @@ class ManagerController {
     trash(req, res, next) {
         Dish.findDeleted({})
             .then((dishes) => {
-                res.render('user/trash', {
+                res.render('Manager/trash', {
                     dishes: mutiMongoosetoObject(dishes),
                     user: req.user,
                 });
@@ -54,13 +54,13 @@ class ManagerController {
     }
     
     create(req, res, next) {
-        res.render('Menusub/create',{user: req.user,});
+        res.render('Manager/create',{user: req.user,});
     }
 
     edit(req, res, next) {
         Dish.findById(req.params.id)
             .then((dish) =>
-                res.render('Menusub/edit', {
+                res.render('Manager/edit', {
                     dish: MongoosetoObject(dish),
                     user: req.user,
                 }),

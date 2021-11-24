@@ -93,7 +93,7 @@ class UserController {
     //[POST] /user/delete-order
     deleteOrder(req,res,next){
         // res.json('Deleted ' +req.body.id);
-        Order.deleteOne({_id: req.body.id})
+        Order.delete({_id: req.body.id})
             .then(()=> res.redirect('back'))
             .catch(next);
     }
@@ -230,6 +230,7 @@ class UserController {
                             if (err) return res.json(err);
                             let newuser = new User({
                                 email: req.body.email,
+                                phonenumber: req.body.phonenumber,
                                 password: hashedPass,
                                 name: req.body.name,
                                 gender: req.body.gender,
@@ -237,7 +238,7 @@ class UserController {
                             });
                             newuser
                                 .save()
-                                .then(() => res.redirect('/loginpage'))
+                                .then(() => res.redirect('back'))
                                 .catch((error) => {
                                     res.json({ message: error });
                                 });
@@ -337,6 +338,7 @@ class UserController {
             })
             .catch(err => {res.send(err.message)});
     }
+    
     viewTableReservation(req, res, next) {
         Table.findOne({email: req.body.email})
             .then((table) => {

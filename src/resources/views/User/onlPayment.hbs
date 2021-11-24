@@ -154,7 +154,7 @@
 
 {{!-- FORM Payment Info --}}
 
- <form action="/user/stored-order" method="post" class="form" id="checkout-form">
+ {{!-- <form action="/user/stored-order" method="post" class="form" id="checkout-form"> --}}
 
 
 <div class="modal fade" id="credit-card-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -169,7 +169,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body form" id="form-1" style="box-shadow: none;">
           
 
                 <div class="col-xs-12">
@@ -183,31 +183,31 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-number">Credit Card Number</label>
-                        <input type="text" id="card-number" name="number" class="form-control" required>
+                        <input type="number" id="card-number" name="number" class="form-control" required>
                         <span class="form-message"></span>
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="card-month">Expiration Month</label>
-                        <input type="text" id="card-month" name="month" class="form-control" required>
+                        <label for="card-month">Expiration</label>
+                        <input type="month" id="card-month" name="month" class="form-control" required>
                         <span class="form-message"></span>
                     </div>
                 </div>
 
-                <div class="col-xs-12">
+                {{!-- <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-year">Expiration Year</label>
-                        <input type="text" id="card-year" name="year" class="form-control" required >
+                        <input type="number" id="card-year" name="year" class="form-control" required >
                         <span class="form-message"></span>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">CVC</label>
-                        <input type="text" id="card-cvc" name="CVC" class="form-control" required >
+                        <input type="number" id="card-cvc" name="CVC" class="form-control" required >
                         <span class="form-message"></span>
                     </div>
                 </div>
@@ -293,7 +293,30 @@
 
 
 
+<script>
 
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mong muốn của chúng ta
+    Validator({
+      mainform: '.form',
+      form: '#form-1',
+      formGroupSelector: '.form-group',
+      errorSelector: '.form-message',
+      rules: [
+        Validator.isRequired('#card-name', 'This field cannot be empty!'),
+        Validator.isRequired('#card-number', 'This field cannot be empty!'),
+        Validator.isRequired('#card-month', 'This field cannot be empty!'),
+        Validator.isRequired('#card-year', 'This field cannot be empty!'),
+        Validator.isRequired('#card-cvc', 'This field cannot be empty!'),
+
+      ],
+    
+    });
+
+
+  });
+
+</script>
 
 
 <script src="/javascripts/checkout.js"></script>

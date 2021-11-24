@@ -6,6 +6,7 @@
   "scripts": {
     "fixformat": "prettier --single-quote --trailing-comma all --tab-width 4 --write src/**/*.{js,json,scss}",
     "devstart": "nodemon --inspect src/index.js",
+    "testsv": "jest --watchAll --verbose --runInBand",
     "start": "nodemon src/index.js",
     "watch": "node-sass --watch src/resources/scss/ -o src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -53,6 +54,7 @@
   "devDependencies": {
     "dotenv": "^10.0.0",
     "husky": "^7.0.2",
+    "jest": "^27.3.1",
     "lint-staged": "^11.1.2",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",

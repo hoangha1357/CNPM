@@ -14,7 +14,7 @@ class MenuController {
         
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
-                res.render('Menusub/menu', { 
+                res.render('Site/menu', { 
                     cartdishes: req.session.cart ? cart.generateArray() : null ,
                     totalPrice: req.session.cart ? cart.totalPrice : 0,
                     totalQty: req.session.cart ? cart.totalQty : 0,
@@ -50,7 +50,7 @@ class MenuController {
                 .catch(next);
         }
         else{
-            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, type_dish: req.body.type_dish ,price: req.body.price }})
+            Dish.updateOne({ _id: req.params.id }, {$set: {name: req.body.name, type_dish: req.body.type_dish ,price: req.body.price ,description: req.body.description  }})
                 .then(() => res.redirect('/manager/viewrevenue'))
                 .catch(next);
         }

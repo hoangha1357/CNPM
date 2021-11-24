@@ -1202,7 +1202,7 @@ a:hover {
     color: var(--green-color);
 }
 
-/* .modal {
+.modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -2177,4 +2177,24 @@ input[type='button'][disabled]:hover {
 
 .search__wrapper {
     text-align: center;
+}
+
+#card-number::-webkit-outer-spin-button,
+#card-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#card-number[type=number] {
+    -moz-appearance: textfield;
+}
+
+#card-cvc::-webkit-outer-spin-button,
+#card-cvc::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#card-cvc[type=number] {
+    -moz-appearance: textfield;
 }

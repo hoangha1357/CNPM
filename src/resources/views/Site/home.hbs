@@ -100,7 +100,7 @@
                             <input type="hidden" id="id" name="id" value="{{this._id}}">
                             <button type="submit"  class="product__item-btn">ADD TO CART</button>
                         </form>
-                        <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
+                        <button class="product__item-btn js-details-btn"data-toggle="modal" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
                     </div>
                 </div>
                 {{/if}}
@@ -163,26 +163,28 @@
 
 
 {{!-- MODAL/ITEM FEATURES --}}
-<div class="modal">
+{{#each dishes}}
+{{!-- MODAL/ITEM FEATURES --}}
+<div class="modal" id="item-feature{{@index}}">
     <div class="modal-container js-modal-container">
         <div class="modal-close js-modal-close">
+            
             <i class="ti-close"></i>
         </div>
-
         <div class="modal-body">
             <div class="modal-product">
                 <!-- Start product images -->
                 <div class="product-images">
                     <div class="main-image images">
-                        <img alt="" src="/image/fried_chicken.jpg" class="img-responsive">
+                        <img alt="" src="{{imageload this.image this.imageType}}" class="img-responsive">
                     </div>
                 </div>
                 <!-- end product images -->
                 <div class="product-info">
-                    <h1>Fried Chicken</h1>
+                    <h1>{{this.name}}</h1>
                     <div class="price-box">
                         <h1>Unit price</h1>
-                        <span class="new-price">$5.00</span>
+                        <span class="new-price">${{this.price}}</span>
                     </div>
                     <div class="quantity-box">
                         <h1>Quantity</h1>
@@ -192,18 +194,15 @@
                             <button class="btn-plus">+</button>
                         </div>
                     </div>
-                    <div class="quick-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                        deleniti praesentium tenetur placeat laudantium, expedita velit iste reprehenderit ipsa
-                        quisquam, nisi quasi omnis consequuntur at cumque porro maxime eum perspiciatis!
-                    </div>
-                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" href="">ADD TO
-                        CART</button>
+                    <div class="quick-desc">{{this.description}}</div>
+                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" href="">ADD TO CART</button>
                 </div>
                 <!-- .product-info -->
             </div>
         </div>
     </div>
 </div>
+{{/each}}
 
 <script>
     const buyBtns = document.querySelectorAll('.js-details-btn')

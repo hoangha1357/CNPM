@@ -21,7 +21,26 @@
           <a href="/booktable" class="header__navbar-item-link">TABLE RESERVATION</a>
         </li>
 
-
+        {{#if (isMatch user.permission "Admin")}}
+        <li class="header__navbar-item">
+          <a href="" class="header__navbar-item-link">
+                <img src="/image/star_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Admin
+          </a>
+          <ul class="header__subnav-list">
+            <li class="header__subnav-item">
+              <a href="/admin" class="header__subnav-link">Thông tin người dùng</a>
+            </li>
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/admin/createManager" class="header__subnav-link">Thêm quản lý</a>
+            </li>
+            
+            <li class="header__subnav-item header__subnav-item">
+              <a href="/user/logout" class="header__subnav-link">Đăng xuất</a>
+            </li>
+          </ul>
+        </li>
+        {{/if}}
 
         {{#if (isMatch user.permission "Manager")}}
         <li class="header__navbar-item">
