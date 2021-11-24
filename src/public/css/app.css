@@ -2212,3 +2212,7 @@ input[type='button'][disabled]:hover {
     font-weight: 700;
     text-align: center;
 }
+
+.qr__code {
+    width: 100%;
+}
