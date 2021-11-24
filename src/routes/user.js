@@ -14,7 +14,8 @@ route.get('/payment', requireLogin, UserController.payment);
 route.post('/stored-order', requireLogin, UserController.storedOrder);
 route.post('/delete-order', requireLogin, UserController.deleteOrder);
 route.post('/cancel-order', requireLogin, UserController.cancelOrder);
-route.get('/viewbooktable', requireLogin, UserController.viewTableReservation)
+route.get('/viewbooktable',requireLogin ,UserController.viewTableReservation);
+route.get('/viewbooktable2',requireLogin, UserController.viewTableReservation2);
 route.post('/complete',requireLogin,UserController.complete);
 route.post('/register', UserController.register);
 route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
