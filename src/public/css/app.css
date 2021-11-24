@@ -362,7 +362,7 @@ a:hover {
 }
 
 .checkout-btn {
-    
+    margin-left: 95px;
     cursor: pointer;
     background-color: #e61038;
     
@@ -2078,6 +2078,8 @@ button:active {
 .btn-remove {
     color: #333;
     font-size: 1.6rem;
+    margin-left: 50px;
+    margin-bottom: 12px;
    
 }
 
@@ -2197,4 +2199,16 @@ input[type='button'][disabled]:hover {
 
 #card-cvc[type=number] {
     -moz-appearance: textfield;
+}
+
+.modal.show {
+    display: flex!important;
+}
+
+.slide-cart__quantity {
+    width: 75%;
+    border: none;
+    font-weight: 700;
+    height: 20px;
+    text-align: center;
 }

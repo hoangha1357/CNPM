@@ -1,4 +1,4 @@
-<form style="margin-top: 100px" name="container-form" method="POST" action="/menu/handle-form-action">
+<form style="margin-top: 100px" name="container-form" method="POST" action="/admin/handle-form-action">
     <h1 class="under-line-effect under-line-effect--red" style="">
       Danh sách người dùng
       {{!-- {{#if deletedCount }}
@@ -19,8 +19,8 @@
         <select class="form-control form-control-sm select-all-option info__value" name="action" required>
           <option value="">--Hành động--</option>
           <option value="delete">Xóa</option>
-          <option value="add-recommed">Thêm gợi ý</option>
-          <option value="remove-recommed">Xóa gợi ý</option>
+          <option value="changeToManager">Cho làm quản lý</option>
+          <option value="changeToCustomer">Cho làm khách hàng</option>
         </select>
 
         {{!-- <button class="btn btn-primary btn-sm btn-check-submit" disabled>Thực hiện</button> --}}
@@ -54,6 +54,7 @@
       </thead>
       <tbody>
           {{#each users}}
+          {{#unless (isMatch this.permission 'Admin')}}
           <tr>
               <td>
                 <div class="form-check">
@@ -69,6 +70,7 @@
                   <a href=""  class="product__item-btn btn-red" style="color: white;" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-user-modal">Xóa</a>
               </td>
           </tr>
+          {{/unless}}
           {{else}}
           <tr>
               <td colspan="5" class="text-center">
