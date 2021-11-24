@@ -168,7 +168,9 @@ class UserController {
         
         Dish.findById(req.body.id)
             .then((dish) => {
+                for(let i=0; i<req.body.qty; i++){
                 cart.add(MongoosetoObject(dish), dish._id);
+                }
                 req.session.cart = cart;
                 //console.log(req.session.cart);
                 res.redirect('back');
