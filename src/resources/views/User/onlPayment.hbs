@@ -171,11 +171,11 @@
       </div>
       {{!-- <div class="modal-body form" id="form-1" style="box-shadow: none;"> --}}
           
-          <form action="/user/stored-order" method="post" class="form modal-body" id="checkout-form form-1" style="box-shadow: none;">
+          <form action="/user/stored-order" method="post" class="form modal-body user__info" id="checkout-form form-1" style="box-shadow: none;">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">Card Holder Name</label>
-                        <input type="text" id="card-name" name="name" class="form-control" required>
+                        <input type="text" id="card-name" name="name" class="form-control"  value='{{user.paymentInfo.name}}' required readonly>
                         <span class="form-message"></span>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-number">Credit Card Number</label>
-                        <input type="number" id="card-number" name="number" class="form-control" required>
+                        <input type="number" id="card-number" name="number" class="form-control" value='{{user.paymentInfo.number}}' required readonly>
                         <span class="form-message"></span>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-month">Expiration</label>
-                        <input type="month" id="card-month" name="month" class="form-control" required>
+                        <input type="month" id="card-month" name="month" class="form-control" value='{{user.paymentInfo.month}}' required readonly>
                         <span class="form-message"></span>
                     </div>
                 </div>
@@ -207,13 +207,14 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">CVC</label>
-                        <input type="number" id="card-cvc" name="CVC" class="form-control" required >
+                        <input type="number" id="card-cvc" name="CVC" class="form-control" value='{{user.paymentInfo.CVC}}' required readonly>
                         <span class="form-message"></span>
                     </div>
                 </div>
 
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success" name="method" value="Credit Card">Submit</button>
+            <input type="button" value="Edit profile" class="product__item-btn btn-red"
+                        style="cursor: pointer; width: 150px; color: white"></input>
+            <input type="submit" class="product__item-btn btn-red" style="color: white;" name="method" value="Submit" disabled></input>
                  </form>
 
       {{!-- </div> --}}
