@@ -1312,7 +1312,7 @@ label.modal-label {
 
 .modal-product {
     overflow: hidden;
-    height: 400px;
+    height: 450px;
 }
 
 .modal-product .product-images .main-image {
@@ -2080,6 +2080,7 @@ button:active {
     font-size: 1.6rem;
     margin-left: 50px;
     margin-bottom: 12px;
+    cursor: pointer;
    
 }
 
@@ -2209,6 +2210,5 @@ input[type='button'][disabled]:hover {
     width: 75%;
     border: none;
     font-weight: 700;
-    height: 20px;
     text-align: center;
 }
