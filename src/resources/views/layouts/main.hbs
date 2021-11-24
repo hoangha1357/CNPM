@@ -55,11 +55,11 @@
     <div class="wrapper">
         {{{body}}}
     </div>
-
+    {{#unless nofooter}}
     <div class="container-fluid footer_container">
         {{> footer}}
     </div>
-
+    {{/unless}}
     <script>
         $(document).ready(function () {
             var plus = $('.btn-plus')

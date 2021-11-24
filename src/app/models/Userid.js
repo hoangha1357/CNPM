@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const User = new Schema(
     {
         email: { type: String, unique: true },
+        phonenumber: { type: Number },
         image: { type: Buffer },
         imageType: { type: String },
         imageName: { type: String},
@@ -23,6 +24,13 @@ const User = new Schema(
         timestamps: true,
     },
 );
-
+User.query.sortable = function (req) {
+    if (req.query.hasOwnProperty('_sort')) {
+        return this.sort({
+            [req.query.column]: req.query.type,
+        });
+    }
+    return this;
+};
 module.exports = mongoose.model('User', User);
 
