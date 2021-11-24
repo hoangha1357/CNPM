@@ -34,7 +34,7 @@
                                 </div>
                                 <form method="POST" action="/user/add-to-cart/{{this._id}}">
                                 <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
-                                <button class="product__item-btn js-details-btn" data-toggle="modal" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
+                                <button class="product__item-btn js-details-btn" data-toggle="modal" data-target="#item-feature{{@index}}" ><i class="far fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -89,6 +89,7 @@
     </div>
 </div>
 {{/each}}
+
 <script>
     const buyBtns = document.querySelectorAll('.js-details-btn')
     const modal = document.querySelector('.modal')
@@ -99,7 +100,7 @@
     //Hàm hiển thị  modal (thêm class open vào modal)
     function showBuyTickets(e) {
         e.preventDefault()
-        modal.classList.add('open')
+        //modal.classList.add('open')
     }
     //lặp qua từng thẻ button và nghe hành vi click
     for (const buyBtn of buyBtns) {

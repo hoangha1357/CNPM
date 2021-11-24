@@ -162,7 +162,7 @@
 {{!-- MODAL/ITEM FEATURES --}}
 {{#each dishes}}
 {{!-- MODAL/ITEM FEATURES --}}
-<div class="modal" id="item-feature{{this._id}}">
+<div class="modal" id="item-feature{{@index}}">
     <div class="modal-container js-modal-container">
         <div class="modal-close js-modal-close">
             
@@ -211,7 +211,7 @@
     //Hàm hiển thị  modal (thêm class open vào modal)
     function showBuyTickets(e) {
         e.preventDefault()
-        modal.classList.add('open')
+        //modal.classList.add('open')
     }
     //lặp qua từng thẻ button và nghe hành vi click
     for (const buyBtn of buyBtns) {

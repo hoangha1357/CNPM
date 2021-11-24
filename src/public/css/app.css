@@ -2198,3 +2198,7 @@ input[type='button'][disabled]:hover {
 #card-cvc[type=number] {
     -moz-appearance: textfield;
 }
+
+.modal.show {
+    display: flex!important;
+}
