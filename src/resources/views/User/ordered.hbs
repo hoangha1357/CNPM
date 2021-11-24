@@ -1,13 +1,20 @@
 <div class="" style="margin-top: 100px">
   <div id="accordion">
   <div class="card">
-
+    {{#if (isMatch user.permission "Manager")}}
+    <h1>Các đơn mua hàng</h1>
+    {{else}}
+    <h1>Lịch sử mua hàng</h1>
+    {{/if}}
     {{#each orders }}
     <div class="card-header" id="heading{{@index}}">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
           Hóa đơn {{sum @index 1}}
-          Của: {{this.userName}}
+          {{#if (isMatch ../user.permission "Manager")}}
+            Của: {{this.userName}}
+          {{/if}}
+          
           Đặt vào: {{this.createdAt}}
         </button>
       </h5>

@@ -14,7 +14,7 @@ class MenuController {
         
         Promise.all([Dish.find({type_dish: category}).limit(6).skip((req.query.page - 1) * 6), Dish.countDocuments({type_dish: category})])
             .then(([dishes, count]) => {
-                res.render('Menusub/menu', { 
+                res.render('Site/menu', { 
                     cartdishes: req.session.cart ? cart.generateArray() : null ,
                     totalPrice: req.session.cart ? cart.totalPrice : 0,
                     totalQty: req.session.cart ? cart.totalQty : 0,
