@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
 const { Mongoose } = require('mongoose');
+const { response } = require('express');
 
 class UserController {
     index(req, res, next) {
@@ -340,17 +341,22 @@ class UserController {
     }
     
     viewTableReservation(req, res, next) {
-        Table.findOne({email: req.body.email})
-            .then((table) => {
-                if (!table) 
-                    return res.render('User/viewbooktable', {
-                        message: 'Wrong user or password',
-                    });
-                else {
-                    res.render('User/cart')
-                }
+        Table.find({email: req.user.email})
+            .then((newtable) => {
+                res.render('User/viewbooktable-2', {
+                    newtable: mutiMongoosetoObject(newtable)
+                })
             })
-            .catch(err => {res.send(err.message)});
+            .catch(next);
+    }
+    viewTableReservation2(req, res, next) {
+        Table.find({email: req.user.email})
+            .then((newtable) => {
+                res.render('User/viewbooktable-2', {
+                    newtable: mutiMongoosetoObject(newtable)
+                })
+            })
+            .catch(next);
     }
 }
 
