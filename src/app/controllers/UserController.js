@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const { mutiMongoosetoObject, MongoosetoObject,  modifyRequestImage} = require('../../util/subfuntion');
 const { Mongoose } = require('mongoose');
+const { response } = require('express');
 
 class UserController {
     index(req, res, next) {
@@ -90,24 +91,24 @@ class UserController {
 
     }
 
-    //[POST] /user/delete-order
+    //[POST] /user/delete-order/:id
     deleteOrder(req,res,next){
         // res.json('Deleted ' +req.body.id);
-        Order.deleteOne({_id: req.body.id})
+        Order.delete({_id: req.params.id})
             .then(()=> res.redirect('back'))
             .catch(next);
     }
     
-    //[POST] /user/cancel-order
+    //[POST] /user/cancel-order/:id
     cancelOrder(req,res,next){
-        Order.updateOne({_id: req.body.id},{
+        Order.updateOne({_id: req.params.id},{
             $set: {status: 'Canceled'}
         })
             .then(()=> res.redirect('back'))
             .catch(next)
     }
 
-    //[POST] /user/complete
+    //[GET] /user/complete/:id
     complete(req,res,next) {
         // var cart = new Cart(req.session.cart);
         // var cartdishes = cart.generateArray();
@@ -125,7 +126,7 @@ class UserController {
         // req.session.cart = null;
         // res.redirect('/user/ordered');
 
-        Order.findByIdAndUpdate( req.body.id,{
+        Order.findByIdAndUpdate( req.params.id,{
             $set: {
                 status: 'Completed',
                 paymentStatus: 'Paid'
@@ -135,7 +136,7 @@ class UserController {
                 var arr = order.orders;
                 for(let i=0; i< arr.length;i++)
                 {
-                    Dish.updateOne({ _id : arr[i].item._id},{$inc : {sale: arr[i].price}})
+                    Dish.updateOne({ _id : arr[i].item._id},{$inc : {sale: arr[i].qty}})
                         .then()
                         .catch(next);
                 }
@@ -167,9 +168,11 @@ class UserController {
         
         Dish.findById(req.body.id)
             .then((dish) => {
+                for(let i=0; i<req.body.qty; i++){
                 cart.add(MongoosetoObject(dish), dish._id);
+                }
                 req.session.cart = cart;
-                console.log(req.session.cart);
+                //console.log(req.session.cart);
                 res.redirect('back');
                 // res.json(req.session.cart);
             })
@@ -340,17 +343,22 @@ class UserController {
     }
     
     viewTableReservation(req, res, next) {
-        Table.findOne({email: req.body.email})
-            .then((table) => {
-                if (!table) 
-                    return res.render('User/viewbooktable', {
-                        message: 'Wrong user or password',
-                    });
-                else {
-                    res.render('User/cart')
-                }
+        Table.find({email: req.user.email})
+            .then((newtable) => {
+                res.render('User/viewbooktable-2', {
+                    newtable: mutiMongoosetoObject(newtable)
+                })
             })
-            .catch(err => {res.send(err.message)});
+            .catch(next);
+    }
+    viewTableReservation2(req, res, next) {
+        Table.find({email: req.user.email})
+            .then((newtable) => {
+                res.render('User/viewbooktable-2', {
+                    newtable: mutiMongoosetoObject(newtable)
+                })
+            })
+            .catch(next);
     }
 }
 

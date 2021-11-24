@@ -1,10 +1,10 @@
-<div class="" style="margin-top: 100px">
+<div class="" style="margin-top: 100px" id="content">
   <div id="accordion">
   <div class="card">
     {{#if (isMatch user.permission "Manager")}}
-    <h1>Các đơn mua hàng</h1>
+    <h1 class="under-line-effect under-line-effect--red" style="width: 160px; text-align: center">Các đơn mua hàng</h1>
     {{else}}
-    <h1>Lịch sử mua hàng</h1>
+    <h1 class="under-line-effect under-line-effect--red" style="width: 160px; text-align: center">Lịch sử mua hàng</h1>
     {{/if}}
     {{#each orders }}
     <div class="card-header" id="heading{{@index}}">
@@ -61,24 +61,26 @@
         
         {{!-- Đơn hàng đang được giao --}}
           {{else if (isMatch ../user.permission "Customer") }}
-          <form method="POST" action="/user/complete">
-          <button type="submit" class="btn btn-success" name="id" value="{{this._id}}">Order Received</button>
-          </form>
+          <a href="/user/complete/{{this._id}}" type="submit" class="btn btn-success">Order Received</a>
           {{else}}
 
         {{!-- View quản lý --}}
           <span>ORDER PENDING</span>
           {{/if}} 
           {{#if (isMatch this.status "Incomplete")}} 
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cancel-order">CANCEL</button> {{/if}}
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancel-order" data-id="{{this._id}}">CANCEL</button> {{/if}}
           
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-order">DELETE</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-order" data-id="{{this._id}}">DELETE</button>
       </div> 
       
     </div>
+    
+    {{/each}}
+  </div>
+</div>
+</div>
 
-
-      <!--confirm delete-->
+     <!--confirm delete-->
 <div id="delete-order" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -92,10 +94,7 @@
         <p>Bạn chắc chắn muốn xóa?</p>
       </div>
       <div class="modal-footer">
-        <form method="POST" action="/user/delete-order">
-        <input type="hidden" name="total" value="{{this.totalPrice}}">
-        <button type="submit" id="btn-delete-dish" class="btn btn-danger" name="id" value="{{this._id}}" >Xóa</button>
-        </form>
+        <button type="submit" id="btn-delete-order" class="btn btn-danger" >Xóa</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
       </div>
     </div>
@@ -117,19 +116,47 @@
         <p>Bạn chắc chắn muốn hủy?</p>
       </div>
       <div class="modal-footer">
-        <form method="POST" action="/user/cancel-order">
-        <input type="hidden" name="id" id="id" value="{{this._id}}">
-        <button type="submit" id="btn-delete-dish" class="btn btn-danger" >Đồng ý</button>
-        </form>
+        <button type="submit" id="btn-cancel-order" class="btn btn-danger" >Đồng ý</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
       </div>
     </div>
   </div>
 </div>
+
+<form name="delete-order-form" method="POST"></form>
+
+<form name="cancel-order-form" method="POST"></form>
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded',function(){
+    var orderId;
+    var deleteForm = document.forms['delete-order-form'];
+    var cancelForm = document.forms['cancel-order-form'];
+    var btnDeleteOrder = document.getElementById('btn-delete-order');
+    var btnCancelOrder = document.getElementById('btn-cancel-order');
+
+    $('#delete-order').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); 
+        orderId = button.data('id');
+    });
+
+    btnDeleteOrder.onclick = function (){
+      deleteForm.action = '/user/delete-order/' + orderId;
+      deleteForm.submit();
+    };
+
+     $('#cancel-order').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); 
+        orderId = button.data('id');
+    });
+
+    btnCancelOrder.onclick = function (){
+      cancelForm.action = '/user/cancel-order/' + orderId;
+      cancelForm.submit();
+    };
     
-    {{/each}}
-  </div>
-</div>
-</div>
 
+  });
 
+</script>
