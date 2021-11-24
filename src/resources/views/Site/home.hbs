@@ -65,8 +65,7 @@
                             <span class="product__item-price-sale">${{this.price}}</span>
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
-                            <input type="hidden" id="id" name="id" value="{{this._id}}">
-                            <button type="submit"  class="product__item-btn">ADD TO CART</button>
+                            <button type="submit"  class="product__item-btn"  name="id" value="{{this._id}}">ADD TO CART</button>
                         </form>
                         <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
                     </div>
@@ -97,8 +96,7 @@
                             <span class="product__item-price-sale">${{this.price}}</span>
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
-                            <input type="hidden" id="id" name="id" value="{{this._id}}">
-                            <button type="submit"  class="product__item-btn">ADD TO CART</button>
+                            <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
                         </form>
                         <button class="product__item-btn js-details-btn"data-toggle="modal" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
                     </div>
@@ -129,8 +127,7 @@
                             <span class="product__item-price-sale">${{this.price}}</span>
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
-                            <input type="hidden" id="id" name="id" value="{{this._id}}">
-                            <button type="submit"  class="product__item-btn">ADD TO CART</button>
+                            <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
                             <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
                         </form>
                     </div>

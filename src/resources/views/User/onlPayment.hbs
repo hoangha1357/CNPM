@@ -171,7 +171,7 @@
       </div>
       <div class="modal-body form" id="form-1" style="box-shadow: none;">
           
-
+          <form action="/user/stored-order" method="post" class="form" id="checkout-form">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">Card Holder Name</label>
@@ -211,10 +211,11 @@
                         <span class="form-message"></span>
                     </div>
                 </div>
-                <input type="hidden" name="method" value="Credit Card">
 
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success" >Submit</button>
+            <button type="submit" class="btn btn-success" name="method" value="Credit Card">Submit</button>
+                 </form>
+
       </div>
        
     </div>
@@ -225,7 +226,6 @@
 
       </div>
     
-     </form>
       
 
 <form action="/user/stored-order" method="POST">
