@@ -170,7 +170,7 @@ class UserController {
             .then((dish) => {
                 cart.add(MongoosetoObject(dish), dish._id);
                 req.session.cart = cart;
-                console.log(req.session.cart);
+                //console.log(req.session.cart);
                 res.redirect('back');
                 // res.json(req.session.cart);
             })
