@@ -91,24 +91,24 @@ class UserController {
 
     }
 
-    //[POST] /user/delete-order
+    //[POST] /user/delete-order/:id
     deleteOrder(req,res,next){
         // res.json('Deleted ' +req.body.id);
-        Order.deleteOne({_id: req.body.id})
+        Order.delete({_id: req.params.id})
             .then(()=> res.redirect('back'))
             .catch(next);
     }
     
-    //[POST] /user/cancel-order
+    //[POST] /user/cancel-order/:id
     cancelOrder(req,res,next){
-        Order.updateOne({_id: req.body.id},{
+        Order.updateOne({_id: req.params.id},{
             $set: {status: 'Canceled'}
         })
             .then(()=> res.redirect('back'))
             .catch(next)
     }
 
-    //[POST] /user/complete
+    //[GET] /user/complete/:id
     complete(req,res,next) {
         // var cart = new Cart(req.session.cart);
         // var cartdishes = cart.generateArray();
@@ -126,7 +126,7 @@ class UserController {
         // req.session.cart = null;
         // res.redirect('/user/ordered');
 
-        Order.findByIdAndUpdate( req.body.id,{
+        Order.findByIdAndUpdate( req.params.id,{
             $set: {
                 status: 'Completed',
                 paymentStatus: 'Paid'
@@ -136,7 +136,7 @@ class UserController {
                 var arr = order.orders;
                 for(let i=0; i< arr.length;i++)
                 {
-                    Dish.updateOne({ _id : arr[i].item._id},{$inc : {sale: arr[i].price}})
+                    Dish.updateOne({ _id : arr[i].item._id},{$inc : {sale: arr[i].qty}})
                         .then()
                         .catch(next);
                 }

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosedelete = require('mongoose-delete');
 const Schema = mongoose.Schema;
+const { ordering } = require('../controllers/UserController');
 
 const Order = new Schema(
     {
@@ -20,6 +21,14 @@ const Order = new Schema(
     },
     { timestamps: true },
 );
+
+Order.plugin(mongoosedelete, {
+    overrideMethods: 'all',
+    deletedAt: true,
+});
+
+
+
 
 // Order.query.sortable = function () {
 //     return this.sort({[createdAt]: desc,});

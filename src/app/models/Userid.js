@@ -15,8 +15,7 @@ const User = new Schema(
         paymentInfo: {
             name: {type: String},
             number: {type: Number},
-            month: {type: Number },
-            year: {type: Number},
+            month: {type: String },
             CVC: {type: Number},
         }
     },
