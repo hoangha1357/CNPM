@@ -73,6 +73,30 @@ class AdminController {
             .then(() => res.redirect('back'))
             .catch(err => res.json(err))
     }
+
+    //[POST] /menu/handle-form-action
+    handleFormAction(req, res, next){
+        //res.json(req.body)
+        switch(req.body.action){
+            case 'delete':
+                User.deleteMany({ _id: { $in : req.body.userIds} })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'changeToManager':
+                User.updateMany({ _id: { $in : req.body.userIds} }, {permission: 'Manager'})
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'changeToCustomer':
+                User.updateMany({ _id: { $in : req.body.userIds} }, {permission: 'Customer'})
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.send('Invalid Action');
+        }
+    }
 }
 
 module.exports = new AdminController();
