@@ -66,7 +66,7 @@
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
                             <button type="submit"  class="product__item-btn"  name="id" value="{{this._id}}">ADD TO CART</button>
-                        <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
+                        <button class="product__item-btn js-details-btn" data-target="#item-feature{{this._id}}"><i class="far fa-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
                             <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
-                        <button class="product__item-btn js-details-btn" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
+                        <button class="product__item-btn js-details-btn" data-target="#item-feature{{this._id}}"><i class="far fa-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
                             <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
-                            <button class="product__item-btn js-details-btn"><i class="far fa-search"></i></button>
+                            <button class="product__item-btn js-details-btn" data-target="#item-feature{{this._id}}"><i class="far fa-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
 {{!-- MODAL/ITEM FEATURES --}}
 {{#each dishes}}
 {{!-- MODAL/ITEM FEATURES --}}
-<div class="modal" id="item-feature{{@index}}">
+<div class="modal" id="item-feature{{this._id}}">
     <div class="modal-container js-modal-container">
         <div class="modal-close js-modal-close">
             
