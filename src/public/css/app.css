@@ -1202,7 +1202,7 @@ a:hover {
     color: var(--green-color);
 }
 
-/* .modal {
+.modal {
     position: fixed;
     top: 0;
     right: 0;

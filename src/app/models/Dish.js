@@ -7,6 +7,7 @@ const Dish = new Schema(
     {
         name: { type: String, maxlength: 100, required: true },
         price: { type: Number, required: true },
+        description: { type:String, maxlength: 250},
         type_dish: { type: String, required: true },
         recommend: { type: Boolean, default: false },
         image: { type: Buffer, required: true },

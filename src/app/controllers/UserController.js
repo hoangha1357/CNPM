@@ -229,6 +229,7 @@ class UserController {
                             if (err) return res.json(err);
                             let newuser = new User({
                                 email: req.body.email,
+                                phonenumber: req.body.phonenumber,
                                 password: hashedPass,
                                 name: req.body.name,
                                 gender: req.body.gender,
@@ -236,7 +237,7 @@ class UserController {
                             });
                             newuser
                                 .save()
-                                .then(() => res.redirect('/loginpage'))
+                                .then(() => res.redirect('back'))
                                 .catch((error) => {
                                     res.json({ message: error });
                                 });
