@@ -68,7 +68,7 @@
           <span>ORDER PENDING</span>
           {{/if}} 
           {{#if (isMatch this.status "Incomplete")}} 
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cancel-order" data-id="{{this._id}}">CANCEL</button> {{/if}}
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancel-order" data-id="{{this._id}}">CANCEL</button> {{/if}}
           
           <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-order" data-id="{{this._id}}">DELETE</button>
       </div> 
