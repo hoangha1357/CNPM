@@ -45,9 +45,10 @@
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
                       {{!-- <div class="btn-minus"><input value="-" class="qty minus" onclick="click(-1,{{this.qty}})"></div> --}}
-                      <input type="text" name="updates[]" value="{{this.qty}}" style="color: black" min="0" class="form-control cart-qty" data-line="1">
+                      {{!-- <input type="text" name="updates[]" value="{{this.qty}}" style="color: black" min="0" class="form-control cart-qty" data-line="1"> --}}
                       {{!-- <p id="test">{{this.qty}}</p> --}}
-                      <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div>
+                      {{!-- <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div> --}}
+                      <input type="number" class="cart__quantity" value="1" min="1" style="width: 120px; padding: 0px; box-sizing: content-box">
                     </div>
                   </div>
                 </td>
@@ -113,7 +114,7 @@
         </div>
       {{!-- </form> --}}
 
-
+      
 
       <script>
           
