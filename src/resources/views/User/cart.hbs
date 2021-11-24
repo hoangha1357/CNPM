@@ -26,7 +26,7 @@
 
                  <form method="POST" action="/user/remove-from-cart/{{this.item._id}}">
                     <input type="hidden" name="id" value="{{this.item._id}}">
-                  <button type="submit" class="btn-remove"  id="id" value="{{this.item._id}}"><i class="fal fa-trash-alt"></i> </button>
+                  <button type="submit" class="btn-remove"  id="id" value="{{this.item._id}}" style="margin-left: 5px;"><i class="fal fa-trash-alt"></i> </button>
                  </form>
                  
                 </td>
@@ -44,10 +44,7 @@
                 <td class="text-center">
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
-                      {{!-- <div class="btn-minus"><input value="-" class="qty minus" onclick="click(-1,{{this.qty}})"></div> --}}
-                      <input type="text" name="updates[]" value="{{this.qty}}" style="color: black" min="0" class="form-control cart-qty" data-line="1">
-                      {{!-- <p id="test">{{this.qty}}</p> --}}
-                      <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div>
+                       <input type="number" class="slide-cart__quantity" value="1" style="margin-left: 20px;">
                     </div>
                   </div>
                 </td>
@@ -102,7 +99,7 @@
               </tbody></table>
               <div class="checkout-cart-buttons group-btn-2">
                 <div class="button-checkout-cart">
-                  {{!-- <button type="submit" title="Update" class=" btn featured-product__btn mb-40 btn-red" style="cursor: pointer; margin-right: 10px;">Update cart</button> --}}
+                  <button type="submit" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white">UPDATE CART</button>
                   <a href="/user/payment" class="product__item-btn btn-red" style="cursor: pointer; float: right; color: white">PROCEED TO CHECK OUT</a>
                 </div>
 

@@ -53,7 +53,7 @@
 {{!-- MODAL/ITEM FEATURES --}}
 <div class="modal" id="item-feature{{@index}}">
     <div class="modal-container js-modal-container">
-        <div class="modal-close js-modal-close">
+        <div class="modal-close js-modal-close" data-toggle="modal" data-target="#item-feature{{@index}}">
             
             <i class="ti-close"></i>
         </div>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="quick-desc">{{this.description}}</div>
-                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" href="">ADD TO CART</button>
+                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" style="margin-left: 5px">ADD TO CART</button>
                 </div>
                 <!-- .product-info -->
             </div>
