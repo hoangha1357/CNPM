@@ -438,10 +438,19 @@ input[readonly] {
 .table-reservation-info {
   display:flex;
   justify-content:space-between;
-  max-width: 500px;
+  
 }
 
 .checkbox-select-all-options {
   width: 500px;
   margin: 0 32px;
+}
+
+.book-table-info {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.empty__cart {
+  width: 100%;
 }

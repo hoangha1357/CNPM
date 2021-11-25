@@ -185,8 +185,7 @@
           </li>
             
           {{/each}}
-
-
+          
           
           {{!-- <li class="slidebar__wrap-item">
             <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
@@ -204,7 +203,7 @@
               <div class="slidebar__wrap-price">5</div>
             </div>
           </li> --}}
-
+          
         </ul>
         <div class="slidebar__wrap-total">
           <span class="slidebar__wrap-sub-total">SUBTOTAL</span>
@@ -212,7 +211,10 @@
         </div>
         <a class="btn-large featured-product__btn checkout-btn"
           href="/user/payment">CHECKOUT</a>
-
+            {{else}}
+          <li class="slidebar__wrap-item">
+            <img src="/image/empty-cart.png" alt="" class="empty__cart">
+          </li>
             {{/if}} 
       </div>
 
