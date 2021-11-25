@@ -48,6 +48,14 @@ module.exports = function Cart(oldCart) {
           return arr;
     };
 
+    this.update = function(qty, id) {
+        var updateItem = this.items[id];
+        this.totalQty = this.totalQty - updateItem.qty + qty;
+        this.totalPrice = this.totalPrice - updateItem.item.price * ( updateItem.qty - qty) ;
+        updateItem.qty = qty;
+        updateItem.price = updateItem.item.price * qty;
+    };
+
 
 };
 

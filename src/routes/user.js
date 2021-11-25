@@ -9,6 +9,7 @@ const requireLogin = require('../app/middlewares/LoginRequires');
 route.post('/remove-from-cart/:id', requireLogin,UserController.removeFromCart);
 route.get('/ordered', requireLogin, UserController.ordered);
 route.get('/clear-cart', requireLogin, UserController.clearCart);
+route.post('/update-cart',requireLogin, UserController.updateCart);
 route.get('/ordering', requireLogin, UserController.ordering);
 route.post('/add-to-cart/:id', requireLogin,UserController.addToCart);
 route.get('/payment', requireLogin, UserController.payment);

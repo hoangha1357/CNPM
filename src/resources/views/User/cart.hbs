@@ -64,7 +64,10 @@
           <div class="checkout-cart-buttons group-btn-1">
             <div class="button-shopping">
               <a href="/user/clear-cart" class="btn btn-secondary danger" style="cursor: pointer; color:white; float: right;margin: 20px 0;">CLEAR ALL ITEMS</a>
-             <button type="submit" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white; float: right;margin: 20px 0;">UPDATE CART</button>
+              <form name="update-cart-form" method="POST" action="/user/update-cart">
+              <input type="hidden" name="string" id="update-cart">
+             <button type="button" id="update-cart-btn" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white; float: right;margin: 20px 0;">UPDATE CART</button>
+             </form>
             </div>
             
             {{!-- <div class="checkout-cart-buttons group-btn-1">
@@ -115,29 +118,29 @@
       {{!-- </form> --}}
 
       <script>
+         document.addEventListener('DOMContentLoaded', function(){
         var get_qty = document.querySelectorAll('.cart__quantity');
-        //console.log(get_qty[0].value);
-
         var get_id = document.querySelectorAll('.btn-remove');
-        //console.log(get_id[0].value);
-
         var items_id_qty = [];
+        var updateForm = document.forms['update-cart-form'];
+        var btnUpdateForm = document.getElementById('update-cart-btn');
+        var input = document.getElementById('update-cart')
 
         get_qty.forEach(function(qty) {
-          qty.onchange = function (e) {
-            console.log(qty.value);
-            items_id_qty = [[get_qty[0].value, get_id[0].value]];
-            console.log(items_id_qty);
-
-            for (var i = 1; i < get_qty.length; i++){
-              items_id_qty.push([get_qty[i].value, get_id[i].value]);
-            }
-            console.log(items_id_qty);
+            qty.onchange = function (e) {
+                items_id_qty = [[get_qty[0].value, get_id[0].value]];
+                for (var i = 1; i < get_qty.length; i++){
+                  items_id_qty.push([get_qty[i].value, get_id[i].value]);
+                }
           }
-        })
+        });
 
-        
-        console.log(items_id_qty);
+          btnUpdateForm.onclick = function() {
+            $(input).attr('value',''+items_id_qty);
+            updateForm.submit();  
+          };
+
+        });
 
       </script>
 

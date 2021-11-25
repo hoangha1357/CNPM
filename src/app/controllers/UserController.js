@@ -172,7 +172,7 @@ class UserController {
                 cart.add(MongoosetoObject(dish), dish._id);
                 }
                 req.session.cart = cart;
-                //console.log(req.session.cart);
+                console.log(req.session.cart);
                 res.redirect('back');
                 // res.json(req.session.cart);
             })
@@ -199,6 +199,20 @@ class UserController {
     //[POST] /user/clear-cart
     clearCart(req, res, next) {
         req.session.cart = null;
+        res.redirect('back');
+    }
+
+    //[POST] /user/update-cart
+    updateCart(req, res, next) {
+        if(!req.body.string) return res.redirect('back');
+        var arr = req.body.string.split(',');
+        // res.json(arr);
+        var cart = new Cart(req.session.cart);
+        for(let i = 0; i < arr.length; i++)
+        {
+            cart.update(parseInt(arr[i]),arr[++i]);
+        }
+        req.session.cart = cart;
         res.redirect('back');
     }
 
