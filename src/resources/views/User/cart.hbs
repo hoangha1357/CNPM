@@ -48,7 +48,7 @@
                       {{!-- <input type="text" name="updates[]" value="{{this.qty}}" style="color: black" min="0" class="form-control cart-qty" data-line="1"> --}}
                       {{!-- <p id="test">{{this.qty}}</p> --}}
                       {{!-- <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div> --}}
-                      <input type="number" class="cart__quantity" value="1" min="1" style="width: 120px; padding: 0px; box-sizing: content-box">
+                      <input type="number" class="cart__quantity" value="{{this.qty}}" min="1" style="width: 120px; padding: 0px; box-sizing: content-box">
                     </div>
                   </div>
                 </td>
@@ -59,7 +59,7 @@
               {{/each}}
 
             
-              
+{{!-- <button type="submit" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white">UPDATE CART</button> --}}
             </tbody>
           </table>
           <div class="checkout-cart-buttons group-btn-1">
@@ -67,7 +67,7 @@
               <a href="/" class="product__item-btn btn-red" style="color: white; cursor: pointer; margin: 20px 0; float: right">Continue Shopping</a>
             </div>
             
-            {{!-- <div class="button-update-cart">
+            {{!-- <div class="checkout-cart-buttons group-btn-1">
               <button type="submit" title="Update" class=" btn-large featured-product__btn mb-40 btn-red" style="cursor: pointer">Update cart</button>
             </div> --}}
           </div>
