@@ -196,6 +196,12 @@ class UserController {
        
     }
 
+    //[POST] /user/clear-cart
+    clearCart(req, res, next) {
+        req.session.cart = null;
+        res.redirect('back');
+    }
+
     // [POST] /user/updateImage
     updateImage(req, res, next) {
         if(req.body.image) {
