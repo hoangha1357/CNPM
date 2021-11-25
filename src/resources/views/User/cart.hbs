@@ -114,7 +114,21 @@
         </div>
       {{!-- </form> --}}
 
-      
+      <script>
+        var get_qty = document.querySelectorAll('.cart__quantity');
+        console.log(get_qty[0].value);
+
+        var get_id = document.querySelectorAll('.btn-remove');
+        console.log(get_id[0].value);
+
+        var items_id_qty = [[get_qty[0].value, get_id[0].value]];
+
+        for (var i = 1; i < get_qty.length; i++){
+          items_id_qty.push([get_qty[i].value, get_id[i].value]);
+        }
+        console.log(items_id_qty);
+
+      </script>
 
       <script>
           
