@@ -1,9 +1,12 @@
+<div id="content">
+
 <form style="margin-top: 100px" name="container-form" method="POST" action="/menu/handle-form-action">
-    <h1 class="under-line-effect under-line-effect--red" style="">
-      Doanh thu các món ăn
+    <h1 style="">
+      <span class="under-line-effect under-line-effect--red" > Doanh thu các món ăn </span> 
       {{#if deletedCount }}
       <a href="/manager/trash">
-        <img src="/image/trash.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
+        {{!-- <img src="/image/trash.jpg" width="40" height="40" class="d-inline-block align-top" alt=""> --}}
+        <i class="fas fa-trash-alt"></i>
         ({{deletedCount}})
       </a>
       {{/if}}
@@ -16,7 +19,7 @@
           </label>
         </div>
 
-        <select class="form-control form-control-sm select-all-option info__value" name="action" required>
+        <select class="form-control form-control-sm select-all-option info__value" name="action" style="font-size: 1.6rem; height: 3.7rem; margin-left: 10px; margin-right: 10px; width:170px" required>
           <option value="">--Hành động--</option>
           <option value="delete">Xóa</option>
           <option value="add-recommed">Thêm gợi ý</option>
@@ -24,7 +27,7 @@
         </select>
 
         {{!-- <button class="btn btn-primary btn-sm btn-check-submit" disabled>Thực hiện</button> --}}
-        <button type="submit" class="product__item-btn btn-red" style="color: white; margin-top: -20px;">Thực hiện</button>
+        <button type="submit" class="product__item-btn btn-red" style="color: white; margin-top: -11px;">Thực hiện</button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -76,8 +79,8 @@
               </td>
               <td>{{mul this.sale this.price}} VNĐ</td>
               <td>
-                  <a href="/manager/{{this._id}}/edit"  class="product__item-btn btn-red" style="color: white;">Sửa</a>
-                  <a href=""  class="product__item-btn btn-red" style="color: white;" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
+                  <a href="/manager/{{this._id}}/edit"  class="product__item-btn btn-red" style="color: white; margin-top: 0">Sửa</a>
+                  <a href=""  class="product__item-btn btn-red" style="color: white; margin-top: 0" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa</a>
               </td>
           </tr>
           {{else}}

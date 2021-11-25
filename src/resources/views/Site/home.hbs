@@ -65,9 +65,11 @@
                             <span class="product__item-price-sale">${{this.price}}</span>
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
-                            <button type="submit"  class="product__item-btn"  name="id" value="{{this._id}}">ADD TO CART</button>
+                            <input type="hidden" name="qty" value="1">
+                            <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
                         <button class="product__item-btn js-details-btn" data-toggle="modal" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
                         </form>
+                        
                     </div>
                 </div>
                 {{/if}}
@@ -96,9 +98,11 @@
                             <span class="product__item-price-sale">${{this.price}}</span>
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
+                            <input type="hidden" name="qty" value="1">
                             <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
                         <button class="product__item-btn js-details-btn" data-toggle="modal" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
                         </form>
+                        
                     </div>
                 </div>
                 {{/if}}
@@ -127,9 +131,11 @@
                             <span class="product__item-price-sale">${{this.price}}</span>
                         </div>
                         <form method="POST" action="/user/add-to-cart/{{this._id}}">
+                            <input type="hidden" name="qty" value="1">
                             <button type="submit"  class="product__item-btn" name="id" value="{{this._id}}">ADD TO CART</button>
                             <button class="product__item-btn js-details-btn" data-toggle="modal" data-target="#item-feature{{@index}}"><i class="far fa-search"></i></button>
                         </form>
+                       
                     </div>
                 </div>
                 {{/if}}
@@ -183,17 +189,19 @@
                         <h1>Unit price</h1>
                         <span class="new-price">${{this.price}}</span>
                     </div>
+                    <form method="POST" action="/user/add-to-cart/{{this._id}}">
                     <div class="quantity-box">
                         <h1>Quantity</h1>
                         <div class="quantity-box__wrap">
                             {{!-- <button class="btn-minus">-</button>
                             <span class="slidebar__wrap-info-quantity">1</span>
                             <button class="btn-plus">+</button> --}}
-                            <input type="number" class="slide-cart__quantity" value="1">
+                            <input type="number" class="slide-cart__quantity" name="qty" value="1">
                         </div>
                     </div>
                     <div class="quick-desc">{{this.description}}</div>
-                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" style="margin-left: 5px">ADD TO CART</button>
+                    <button class="btn-large featured-product__btn checkout-btn modal-btn" type="submit" style="margin-left: 5px" name="id" value="{{this._id}}">ADD TO CART</button>
+                    </form>
                 </div>
                 <!-- .product-info -->
             </div>

@@ -44,7 +44,11 @@
                 <td class="text-center">
                   <div class="input-group btn-block" style="max-width: 80px;min-width: 70px;">
                     <div class="form-quantity">
-                       <input type="number" class="slide-cart__quantity" value="1" style="margin-left: 20px;">
+                      {{!-- <div class="btn-minus"><input value="-" class="qty minus" onclick="click(-1,{{this.qty}})"></div> --}}
+                      {{!-- <input type="text" name="updates[]" value="{{this.qty}}" style="color: black" min="0" class="form-control cart-qty" data-line="1"> --}}
+                      {{!-- <p id="test">{{this.qty}}</p> --}}
+                      {{!-- <div class="btn-plus"><input type="button" value="+" class="qty plus" onclick="increase({{this}})"></div> --}}
+                      <input type="number" class="cart__quantity" value="{{this.qty}}" min="1" style="width: 120px; padding: 0px; box-sizing: content-box">
                     </div>
                   </div>
                 </td>
@@ -55,7 +59,7 @@
               {{/each}}
 
             
-              
+{{!-- <button type="submit" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white">UPDATE CART</button> --}}
             </tbody>
           </table>
           <div class="checkout-cart-buttons group-btn-1">
@@ -63,7 +67,7 @@
               <a href="/" class="product__item-btn btn-red" style="color: white; cursor: pointer; margin: 20px 0; float: right">Continue Shopping</a>
             </div>
             
-            {{!-- <div class="button-update-cart">
+            {{!-- <div class="checkout-cart-buttons group-btn-1">
               <button type="submit" title="Update" class=" btn-large featured-product__btn mb-40 btn-red" style="cursor: pointer">Update cart</button>
             </div> --}}
           </div>
@@ -110,7 +114,32 @@
         </div>
       {{!-- </form> --}}
 
+      <script>
+        var get_qty = document.querySelectorAll('.cart__quantity');
+        //console.log(get_qty[0].value);
 
+        var get_id = document.querySelectorAll('.btn-remove');
+        //console.log(get_id[0].value);
+
+        var items_id_qty = [];
+
+        get_qty.forEach(function(qty) {
+          qty.onchange = function (e) {
+            console.log(qty.value);
+            items_id_qty = [[get_qty[0].value, get_id[0].value]];
+            console.log(items_id_qty);
+
+            for (var i = 1; i < get_qty.length; i++){
+              items_id_qty.push([get_qty[i].value, get_id[i].value]);
+            }
+            console.log(items_id_qty);
+          }
+        })
+
+        
+        console.log(items_id_qty);
+
+      </script>
 
       <script>
           
