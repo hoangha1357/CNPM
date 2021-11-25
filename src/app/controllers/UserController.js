@@ -353,7 +353,8 @@ class UserController {
         Table.find({email: req.user.email})
             .then((newtable) => {
                 res.render('User/viewbooktable-2', {
-                    newtable: mutiMongoosetoObject(newtable)
+                    newtable: mutiMongoosetoObject(newtable),
+                    user: req.user,
                 })
             })
             .catch(next);

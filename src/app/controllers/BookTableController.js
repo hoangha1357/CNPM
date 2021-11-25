@@ -100,7 +100,8 @@ class BookTableController {
         }) 
         res.render('Site/choosetable', {
             newtable: MongoosetoObject(newtable),
-            tablelist
+            tablelist,
+            user: req.user,
         }) 
     }
 
@@ -116,6 +117,7 @@ class BookTableController {
         newtable.save() 
             .then(() => res.render('Site/book_table_thankyou', {
                 newtable: MongoosetoObject(newtable),
+                user: req.user,
             }))
             .catch(next);
     }
