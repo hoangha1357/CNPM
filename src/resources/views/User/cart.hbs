@@ -63,7 +63,7 @@
           </table>
           <div class="checkout-cart-buttons group-btn-1">
             <div class="button-shopping">
-              <a href="/user/clear-cart" class="btn btn-secondary danger" style="cursor: pointer; color:white; float: right;margin: 20px 0;">CLEAR ALL ITEMS</a>
+              <button class="btn danger" style="cursor: pointer; color:white; float: right;margin: 20px 0;" data-toggle="modal" data-target="#cancel-order">CLEAR ALL ITEMS</button>
               <form name="update-cart-form" method="POST" action="/user/update-cart">
               <input type="hidden" name="string" id="update-cart">
              <button type="button" id="update-cart-btn" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white; float: right;margin: 20px 0;">UPDATE CART</button>
@@ -115,133 +115,29 @@
             </div>
           </div>
         </div>
-      {{!-- </form> --}}
 
-      <script>
-         document.addEventListener('DOMContentLoaded', function(){
-        var get_qty = document.querySelectorAll('.cart__quantity');
-        var get_id = document.querySelectorAll('.btn-remove');
-        var items_id_qty = [];
-        var updateForm = document.forms['update-cart-form'];
-        var btnUpdateForm = document.getElementById('update-cart-btn');
-        var input = document.getElementById('update-cart')
+      <script src="/javascripts/cartchange.js"></script>
 
-        get_qty.forEach(function(qty) {
-            qty.onchange = function (e) {
-                items_id_qty = [[get_qty[0].value, get_id[0].value]];
-                for (var i = 1; i < get_qty.length; i++){
-                  items_id_qty.push([get_qty[i].value, get_id[i].value]);
-                }
-          }
-        });
-
-          btnUpdateForm.onclick = function() {
-            $(input).attr('value',''+items_id_qty);
-            updateForm.submit();  
-          };
-
-        });
-
-      </script>
-
-      <script>
-          
-          function clicked(n, qty) {
-              var test = document.getElementById("test");
-              qty += n;
-              test.innerHTML = qty;
-          };
-      </script>
-
-
-
-      <script>
-
-        {{!-- function increase(this, totalQty, totalPrice) {
-          this.qty++;
-          this.price += this.item.price;
-          totalQty++;
-          totalPrice += this.item.price;
-        } --}}
-
-
-        $(document).ready(function () {
-            var plus = $('.btn-plus')
-            var minus = $('.btn-minus')
-           
-            plus.each(function (index, plusBtn) {
-                var jplus = $(plusBtn)
-                jplus.click(function () {
-                    var quantity = parseInt(jplus.prev().val()) + 1
-                    jplus.prev().val(quantity)
-
-                    var test = (jplus.parent()).parent().next()
-                    var priceProduct = test.find('.slidebar__wrap-price').text()
-                
-                    var total = 5 * quantity
-                    console.log(priceProduct)
-                    test.find('.slidebar__wrap-price').text(total)
-                })
-            })
-         
-            minus.each(function (index, minusBtn) {
-                var jminus = $(minusBtn)
-                jminus.click(function () {
-                    if (parseInt(jminus.prev().val()) == 0)
-                        var quantity = parseInt(jminus.prev().val()) - 1
-                    jminus.prev().val(quantity)
-
-                    var test = (jminus.parent()).parent().next()
-                    var priceProduct = test.find('.slidebar__wrap-price').text()
-                 
-                    var total = 5 * quantity
-                    console.log(priceProduct)
-                    test.find('.slidebar__wrap-price').text(total)
-                })
-            })
-         
-            var addBtn = $('.js-add-btn')
-            var cart1 = document.querySelector('.slidebar__wrap-list')
-            var cart = $('.slidebar__wrap-list')
-            addBtn.click(function () {
-                var parentProduct = addBtn.parentsUntil('.feature-item')[0]
-                var productPictureSrc = parentProduct.querySelector('.product__item-img').getAttribute('src')
-                var price = parentProduct.querySelector('.product__item-price .product__item-price-sale').innerHTML
-                console.log(price)
-                var productInfo = `<li class="slidebar__wrap-item">
-            <img src="/image/fried_chicken.jpg" alt="" class="slidebar__wrap-img">
-            <div class="slidebar__wrap-info">
-              <a href="" class="slidebar__wrap-info-product">Fried Chicken</a>
-
-              <span class="slidebar__wrap-info-food">
-                <button class="btn-minus" onclick="decrease()">-</button>
-                <input class="slidebar__wrap-info-quantity" id="productQuantity" type="text" value="1"></input>
-                <button class="btn-plus" onclick="increase()">+</button>
-              </span>
+            <!--confirm cancel-->
+        <div id="cancel-order" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Cảnh báo!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Bạn chắc chắn muốn xóa giỏ hàng?</p>
+              </div>
+              <div class="modal-footer">
+                <a href="/user/clear-cart" id="btn-cancel-order" class="btn btn-danger" >Đồng ý</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
+              </div>
             </div>
-            <div class="slidebar__wrap-trash-and-price">
-              <i class="fal fa-trash-alt trash-btn"></i>
-              <div class="slidebar__wrap-price">${price}</div>
-            </div>
-          </li>`
-                cart.append(productInfo)
-
-            })
-
-
-            var trashBtnes = $('.trash-btn')
-            trashBtnes.each(function (index, trash) {
-                var jtrash = $(trash)
-                jtrash.click(function () {
-                    var htmltrash = jtrash[0];
-                    var trashBtnParent = (htmltrash.parentElement).parentElement
-
-                    trashBtnParent.remove()
-                })
-
-            })
-        })
-      </script>
+          </div>
+        </div>
 
 
       {{else}}
