@@ -25,8 +25,7 @@
                 <td class="text-center btn-remove-product">
 
                  <form method="POST" action="/user/remove-from-cart/{{this.item._id}}">
-                    <input type="hidden" name="id" value="{{this.item._id}}">
-                  <button type="submit" class="btn-remove"  id="id" value="{{this.item._id}}" style="margin-left: 5px;"><i class="fal fa-trash-alt"></i> </button>
+                  <button type="submit" class="btn-remove" name="id"  id="id" value="{{this.item._id}}" style="margin-left: 5px;"><i class="fal fa-trash-alt"></i> </button>
                  </form>
                  
                 </td>
@@ -64,7 +63,7 @@
           </table>
           <div class="checkout-cart-buttons group-btn-1">
             <div class="button-shopping">
-              <button href="/user/clear-cart" class="btn btn-secondary danger" style="cursor: pointer; color:white; float: right;margin: 20px 0;">CLEAR ALL ITEMS</button>
+              <a href="/user/clear-cart" class="btn btn-secondary danger" style="cursor: pointer; color:white; float: right;margin: 20px 0;">CLEAR ALL ITEMS</a>
              <button type="submit" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white; float: right;margin: 20px 0;">UPDATE CART</button>
             </div>
             
