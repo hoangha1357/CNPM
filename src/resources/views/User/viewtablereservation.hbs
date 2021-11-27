@@ -1,7 +1,7 @@
 <form class="mt-4" name="container-form " method="POST" action="/booktable/handle-form-actions">
 
   <div style="margin-top: 100px" class="container">
-    <h3 class="under-line-effect under-line-effect--red">Danh sách đặt bàn</h3>
+    <h3 class="under-line-effect under-line-effect--red">Reservation List</h3>
     <h1>
 
     <a href="/manager/trashed/tablereservation"><i class="fas fa-trash-alt"></i>({{deletedCount}})</a>
@@ -10,14 +10,14 @@
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
         <label class="form-check-label" for="checkbox-all" style="margin-left: 15px;">
-          Chọn tất cả
+          Select All
         </label>
       </div>
       <select class="form-control form-control-sm checkbox-select-all-options info__value" name="action" style="font-size: 1.6rem; height: 3.7rem; margin-left: 10px; margin-right: 10px; width:200px" required>
-        <option value="">-- Chọn hành động --</option>
-        <option value="delete">Xóa</option>
+        <option value="">-- Choose Action --</option>
+        <option value="delete">Delete</option>
       </select>
-      <button class="product__item-btn btn-red" style="color: white; margin-top: -11px;" disabled>Thực hiện</button>
+      <button class="product__item-btn btn-red" style="color: white; margin-top: -11px;" disabled>Action</button>
     </div>
   </div>
 
@@ -26,14 +26,12 @@
       <thead>
         <tr>
           <th></th>
-          <th scope="col">STT</th>
-          <th scope="col">
-            Tên khách hàng
-          </th>
+          <th scope="col">No.</th>
+          <th scope="col">Customer</th>
           <th scope="col">Email</th>
-          <th scope="col">Ngày đặt bàn</th>
-          <th scope="col">Giờ đặt bàn</th>
-          <th scope="col">Bàn số</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">TableID</th>
         </tr>
       </thead>
       <tbody>
@@ -55,7 +53,7 @@
           {{else}}
           <tr>
             <td colspan="7" class="text-center">
-              Chưa có bàn nào được đặt
+              You have not booked table yet !!!
             </td>
           </tr>
         {{/each}}
@@ -72,17 +70,17 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn xóa?
+        Are you sure you want to delete?
       </div>
       <div class="modal-footer">
-        <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa bỏ</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
