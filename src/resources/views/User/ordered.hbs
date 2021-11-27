@@ -2,9 +2,9 @@
   <div id="accordion">
   <div class="card">
     {{#if (isMatch user.permission "Manager")}}
-    <h1 class="under-line-effect under-line-effect--red" style="width: 160px; text-align: center; margin-left: 10px">Các đơn mua hàng</h1>
+    <h1 class="under-line-effect under-line-effect--red" style="width: 180px; text-align: center; margin-left: 10px">Các đơn mua hàng</h1>
     {{else}}
-    <h1 class="under-line-effect under-line-effect--red" style="width: 160px; text-align: center; margin-left: 10px">Lịch sử mua hàng</h1>
+    <h1 class="under-line-effect under-line-effect--red" style="width: 180px; text-align: center; margin-left: 10px">Lịch sử mua hàng</h1>
     {{/if}}
     {{#each orders }}
     <div class="card-header" id="heading{{@index}}">
@@ -12,8 +12,7 @@
         <button class="product__item-btn btn-link btn-blue" style="color: white;" data-toggle="collapse" data-target="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
           Hóa đơn {{sum @index 1}}
           {{#if (isMatch ../user.permission "Manager")}}
-            Của: {{this.userName}}
-           <i class="fal fa-bars"></i>
+            của: {{this.userName}} --
           {{/if}}
           
           Đặt vào: {{this.createdAt}}
@@ -22,7 +21,7 @@
       </h5>
     </div>
     {{#if (isMatch ../user.permission "Manager")}}
-          ID người dùng: {{this.userID}}
+          <label class="info__label" style="margin-left: 10px; margin-top: 10px; margin-bottom: -5px" >ID người dùng: {{this.userID}}</label> 
           {{/if}}
     <div id="collapse{{@index}}" class="collapse show" aria-labelledby="heading{{@index}}" data-parent="#accordion">
       <div class="card-body" style="font-size: 1.4rem;">
