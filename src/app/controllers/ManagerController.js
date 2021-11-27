@@ -47,13 +47,22 @@ class ManagerController {
         // res.json(req.session.email);
         Order.find({}).sort({createdAt : -1})
             .then((orders) => {
-                //res.json(req.user)
+                orders = mutiMongoosetoObject(orders);
+                for(let i=0; i < orders.length; i++)
+                {
+                    User.findById(orders[i].userID)
+                        .then((user) =>{
+                            orders[i].image = user.image;
+                            orders[i].imageType = user.imageType;
+                        })
+                        .catch(next);
+                }
                 res.render('Manager/feedback',{
                     user: req.user,
-                    orders: mutiMongoosetoObject(orders)
+                    orders: orders
                 })
             })
-            .catch(next)
+            .catch(next);
     }
     // [GET] /manager/trash
     trash(req, res, next) {
