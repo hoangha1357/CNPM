@@ -103,6 +103,7 @@ class ManagerController {
             .then((tables) => 
             res.render('User/trashedtablereservation', {
                 tables: mutiMongoosetoObject(tables),
+                user: req.user,
             }), 
             )
             .catch(next);
