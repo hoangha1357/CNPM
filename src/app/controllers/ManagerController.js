@@ -89,9 +89,10 @@ class ManagerController {
         // Promise
         Promise.all([Table.find({}), Table.countDocumentsDeleted()])
         .then(([tables,deletedCount]) =>  
-            res.render('User/viewtablereservation', {
+            res.render('Manager/viewtablereservation', {
                 deletedCount,
                 tables: mutiMongoosetoObject(tables),
+                user: req.user
             })
         )
         .catch(next);

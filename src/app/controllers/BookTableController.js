@@ -144,8 +144,8 @@ class BookTableController {
                     break;
                 // -----------------------------------------------------
                 case 'delete-force':
-                    Table.deleteOne({ _id: {  $in: req.body.courseIds } })
-                        .then(() => res.render('User/viewtablereservation'))
+                    Table.deleteMany({ _id: {  $in: req.body.courseIds } })
+                        .then(() => res.redirect('back'))
                         .catch(next);
                     break;
                 // -----------------------------------------------------
