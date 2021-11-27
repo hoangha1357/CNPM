@@ -41,6 +41,20 @@ class ManagerController {
             .catch(next)
     }
 
+    // [GET] /manager/viewtCustomerFeedback
+    viewtCustomerFeedback(req, res, next) {
+        //if(!req.query.page) req.query.page = 1;
+        // res.json(req.session.email);
+        Order.find({}).sort({createdAt : -1})
+            .then((orders) => {
+                //res.json(req.user)
+                res.render('Manager/feedback',{
+                    user: req.user,
+                    orders: mutiMongoosetoObject(orders)
+                })
+            })
+            .catch(next)
+    }
     // [GET] /manager/trash
     trash(req, res, next) {
         Dish.findDeleted({})
@@ -52,7 +66,7 @@ class ManagerController {
             })
             .catch(next);
     }
-    
+    // [Get] /manager/create
     create(req, res, next) {
         res.render('Manager/create',{user: req.user,});
     }
@@ -75,10 +89,10 @@ class ManagerController {
         // Promise
         Promise.all([Table.find({}), Table.countDocumentsDeleted()])
         .then(([tables,deletedCount]) =>  
-            res.render('User/viewtablereservation', {
+            res.render('Manager/viewtablereservation', {
                 deletedCount,
                 tables: mutiMongoosetoObject(tables),
-                user: req.user,
+                user: req.user
             })
         )
         .catch(next);

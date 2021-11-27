@@ -7,6 +7,7 @@ const requireLogin = require('../app/middlewares/LoginRequires');
 
 route.use(requireLogin)
 route.use(managerRequire)
+route.get('/viewtCustomerFeedback', ManagerController.viewtCustomerFeedback)
 route.get('/viewrevenue', ManagerController.viewrevenue);
 route.get('/vieworders', ManagerController.viewOrders);
 route.get('/trash', ManagerController.trash);
