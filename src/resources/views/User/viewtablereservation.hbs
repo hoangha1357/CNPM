@@ -1,20 +1,23 @@
 <form class="mt-4" name="container-form " method="POST" action="/booktable/handle-form-actions">
 
   <div style="margin-top: 100px" class="container">
-    <h3>Danh sách đặt bàn</h3>
-    <a href="/manager/trashed/tablereservation">Thùng rác ({{deletedCount}})</a>
+    <h3 class="under-line-effect under-line-effect--red">Danh sách đặt bàn</h3>
+    <h1>
+
+    <a href="/manager/trashed/tablereservation"><i class="fas fa-trash-alt"></i>({{deletedCount}})</a>
+    </h1>
     <div class="mt-4 d-flex align-items-center">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-        <label class="form-check-label" for="checkbox-all">
+        <label class="form-check-label" for="checkbox-all" style="margin-left: 15px;">
           Chọn tất cả
         </label>
       </div>
-      <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+      <select class="form-control form-control-sm checkbox-select-all-options info__value" name="action" style="font-size: 1.6rem; height: 3.7rem; margin-left: 10px; margin-right: 10px; width:200px" required>
         <option value="">-- Chọn hành động --</option>
         <option value="delete">Xóa</option>
       </select>
-      <button class="btn-2 btn-dark check-all-submit-btn" disabled>Thực hiện</button>
+      <button class="product__item-btn btn-red" style="color: white; margin-top: -11px;" disabled>Thực hiện</button>
     </div>
   </div>
 

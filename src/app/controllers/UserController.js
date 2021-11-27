@@ -110,22 +110,6 @@ class UserController {
 
     //[GET] /user/complete/:id
     complete(req,res,next) {
-        // var cart = new Cart(req.session.cart);
-        // var cartdishes = cart.generateArray();
-        // // console.log(cartdishes);
-        // for(let i=0; i< cartdishes.length; i++)
-        // {
-        //     Dish.updateOne({_id :cartdishes[i].item._id},{
-        //         $set : {
-        //             sale: cartdishes[i].item.sale + cartdishes[i].price
-        //         }
-        //     })
-        //         .then()
-        //         .catch(next);
-        // }
-        // req.session.cart = null;
-        // res.redirect('/user/ordered');
-
         Order.findByIdAndUpdate( req.params.id,{
             $set: {
                 status: 'Completed',
@@ -141,11 +125,24 @@ class UserController {
                         .catch(next);
                 }
                 
-                res.redirect('/user/ordered');
+                res.render('User/feedback',{
+                    user: req.user,
+                    orderID: order._id,
+                });
             })
             .catch(next);
     }
 
+    feedback(req,res,next) {
+        // res.json(req.body);
+        Order.updateOne({_id: req.body.id}, {
+            $set: {
+                feedback: req.body.feedback,
+            }
+        })
+            .then(() => res.redirect('/user/ordered'))
+            .catch(next);
+    }
 
     // [GET] /user/payment
     payment(req, res, next) {

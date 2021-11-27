@@ -2163,3 +2163,7 @@ border-radius: 15px; */
         height: 20px;
         text-align: center;
     }
+
+    .filepond--root.filepond.info__image.filepond--hopper {
+        display: none;
+    }

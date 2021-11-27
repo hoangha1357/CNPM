@@ -454,3 +454,7 @@ input[readonly] {
 .empty__cart {
   width: 100%;
 }
+
+.form-check-input {
+  margin-left: 0;
+}

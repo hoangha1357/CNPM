@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosedelete = require('mongoose-delete');
 const Schema = mongoose.Schema;
-const { ordering } = require('../controllers/UserController');
 
 const Order = new Schema(
     {
@@ -15,8 +14,8 @@ const Order = new Schema(
         ],
         paymentMethod: {type: String, required: true},
         status: {type: String, default:'Incomplete', required: true},
-        paymentStatus: {type: String, required: true}
-
+        paymentStatus: {type: String, required: true},
+        feedback : {type: String}
        
     },
     { timestamps: true },
