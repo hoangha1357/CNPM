@@ -56,10 +56,10 @@
         
         {{!-- Đơn hàng hoàn thành --}}
           {{#if (isMatch this.status "Completed")}}  
-            <span>ORDER COMPLETED</span>
+            <a href="/user/complete/{{this._id}}"><button class="product__item-btn btn-green" style="color: white;">Give feedback</button></a>
         {{!-- Đơn hàng đã hủy --}}
            {{else if (isMatch this.status "Canceled")}}
-            <span>ORDER CANCELED</span>
+            
         
         {{!-- Đơn hàng đang được giao --}}
           {{else if (isMatch ../user.permission "Customer") }}

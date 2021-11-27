@@ -19,6 +19,7 @@ route.post('/cancel-order/:id', requireLogin, UserController.cancelOrder);
 route.get('/viewbooktable', requireLogin, UserController.viewTableReservation);
 route.get('/viewbooktable2',requireLogin, UserController.viewTableReservation2);
 route.get('/complete/:id',requireLogin,UserController.complete);
+route.post('/feedback',requireLogin, UserController.feedback);
 route.post('/register', UserController.register);
 route.put('/updateinfo/:id', requireLogin,UserController.updateImage);
 route.post('/login', UserController.login, authenticateUser);
