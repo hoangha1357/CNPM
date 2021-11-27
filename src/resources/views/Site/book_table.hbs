@@ -13,7 +13,7 @@
 
                 <label for="time" class="table__header-heading under-line-effect">Time</label>
                 <select class="table__input" id="time" name="time">
-                    <option value="">-- Chọn giờ --</option>
+                    <option value="">-- Choose a time--</option>
                     <option value="9:00">9:00</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:00</option>
@@ -63,7 +63,7 @@
             chooseMonth = dateArray[1];
             chooseDate = dateArray[2];
             if ((chooseYear < todayYear) || (chooseMonth < todayMonth && chooseYear == todayYear) || (chooseDate < todayDate && chooseMonth == todayMonth && chooseYear == todayYear)) {
-                alert('Ngày không hợp lệ. Bạn vui lòng chọn lại');
+                alert('Invalid date!!! Please choose another date.');
                 dateInput.val("");
             }
             renderBtnFeaturedProduct();
