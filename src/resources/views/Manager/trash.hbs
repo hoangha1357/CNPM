@@ -1,6 +1,6 @@
 <form class="mt-4" name="container-form" method="POST" action="/menu/handle-form-action">
     <h2>
-      Danh sách món ăn đã xóa
+      Deleted Product List
       <a href="/User/viewrevenue">
         <img src="/image/back.png" width="20" height="20" class="d-inline-block align-center" alt="">
       </a>
@@ -9,25 +9,25 @@
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
           <label class="form-check-label" for="checkbox-all">
-            Chọn tất cả
+            Select All
           </label>
         </div>
 
         <select class="form-control form-control-sm select-all-option" name="action" required>
-          <option value="">--Hành động--</option>
-          <option value="permanent-delete">Xóa vĩnh viễn</option>
-          <option value="restore">Khôi phục</option>
+          <option value="">--Choose Action--</option>
+          <option value="permanent-delete">Delete Permanently</option>
+          <option value="restore">Restore</option>
         </select>
 
-        <button class="btn btn-primary btn-sm btn-check-submit" disabled>Thực hiện</button>
+        <button class="btn btn-primary btn-sm btn-check-submit" disabled>Action</button>
     </div>
     <table class="table mt-4">
       <thead>
           <tr>
-              <th scope="col">Chọn</th>
+              <th scope="col">Choose</th>
               <th scope="col">ID</th>
-              <th scope="col">Tên món ăn</th>
-              <th scope="col" >Thời gian xóa</th>
+              <th scope="col">Product Name</th>
+              <th scope="col" >Delete Time</th>
               <th scope="col"></th>
           </tr>
       </thead>
@@ -43,14 +43,14 @@
               <td>{{this.name}}</td>
               <td>{{this.deletedAt}}</td>
               <td>
-                  <a href="" class="btn btn-primary btn-restore" data-id="{{this._id}}">Khôi phục</a>
-                  <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Xóa vĩnh viễn</a>
+                  <a href="" class="btn btn-primary btn-restore" data-id="{{this._id}}">Restore</a>
+                  <a href="" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-dish-modal">Delete Permanently</a>
               </td>
           </tr>
           {{else}}
           <tr>
               <td colspan="4" class="text-center">
-                Thùng rác trống.
+                Trash Empty !!!
               </td>
           </tr>
           {{/each}}
@@ -63,17 +63,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Bạn chắc chắn muốn xóa vĩnh viễn?</h5>
+        <h5 class="modal-title">Are you sure you want to delete permanently?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Hành động này không thể khôi phục.</p>
+        <p>Cannot Restore !!!</p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btn-delete-dish" class="btn btn-danger">Xóa</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" id="btn-delete-dish" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
