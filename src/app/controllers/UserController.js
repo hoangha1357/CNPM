@@ -359,15 +359,15 @@ class UserController {
             .catch(err => {res.send(err.message)});
     }
     
-    viewTableReservation(req, res, next) {
-        Table.find({email: req.user.email})
-            .then((newtable) => {
-                res.render('User/viewbooktable-2', {
-                    newtable: mutiMongoosetoObject(newtable)
-                })
-            })
-            .catch(next);
-    }
+    // viewTableReservation(req, res, next) {
+    //     Table.find({email: req.user.email})
+    //         .then((newtable) => {
+    //             res.render('User/viewbooktable-2', {
+    //                 newtable: mutiMongoosetoObject(newtable)
+    //             })
+    //         })
+    //         .catch(next);
+    // }
     viewTableReservation2(req, res, next) {
         Table.find({email: req.user.email})
             .then((newtable) => {
