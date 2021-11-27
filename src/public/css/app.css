@@ -2178,7 +2178,7 @@ border-radius: 15px; */
 
 .feedback__wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     border: 1px solid #dbdada;
     padding: 5px;
