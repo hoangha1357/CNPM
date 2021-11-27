@@ -23,6 +23,7 @@ class MenuController {
                     user: req.user,
                     count,
                     category,
+                    
                 });
             })
             .catch(next);

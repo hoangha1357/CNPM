@@ -23,7 +23,7 @@ class AdminController {
 
     //[Get] /Admin/createManager
     createManager(req, res){
-        res.render('Admin/createManager',)
+        res.render('Admin/createManager',{user: req.user})
     }
 
     //[Post] /Admin/createManager
@@ -55,7 +55,7 @@ class AdminController {
                             });
                             newuser
                                 .save()
-                                .then(() => res.redirect('/loginpage'))
+                                .then(() => res.redirect('/admin'))
                                 .catch((error) => {
                                     res.json({ message: error });
                                 });

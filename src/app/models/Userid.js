@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const User = new Schema(
     {
         email: { type: String, unique: true },
-        phonenumber: { type: Number },
+        phonenumber: { type: String},
         image: { type: Buffer },
         imageType: { type: String },
         imageName: { type: String},

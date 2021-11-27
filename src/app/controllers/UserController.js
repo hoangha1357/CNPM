@@ -175,7 +175,7 @@ class UserController {
                 cart.add(MongoosetoObject(dish), dish._id);
                 }
                 req.session.cart = cart;
-                console.log(req.session.cart);
+                //console.log(req.session.cart);
                 res.redirect('back');
                 // res.json(req.session.cart);
             })
@@ -264,7 +264,7 @@ class UserController {
                             });
                             newuser
                                 .save()
-                                .then(() => res.redirect('back'))
+                                .then(() => res.redirect('/loginpage'))
                                 .catch((error) => {
                                     res.json({ message: error });
                                 });
