@@ -128,6 +128,7 @@ class UserController {
                 res.render('User/feedback',{
                     user: req.user,
                     orderID: order._id,
+                    feedback: order.feedback.text,
                 });
             })
             .catch(next);
