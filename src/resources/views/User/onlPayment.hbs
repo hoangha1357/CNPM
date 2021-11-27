@@ -125,10 +125,10 @@
 
                     <li class="slidebar__wrap-item">
                         <img src="{{imageload this.item.image this.item.imageType}}" alt="" class="slidebar__wrap-img">
-                        <span class="payment-product__quantity">{{this.qty}}</span>
+                        {{!-- <span class="payment-product__quantity">{{this.qty}}</span> --}}
                         <div class="slidebar__wrap-info" style="flex: 1;">
                             <a href="" class="slidebar__wrap-info-product">{{this.item.name}}</a>
-
+                            <span class="slidebar__wrap-info-product">x{{this.qty}}</span>
                         </div>
                         <div class="slidebar__wrap-price">${{this.price}}</div>
                     </li>
