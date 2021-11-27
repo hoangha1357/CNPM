@@ -135,9 +135,14 @@ class UserController {
 
     feedback(req,res,next) {
         // res.json(req.body);
+        var feedbackcontent = {
+            text: req.body.feedback,
+            date: Date.now()
+        }
+
         Order.updateOne({_id: req.body.id}, {
             $set: {
-                feedback: req.body.feedback,
+                feedback: feedbackcontent,
             }
         })
             .then(() => res.redirect('/user/ordered'))

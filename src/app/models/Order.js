@@ -15,7 +15,10 @@ const Order = new Schema(
         paymentMethod: {type: String, required: true},
         status: {type: String, default:'Incomplete', required: true},
         paymentStatus: {type: String, required: true},
-        feedback : {type: String}
+        feedback : {
+            text:{type: String},
+            date: {type: Date, default: Date.now()},
+        }      
        
     },
     { timestamps: true },
