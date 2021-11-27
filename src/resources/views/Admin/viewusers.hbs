@@ -1,6 +1,6 @@
 <form style="margin-top: 100px" name="container-form" method="POST" action="/admin/handle-form-action">
     <h1 class="under-line-effect under-line-effect--red" style="">
-      Danh sách người dùng
+      Users list
       {{!-- {{#if deletedCount }}
       <a href="/manager/trash">
         <img src="/image/trash.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
@@ -11,27 +11,27 @@
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-          <label class="form-check-label" for="checkbox-all">
-            Chọn tất cả
+          <label class="form-check-label" for="checkbox-all" style="padding: 20px 20px 20px 20px">
+            Select All
           </label>
         </div>
 
-        <select class="form-control form-control-sm select-all-option info__value" name="action" required>
-          <option value="">--Hành động--</option>
-          <option value="delete">Xóa</option>
-          <option value="changeToManager">Cho làm quản lý</option>
-          <option value="changeToCustomer">Cho làm khách hàng</option>
+        <select class="form-control form-control-sm select-all-option info__value" name="action" style="font-size: 1.6rem; height: 3.7rem; margin-left: 10px; margin-right: 10px; width:200px" required>
+          <option value="">--Choose action--</option>
+          <option value="delete">Delete</option>
+          <option value="changeToManager">Assign manager role</option>
+          <option value="changeToCustomer">Assign customer role</option>
         </select>
 
         {{!-- <button class="btn btn-primary btn-sm btn-check-submit" disabled>Thực hiện</button> --}}
-        <button type="submit" class="product__item-btn btn-red" style="color: white; margin-top: -20px;">Thực hiện</button>
+        <button type="submit" class="product__item-btn btn-red" style="color: white; margin-top: -20px;">Confirm</button>
     </div>
-    <table class="table mt-4">
+    <table class="table mt-4" style="font-size: 1.4rem; text-align: center">
       <thead>
           <tr>
-              <th scope="col">Chọn</th>
+              <th scope="col">Select</th>
               <th scope="col">
-                Tên người dùng
+                User name
               {{{sortable 'name' _sort page}}}
               </th>
               <th scope="col" >
@@ -39,15 +39,15 @@
                 {{{sortable 'email' _sort page}}}
               </th>
               <th scope="col" >
-                Quyền hạn
+                Permission
                 {{{sortable 'permisson' _sort page}}}
               </th>
               <th scope="col" >
-                Địa chỉ
+                Address
                 {{{sortable 'address' _sort page}}}
               </th>
               <th scope="col">
-                Ngày tạo
+                Created at
               </th>
               <th scope="col"></th>
           </tr>
@@ -67,14 +67,14 @@
               <td>{{this.address}}</td>
               <td>{{this.createdAt}}</td>
               <td>
-                  <a href=""  class="product__item-btn btn-red" style="color: white;" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-user-modal">Xóa</a>
+                  <a href=""  class="product__item-btn btn-red" style="color: white;" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-user-modal">Delete</a>
               </td>
           </tr>
           {{/unless}}
           {{else}}
           <tr>
               <td colspan="5" class="text-center">
-                Chưa có người dùng nào.
+                There is no user.
               </td>
           </tr>
           {{/each}}
@@ -89,17 +89,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Cảnh báo</h5>
+        <h5 class="modal-title">Warning</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Bạn chắc chắn muốn xóa</p>
+        <p>Are you sure?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btn-delete-user" class="btn btn-danger">Xóa</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" id="btn-delete-user" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
