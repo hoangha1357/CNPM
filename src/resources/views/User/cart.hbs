@@ -63,7 +63,7 @@
           </table>
           <div class="checkout-cart-buttons group-btn-1">
             <div class="button-shopping">
-              <button class="btn danger" style="cursor: pointer; color:white; float: right;margin: 20px 0;" data-toggle="modal" data-target="#cancel-order">CLEAR ALL ITEMS</button>
+              <button class="btn danger product__item-btn btn-red " style="cursor: pointer; color:white; float: right;margin: 20px 0;" data-toggle="modal" data-target="#cancel-order">CLEAR ALL ITEMS</button>
               <form name="update-cart-form" method="POST" action="/user/update-cart">
               <input type="hidden" name="string" id="update-cart">
              <button type="button" id="update-cart-btn" title="Update" class="product__item-btn btn-red" style="cursor: pointer; color: white; float: right;margin: 20px 0;">UPDATE CART</button>
@@ -107,7 +107,7 @@
               <div class="checkout-cart-buttons group-btn-2">
                 <div class="button-checkout-cart">    
                   <a href="/user/payment" class="product__item-btn btn-red" style="cursor: pointer; float: right; color: white">PROCEED TO CHECK OUT</a>
-                  <a href="/" class="product__item-btn btn-red" style="color: white; cursor: pointer; margin: 20px 0; float: right">Continue Shopping</a>   
+                  <a href="/" class="product__item-btn btn-red" style="color: white; cursor: pointer; margin: 20px 0; float: right">CONTINUE SHOPPING</a>   
                 </div>
 
                 
@@ -123,17 +123,17 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Cảnh báo!</h5>
+                <h5 class="modal-title">Warning !!!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <p>Bạn chắc chắn muốn xóa giỏ hàng?</p>
+                <p>Are you sure you want to delete all your cart?</p>
               </div>
               <div class="modal-footer">
-                <a href="/user/clear-cart" id="btn-cancel-order" class="btn btn-danger" >Đồng ý</a>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
+                <a href="/user/clear-cart" id="btn-cancel-order" class="btn btn-danger" >Confirm</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           </div>

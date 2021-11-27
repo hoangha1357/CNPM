@@ -1,40 +1,40 @@
 <div class="create grid">
-    <h1 class="under-line-effect under-line-effect--red">Sửa thông tin món ăn</h1>
+    <h1 class="under-line-effect under-line-effect--red">Update Product Information</h1>
     <form method="POST" action="/menu/{{dish._id}}?_method=PUT">
     <div class="row">
         <div class="col l-6" style="padding-right: 60px;">
             <div class="form-group">
-                <label class="info__label" for="name">Tên món ăn</label>
+                <label class="info__label" for="name">Product Name</label>
                 <input type="text"  class="info__value" value="{{dish.name}}" id="name" name="name">
             </div>
             <div class="form-group">
-                <label class="info__label" for="type_dish-input">Loại món ăn</label>
+                <label class="info__label" for="type_dish-input">Category</label>
                 <select name="type_dish" class="info__value" id="type_dish-input">
                     <option value="{{dish.type_dish}}">{{dish.type_dish}}</option>
                     {{#unless (isMatch dish.type_dish 'Combo')}}
                     <option value="Combo">Combo</option>
                     {{/unless}}
                     {{#unless (isMatch dish.type_dish 'Food')}}
-                    <option value="Food">Thức ăn</option>
+                    <option value="Food">Food</option>
                     {{/unless}}
                     {{#unless (isMatch dish.type_dish 'Drink')}}
-                    <option value="Drink">Đồ uống</option>
+                    <option value="Drink">Drink</option>
                     {{/unless}}
                 </select>
             </div>
             <div class="form-group">
-                <label class="info__label" for="price">Giá cả</label>
+                <label class="info__label" for="price">Price</label>
                 <input type="number"  class="info__value" value="{{dish.price}}" id="price" name="price">       
             </div>
             <div class="form-group">
-                <label class="info__label" for="description">Mô tả</label>
+                <label class="info__label" for="description">Description</label>
                 <textarea  class="info__value" id="description"  name="description">{{dish.description}}</textarea>      
             </div>
                 
         </div>
         <div class="col l-6" style="padding-right: 100px;">
             <div class="form-group">
-                <label class="info__label" for="image">Hình ảnh món ăn</label>
+                <label class="info__label" for="image">Product Image</label>
                 <input type="file" name="image" class="filepond"/>
             </div>
         </div>
