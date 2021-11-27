@@ -2,26 +2,26 @@
   <div id="accordion">
   <div class="card">
     {{#if (isMatch user.permission "Manager")}}
-    <h1 class="under-line-effect under-line-effect--red" style="width: 180px; text-align: center; margin-left: 10px">Các đơn mua hàng</h1>
+    <h1 class="under-line-effect under-line-effect--red" style="width: 180px; text-align: center; margin-left: 10px">Order List</h1>
     {{else}}
-    <h1 class="under-line-effect under-line-effect--red" style="width: 180px; text-align: center; margin-left: 10px">Lịch sử mua hàng</h1>
+    <h1 class="under-line-effect under-line-effect--red" style="width: 180px; text-align: center; margin-left: 10px">Order History</h1>
     {{/if}}
     {{#each orders }}
     <div class="card-header" id="heading{{@index}}">
       <h5 class="mb-0">
         <button class="product__item-btn btn-link btn-blue" style="color: white;" data-toggle="collapse" data-target="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
-          Hóa đơn {{sum @index 1}}
+          Receipt {{sum @index 1}}
           {{#if (isMatch ../user.permission "Manager")}}
-            của: {{this.userName}} --
+            of: {{this.userName}} --
           {{/if}}
           
-          Đặt vào: {{this.createdAt}}
+          Put in: {{this.createdAt}}
           <i class="fal fa-bars"></i>
         </button>
       </h5>
     </div>
     {{#if (isMatch ../user.permission "Manager")}}
-          <label class="info__label" style="margin-left: 10px; margin-top: 10px; margin-bottom: -5px" >ID người dùng: {{this.userID}}</label> 
+          <label class="info__label" style="margin-left: 10px; margin-top: 10px; margin-bottom: -5px" >Customer ID: {{this.userID}}</label> 
           {{/if}}
     <div id="collapse{{@index}}" class="collapse show" aria-labelledby="heading{{@index}}" data-parent="#accordion">
       <div class="card-body" style="font-size: 1.4rem;">
@@ -30,7 +30,7 @@
           <tr>
             <th scope="col">No.</th>
             <th scope="col">Product Name</th>
-            <th scope="col">Unit price</th>
+            <th scope="col">Unit Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
           </tr>
@@ -88,17 +88,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Cảnh báo!</h5>
+        <h5 class="modal-title">Warning !!!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Bạn chắc chắn muốn xóa?</p>
+        <p>Are you sure you want to delete ?</p>
       </div>
       <div class="modal-footer">
-        <button type="submit" id="btn-delete-order" class="btn btn-danger" >Xóa</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="submit" id="btn-delete-order" class="btn btn-danger" >Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
@@ -110,17 +110,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Cảnh báo!</h5>
+        <h5 class="modal-title">Warning !!!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Bạn chắc chắn muốn hủy?</p>
+        <p>Are you sure you want to cancel ?</p>
       </div>
       <div class="modal-footer">
-        <button type="submit" id="btn-cancel-order" class="btn btn-danger" >Đồng ý</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
+        <button type="submit" id="btn-cancel-order" class="btn btn-danger" >Confirm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
       </div>
     </div>
   </div>
